@@ -23,8 +23,8 @@ public class Team {
     public Team(String name) {
         this.name = name;
         this.players = new ArrayList<Player>();
-        this.playedMatches = new ArrayList<DataFormatReaders.Match>();
-        this.upcomingMatches = new ArrayList<DataFormatReaders.Match>();
+        this.playedMatches = new ArrayList<Match>();
+        this.upcomingMatches = new ArrayList<Match>();
 
         this.wins = 0;
         this.losses = 0;
