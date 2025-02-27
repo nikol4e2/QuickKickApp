@@ -1,10 +1,12 @@
 package com.example.quickkick.model;
 
 import com.fasterxml.jackson.databind.deser.DataFormatReaders;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class Team {
 
     private String name;
@@ -34,4 +36,8 @@ public class Team {
         this.takenGoals = 0;
 
     }
+
+
+    //TODO Implement
+    public void calculatePoints() {}
 }
