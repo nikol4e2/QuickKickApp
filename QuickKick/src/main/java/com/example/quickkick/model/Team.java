@@ -24,9 +24,7 @@ public class Team {
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Player> players;
 
-    @OneToMany
-    @JoinColumn(name = "team_id")
-    private List<Match> playedMatches;
+
 
 
 
@@ -42,7 +40,7 @@ public class Team {
     public Team(String name) {
         this.name = name;
         this.players = new ArrayList<Player>();
-        this.playedMatches = new ArrayList<Match>();
+
 
 
         this.wins = 0;

@@ -40,45 +40,40 @@ public class TeamController {
         return ResponseEntity.ok(teamService.save(name));
     }
 
-    @DeleteMapping("/{name}")
-    public ResponseEntity<Team> deleteTeam(@PathVariable String name) {
-        teamService.delete(name);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Team> deleteTeam(@PathVariable Long id) {
+        teamService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/{teamName}/players")
-    public ResponseEntity<Team> addPlayerToTeam(@PathVariable String teamName, @RequestBody Player player) {
-        teamService.addPlayerToTeam(teamName, player);
+    @PostMapping("/{teamId}/players")
+    public ResponseEntity<Team> addPlayerToTeam(@PathVariable Long teamId, @RequestBody Player player) {
+        teamService.addPlayerToTeam(teamId, player);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/{teamName}/players/{playerId}")
-    public ResponseEntity<Void> removePlayerFromTeam(@PathVariable String teamName, @PathVariable Long playerId) {
+    @DeleteMapping("/{teamId}/players/{playerId}")
+    public ResponseEntity<Void> removePlayerFromTeam(@PathVariable Long teamId, @PathVariable Long playerId) {
         Player player=this.playerService.getPlayerById(playerId);
-        teamService.removePlayerFromTeam(teamName, player);
+        teamService.removePlayerFromTeam(teamId, player);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{teamName}/players")
-    public ResponseEntity<List<Player>> getAllPlayersInTeam(@PathVariable String teamName) {
-        return ResponseEntity.ok(teamService.getAllPlayersInTeam(teamName));
+    @GetMapping("/{teamId}/players")
+    public ResponseEntity<List<Player>> getAllPlayersInTeam(@PathVariable Long teamId) {
+        return ResponseEntity.ok(teamService.getAllPlayersInTeam(teamId));
     }
 
-    @GetMapping("/{teamName}/points")
-    public ResponseEntity<Integer> getPointsForTeam(@PathVariable String teamName) {
-        return ResponseEntity.ok(teamService.getPointsForTeam(teamName));
-    }
-
-    @PostMapping("/{teamName}/upcoming-matches")
-    public ResponseEntity<Void> addUpcomingMatch(@PathVariable String teamName, @RequestBody Match match) {
-        teamService.addUpcomingMatchToTeam(teamName, match);
-        return ResponseEntity.ok().build();
+    @GetMapping("/{teamId}/points")
+    public ResponseEntity<Integer> getPointsForTeam(@PathVariable Long teamId) {
+        return ResponseEntity.ok(teamService.getPointsForTeam(teamId));
     }
 
 
-    @PostMapping("/{teamName}/finished-matches")
-    public ResponseEntity<Void> addFinishedMatch(@PathVariable String teamName, @RequestBody Match match) {
-        teamService.addFinshedMatchToTeam(teamName, match);
+
+    @PostMapping("/{teamId}/finished-matches")
+    public ResponseEntity<Void> addFinishedMatch(@PathVariable Long teamId, @RequestBody Match match) {
+        teamService.addFinshedMatchToTeam(teamId, match);
         return ResponseEntity.ok().build();
     }
 

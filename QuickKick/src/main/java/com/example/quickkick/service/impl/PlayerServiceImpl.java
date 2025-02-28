@@ -29,11 +29,11 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player addPlayer(String firstName, String lastName,String teamName) {
-        Team team = teamService.findByName(teamName).orElseThrow(TeamNotFoundException::new);
+    public Player addPlayer(String firstName, String lastName,Long teamId) {
+        Team team = teamService.findById(teamId).orElseThrow(TeamNotFoundException::new);
 
         Player player=new Player(firstName,lastName,team);
-        teamService.addPlayerToTeam(teamName,player);
+        teamService.addPlayerToTeam(teamId,player);
         return playerRepository.save(player);
     }
 

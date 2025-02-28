@@ -31,9 +31,9 @@ public class PlayerController {
     }
 
     @PostMapping
-    public ResponseEntity<Player> addPlayer(@RequestBody String firstName, @RequestBody String lastName,@RequestBody String teamName)
+    public ResponseEntity<Player> addPlayer(@RequestBody String firstName, @RequestBody String lastName,@RequestBody Long teamId)
     {
-        return ResponseEntity.ok(this.playerService.addPlayer(firstName,lastName,teamName));
+        return ResponseEntity.ok(this.playerService.addPlayer(firstName,lastName,teamId));
     }
 
     @DeleteMapping("/{id}")
