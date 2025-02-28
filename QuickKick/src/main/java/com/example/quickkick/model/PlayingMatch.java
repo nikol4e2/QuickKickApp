@@ -1,12 +1,23 @@
 package com.example.quickkick.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@Entity
+@Table(name = "playing_matches")
 public class PlayingMatch {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "match_id", nullable = false)
     private Match match;
+
     private int minutesForHalfTime;
     private int timer;
     private int pauseTime;

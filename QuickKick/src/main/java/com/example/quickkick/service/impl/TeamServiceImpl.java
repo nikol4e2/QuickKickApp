@@ -21,6 +21,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public Optional<Team> findById(long id) {
+        return teamRepository.findById(id);
+    }
+
+    @Override
     public List<Team> findAll() {
         return teamRepository.findAll();
     }
@@ -40,16 +45,16 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public void delete(String name) {
-        if(this.findByName(name).isPresent()) {
-            this.teamRepository.delete(this.findByName(name).get());
+    public void delete(Long teamId) {
+        if(this.findById(teamId).isPresent()) {
+            this.teamRepository.delete(this.findById(teamId).get());
         }
     }
 
     @Override
-    public void addPlayerToTeam(String teamName, Player player) {
-        if(this.findByName(teamName).isPresent() && player != null) {
-            Team team = this.findByName(teamName).get();
+    public void addPlayerToTeam(Long teamId, Player player) {
+        if(this.findById(teamId).isPresent() && player != null) {
+            Team team = this.findById(teamId).get();
             List<Player> players=team.getPlayers();
             players.add(player);
             team.setPlayers(players);
@@ -59,9 +64,9 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public void removePlayerFromTeam(String teamName, Player player) {
+    public void removePlayerFromTeam(Long teamId, Player player) {
 
-        Optional<Team> optionalTeam = this.findByName(teamName);
+        Optional<Team> optionalTeam = this.findById(teamId);
         if (optionalTeam.isPresent() && player != null) {
             Team team = optionalTeam.get();
 
@@ -72,8 +77,8 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public List<Player> getAllPlayersInTeam(String teamName) {
-        Optional<Team> optionalTeam = this.findByName(teamName);
+    public List<Player> getAllPlayersInTeam(Long teamId) {
+        Optional<Team> optionalTeam = this.findById(teamId);
 
         return optionalTeam.map(Team::getPlayers).orElse(Collections.emptyList());
     }
@@ -81,8 +86,8 @@ public class TeamServiceImpl implements TeamService {
 
 
     @Override
-    public int getPointsForTeam(String teamName) {
-        Optional<Team> optionalTeam = this.findByName(teamName);
+    public int getPointsForTeam(Long teamId) {
+        Optional<Team> optionalTeam = this.findById(teamId);
 
         if(optionalTeam.isPresent()) {
             optionalTeam.get().calculatePoints();
@@ -91,18 +96,11 @@ public class TeamServiceImpl implements TeamService {
         return 0;
     }
 
-    @Override
-    public void addUpcomingMatchToTeam(String teamName, Match match) {
-        Optional<Team> optionalTeam = this.findByName(teamName);
-        if(optionalTeam.isPresent()) {
-            optionalTeam.get().getUpcomingMatches().add(match);
-            this.teamRepository.save(optionalTeam.get());
-        }
-    }
+
 
     @Override
-    public void addFinshedMatchToTeam(String teamName, Match match) {
-        Optional<Team> optionalTeam = this.findByName(teamName);
+    public void addFinshedMatchToTeam(Long teamId, Match match) {
+        Optional<Team> optionalTeam = this.findById(teamId);
         if(optionalTeam.isPresent()) {
             optionalTeam.get().getPlayedMatches().add(match);
             optionalTeam.get().calculatePoints();

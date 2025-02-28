@@ -11,18 +11,20 @@ public interface TeamService {
 
     List<Team> findAll();
 
+    Optional<Team> findById(long id);
+
     Optional<Team> findByName(String name);
 
     Team save(String name);
-    void delete(String name);
+    void delete(Long teamId);
 
 
-    void addPlayerToTeam(String teamName, Player player);
-    void removePlayerFromTeam(String teamName, Player player);
-    List<Player> getAllPlayersInTeam(String teamName);
+    void addPlayerToTeam(Long teamId, Player player);
+    void removePlayerFromTeam(Long teamId, Player player);
+    List<Player> getAllPlayersInTeam(Long teamId);
 
 
-    int getPointsForTeam(String teamName);
-    void addUpcomingMatchToTeam(String teamName, Match match);
-    void addFinshedMatchToTeam(String teamName, Match match);
+    int getPointsForTeam(Long id);
+
+    void addFinshedMatchToTeam(Long teamID, Match match);
 }

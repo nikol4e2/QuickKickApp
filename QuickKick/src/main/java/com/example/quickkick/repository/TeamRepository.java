@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface TeamRepository extends JpaRepository<Team,String> {
+public interface TeamRepository extends JpaRepository<Team,Long> {
 
     Optional<Team> findByName(String name);
 
