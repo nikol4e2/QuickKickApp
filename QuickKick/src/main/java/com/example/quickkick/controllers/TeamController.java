@@ -71,10 +71,12 @@ public class TeamController {
 
 
 
-    @PostMapping("/{teamId}/finished-matches")
+ /*   @PostMapping("/{teamId}/finished-matches")
     public ResponseEntity<Void> addFinishedMatch(@PathVariable Long teamId, @RequestBody Match match) {
         teamService.addFinshedMatchToTeam(teamId, match);
         return ResponseEntity.ok().build();
     }
+
+  */
 
 }

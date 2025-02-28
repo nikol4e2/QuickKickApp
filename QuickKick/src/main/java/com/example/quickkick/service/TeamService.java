@@ -26,5 +26,5 @@ public interface TeamService {
 
     int getPointsForTeam(Long id);
 
-    void addFinshedMatchToTeam(Long teamID, Match match);
+    //void addFinshedMatchToTeam(Long teamID, Match match);
 }

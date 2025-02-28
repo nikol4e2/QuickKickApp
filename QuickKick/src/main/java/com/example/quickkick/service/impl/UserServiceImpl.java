@@ -8,12 +8,14 @@ import com.example.quickkick.model.exceptions.PasswordsDoNotMatchException;
 import com.example.quickkick.model.exceptions.UserNameAlreadyExistsException;
 import com.example.quickkick.repository.UserRepository;
 import com.example.quickkick.service.UserService;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;

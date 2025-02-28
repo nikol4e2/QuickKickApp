@@ -97,7 +97,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-
+/*
     @Override
     public void addFinshedMatchToTeam(Long teamId, Match match) {
         Optional<Team> optionalTeam = this.findById(teamId);
@@ -107,4 +107,6 @@ public class TeamServiceImpl implements TeamService {
             this.teamRepository.save(optionalTeam.get());
         }
     }
+
+ */
 }
