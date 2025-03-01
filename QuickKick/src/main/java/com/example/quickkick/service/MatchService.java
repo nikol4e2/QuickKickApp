@@ -7,11 +7,12 @@ import com.example.quickkick.model.exceptions.TeamNullException;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface MatchService {
 
-    Match getMatchBId(Long matchId);
-    Match saveMatch(Date date, Team team1, Team team2) throws TeamNullException;
+    Optional<Match> getMatchById(Long matchId);
+    Match saveMatch(Date date, Team team1, Team team2);
     void delteMatchById(Long matchId);
     Match editMatch(Long matchId, Date date, Team team1, Team team2);
     void finishMatch(Long matchId,int team1Goals,int team2Goals);

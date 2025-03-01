@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MatchServiceImpl implements MatchService {
@@ -26,8 +27,8 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public Match getMatchBId(Long matchId) {
-        return this.matchRepository.findById(matchId).orElseThrow(MatchNotFoundException::new);
+    public Optional<Match> getMatchById(Long matchId) {
+        return this.matchRepository.findById(matchId);
     }
 
     @Override
