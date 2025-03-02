@@ -2,6 +2,7 @@ package com.example.quickkick.controllers;
 
 import com.example.quickkick.model.PlayingMatch;
 import com.example.quickkick.model.dto.PlayingMatchCreateRequestDto;
+import com.example.quickkick.model.enums.TimeoutType;
 import com.example.quickkick.service.PlayingMatchService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -100,5 +101,33 @@ public class PlayingMatchController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/{id}/halfTime")
+    public ResponseEntity<PlayingMatch> halfTime(@PathVariable Long id)
+    {
+        this.playingMatchService.signalHalfTime(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{id}/signalTimeout")
+    public ResponseEntity<PlayingMatch> signalTimeout(@PathVariable Long id, @RequestBody TimeoutType timeoutType)
+    {
+        this.playingMatchService.signalTimeout(id, timeoutType);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{id}/signalPlaying")
+    public ResponseEntity<PlayingMatch> signalPlaying(@PathVariable Long id)
+    {
+        this.playingMatchService.startPlayingMatch(id);
+        return ResponseEntity.ok().build();
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<PlayingMatch> deletePlayingMatch(@PathVariable Long id)
+    {
+        this.playingMatchService.deletePlayingMatch(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
