@@ -18,5 +18,6 @@ public interface MatchService {
     void finishMatch(Long matchId,int team1Goals,int team2Goals);
     List<Match> findAll();
     List<Match> findAllByStatus(MatchStatus status);
+    void changeMatchStatus(Long matchId, MatchStatus status);
 
 }

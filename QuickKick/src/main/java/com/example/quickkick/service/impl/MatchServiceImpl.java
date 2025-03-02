@@ -98,4 +98,13 @@ public class MatchServiceImpl implements MatchService {
     public List<Match> findAllByStatus(MatchStatus status) {
         return this.matchRepository.findAllByStatus(status);
     }
+
+    @Override
+    public void changeMatchStatus(Long matchId, MatchStatus status) {
+        Optional<Match> match=this.matchRepository.findById(matchId);
+        if(match.isPresent()) {
+            match.get().setStatus(status);
+            this.matchRepository.save(match.get());
+        }
+    }
 }

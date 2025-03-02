@@ -1,5 +1,6 @@
 package com.example.quickkick.model;
 
+import com.example.quickkick.model.enums.PlayingMatchStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,13 +21,15 @@ public class PlayingMatch {
 
     private int minutesForHalfTime;
     private int timer;
-    private int pauseTime;
+    private int pauseTime; // vremeto za pauza za poluvreme
     private int halfTimeCounter;
-    private int timeoutTime;
+    private int timeoutTime; // vremeto za poluvreme
     private int goalsTeam1;
     private int goalsTeam2;
     private int faulsTeam1;
     private int faulsTeam2;
+    @Enumerated(EnumType.STRING)
+    private PlayingMatchStatus status;
 
 
     public PlayingMatch(Match match, int minutesForHalfTime, int pauseTime, int timeoutTime) {
@@ -40,5 +43,6 @@ public class PlayingMatch {
         this.faulsTeam1 = 0;
         this.faulsTeam2 = 0;
         this.halfTimeCounter = 1;
+        this.status=PlayingMatchStatus.WAITING_TO_START;
     }
 }
