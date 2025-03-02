@@ -4,11 +4,13 @@ import com.example.quickkick.model.Match;
 import com.example.quickkick.model.PlayingMatch;
 import com.example.quickkick.model.enums.TimeoutType;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface PlayingMatchService {
 
     Optional<PlayingMatch> getPlayingMatch(Long matchId);
+    List<PlayingMatch> findAll();
     PlayingMatch createPlayingMatch(Long matchId, int minutesForHalfTime, int pauseTime, int timeoutTime);
     PlayingMatch startPlayingMatch(Long playingMatchId);
     void adjustTimerForPlayingMatch(Long playingMatchId, int minutes);

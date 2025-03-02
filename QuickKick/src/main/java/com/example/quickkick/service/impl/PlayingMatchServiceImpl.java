@@ -14,6 +14,7 @@ import com.example.quickkick.service.PlayingMatchService;
 import com.fasterxml.jackson.databind.ObjectReader;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,11 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
     @Override
     public Optional<PlayingMatch> getPlayingMatch(Long matchId) {
         return this.playingMatchRepository.findById(matchId);
+    }
+
+    @Override
+    public List<PlayingMatch> findAll() {
+        return this.playingMatchRepository.findAll();
     }
 
     @Override
@@ -152,6 +158,7 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
         if (playingMatch.isPresent())
         {
             playingMatch.get().setHalfTimeCounter(2);
+            playingMatch.get().setStatus(PlayingMatchStatus.HALF_TIME_TIMEOUT);
             this.playingMatchRepository.save(playingMatch.get());
         }
     }
