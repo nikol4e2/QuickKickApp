@@ -389,6 +389,7 @@
   background-size: 200% 100%;
   background-position: 100%;
   -webkit-text-fill-color: transparent;
+  font-size: 15px
 }
 
 .thq-link:hover {

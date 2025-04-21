@@ -1,0 +1,119 @@
+/* footer.css */
+
+.footer-footer1 {
+    background-color: white;
+    color: #000000;
+    padding: 60px 20px;
+}
+
+.footer-max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+}
+
+.footer-column1,
+.footer-column2,
+.footer-column3 {
+    flex: 1 1 200px;
+}
+
+.footer-column1-title,
+.footer-column2-title,
+.footer-social-link1-title {
+    font-size: 40px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.footer-footer-links1 a,
+.footer-footer-links2 a,
+.footer-social-links span {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-footer-links1 a:hover,
+.footer-footer-links2 a:hover,
+.footer-social-links span:hover {
+    color: #878787;
+}
+
+.footer-social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-social-links div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.thq-icon-small {
+    width: 20px;
+    height: 20px;
+    fill: #ccc;
+    transition: fill 0.3s ease;
+}
+
+.footer-social-links div:hover .thq-icon-small {
+    fill: #000000;
+}
+.footer-credits {
+    gap: var(--dl-layout-space-twounits);
+    width: 100%;
+    display: flex;
+    align-self: stretch;
+    margin-top: var(--dl-layout-space-unit);
+    align-items: flex-start;
+    flex-direction: column;
+}
+.footer-footer-links3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+    color: #000000;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+.cc-1{
+    margin-right: 30rem;
+}
+.cc-2{
+    margin-right: 0;
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-links {
+        flex-direction: column;
+    }
+}

@@ -10,15 +10,15 @@ const Hero = () => {
         <div className="hero-header78">
             <div className="hero-column thq-section-max-width thq-section-padding">
                 <div className="hero-content1">
-                    <h1 className="hero-text1 thq-heading-1">МЕМОРИЈАЛЕН ТУРНИР АНДРЕЈ МИТЕВ</h1>
-                    <p className="hero-text2 thq-body-large">ОПИС</p>
+                    <h1 className="hero-text1 thq-heading-1">МЕМОРИЈАЛЕН ТУРНИР ВО МАЛ ФУДБАЛ <br/> АНДРЕЈ МИТЕВ </h1>
+                    <p className="hero-text2 thq-body-large">Меморијалниот турнир во мал фудбал „Андреј Митев“ е настан кој обединува спорт, пријателство и почит кон еден наш драг пријател. Турнирот се одржува со цел да се оддаде чест на Андреј, преку натпревари исполнети со фер-плеј, тимска енергија и спортски дух.</p>
                 </div>
                 <div className="hero-actions">
                     <button className="thq-button-filled hero-button1">
-                        <span className="thq-body-small">АКЦИЈА 1</span>
+                        <span className="thq-body-small">РЕЗУЛАТИ ВО ЖИВО</span>
                     </button>
                     <button className="thq-button-outline hero-button2">
-                        <span className="thq-body-small">АКЦИЈА 2</span>
+                        <span className="thq-body-small">РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</span>
                     </button>
                 </div>
             </div>
@@ -27,64 +27,64 @@ const Hero = () => {
                     <div className="thq-animated-group-horizontal">
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/1IstoJaka.jpg"
                             className="hero-placeholder-image10 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/1.jpg"
                             className="hero-placeholder-image11 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/1!!!.jpg"
                             className="hero-placeholder-image12 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/2.jpg"
                             className="hero-placeholder-image13 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/3.jpg"
                             className="hero-placeholder-image14 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/4.jpg"
                             className="hero-placeholder-image15 thq-img-scale thq-img-ratio-1-1"
                         />
                     </div>
                     <div className="thq-animated-group-horizontal">
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/5.jpg"
                             className="hero-placeholder-image16 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/6.jpg"
                             className="hero-placeholder-image17 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/7.jpg"
                             className="hero-placeholder-image18 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/8.jpg"
                             className="hero-placeholder-image19 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/9.jpg"
                             className="hero-placeholder-image20 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
-                            alt="Hero Image"
-                            src="https://images.unsplash.com/photo-1534312527009-56c7016453e6?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDIxfHxhYnN0cmFjdHxlbnwwfHx8fDE3MTA4NzA5MzB8MA&amp;ixlib=rb-4.0.3&amp;w=1500"
+                            alt="slika"
+                            src="/images/10.jpg"
                             className="hero-placeholder-image21 thq-img-scale thq-img-ratio-1-1"
                         />
                     </div>
@@ -93,64 +93,64 @@ const Hero = () => {
                     <div className="thq-animated-group-horizontal-reverse">
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/11.jpg"
                             className="hero-placeholder-image22 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/12.jpg"
                             className="hero-placeholder-image23 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/13.jpg"
                             className="hero-placeholder-image24 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/14.jpg"
                             className="hero-placeholder-image25 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/15.jpg"
                             className="hero-placeholder-image26 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/16.jpg"
                             className="hero-placeholder-image27 thq-img-scale thq-img-ratio-1-1"
                         />
                     </div>
                     <div className="thq-animated-group-horizontal-reverse">
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/17.jpg"
                             className="hero-placeholder-image28 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/18.jpg"
                             className="hero-placeholder-image29 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/19.jpg"
                             className="hero-placeholder-image30 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/20.jpg"
                             className="hero-placeholder-image31 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
                             alt="SLIKA"
-                            src=""
+                            src="/images/21.jpg"
                             className="hero-placeholder-image32 thq-img-scale thq-img-ratio-1-1"
                         />
                         <img
-                            alt="Hero Image"
-                            src="https://images.unsplash.com/photo-1568214379698-8aeb8c6c6ac8?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDEyfHxncmFmaWN8ZW58MHx8fHwxNzE1Nzk0OTk5fDA&amp;ixlib=rb-4.0.3&amp;w=1500"
+                            alt="SLIKA"
+                            src="/images/22.jpg"
                             className="hero-placeholder-image33 thq-img-scale thq-img-ratio-1-1"
                         />
                     </div>

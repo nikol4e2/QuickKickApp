@@ -19,7 +19,7 @@
 }
 
 .navbar-image1 {
-    height: 3rem;
+    height: 7rem;
 }
 
 .navbar-desktop-menu {
@@ -135,6 +135,10 @@
         align-items: center;
         justify-content: center;
     }
+    .thq-body-small
+    {
+        text-decoration: none;
+    }
 }
 
 @media(max-width: 479px) {
@@ -145,3 +149,21 @@
         padding: var(--dl-layout-space-unit);
     }
 }
+
+
+.navbar-mobile-menu.open {
+    display: flex;
+}
+
+.navbar-mobile-menu.hidden {
+    display: none;
+}
+
+
+#root > div > header > header > div.navbar-mobile-menu.open > div.navbar-buttons2 > button > a
+{
+
+   text-decoration: none;
+    color: var(--dl-color-theme-neutral-light);
+}
+
