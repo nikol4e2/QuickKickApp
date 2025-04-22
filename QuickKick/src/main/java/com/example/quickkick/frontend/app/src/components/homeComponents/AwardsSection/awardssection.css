@@ -126,16 +126,17 @@
 }
 
 @media(max-width: 767px) {
+
     .steps-container4 {
-        width: 100%;
+        width: 40%;
     }
     .steps-container5 {
-        width: 100%;
+        width: 40%;
     }
     .steps-container6 {
-        width: 100%;
+        width: 40%;
     }
     .steps-container7 {
-        width: 100%;
+        width: 40%;
     }
 }
