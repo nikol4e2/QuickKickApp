@@ -17,7 +17,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container12">
                                     <img
                                         alt="Nale Trans"
-                                        src="./sponsors/Nale Trans.jpg"
+                                        src="/sponsors/Nale Trans.JPG"
                                         className="testimonial-image1"
                                     />
                                     <div className="testimonial-container13">
@@ -39,7 +39,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container14">
                                     <img
                                         alt="Picerija Stefan"
-                                        src="./sponsors/Pic Stefan.jpg"
+                                        src="./sponsors/Pic Stefan.JPG"
                                         className="testimonial-image2"
                                     />
                                     <div className="testimonial-container15">
@@ -59,7 +59,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container16">
                                     <img
                                         alt="Amphenol"
-                                        src="./sponsors/Amphenol.jpg"
+                                        src="./sponsors/Amphenol.JPG"
                                         className="testimonial-image3"
                                     />
                                     <div className="testimonial-container17">
@@ -79,7 +79,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container18">
                                     <img
                                         alt="Adient"
-                                        src="./sponsors/Adient.jpg"
+                                        src="./sponsors/Adient.JPG"
                                         className="testimonial-image4"
                                     />
                                     <div className="testimonial-container19">
@@ -100,7 +100,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container18">
                                     <img
                                         alt="Grga Trans"
-                                        src="./sponsors/Grga trans.jpg"
+                                        src="/sponsors/Grga trans.JPG"
                                         className="testimonial-image4"
                                     />
                                     <div className="testimonial-container19">
@@ -121,7 +121,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container18">
                                     <img
                                         alt="Eko Zrno"
-                                        src="./sponsors/EkoZrno.jpg"
+                                        src="/sponsors/EkoZrno.JPG"
                                         className="testimonial-image4"
                                     />
                                     <div className="testimonial-container19">
@@ -142,7 +142,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container18">
                                     <img
                                         alt="Kliment Ohridski"
-                                        src="./sponsors/klimentOhridski.jpg"
+                                        src="/sponsors/klimentOhridski.JPG"
                                         className="testimonial-image4"
                                     />
                                     <div className="testimonial-container19">
@@ -161,7 +161,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container18">
                                     <img
                                         alt="jumis"
-                                        src="./sponsors/jumis.jpg"
+                                        src="/sponsors/jumis.JPG"
                                         className="testimonial-image4"
                                     />
                                     <div className="testimonial-container19">
@@ -180,7 +180,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container18">
                                     <img
                                         alt="Premium"
-                                        src="./sponsors/premiumGym.jpg"
+                                        src="/sponsors/premiumGym.JPG"
                                         className="testimonial-image4"
                                     />
                                     <div className="testimonial-container19">
@@ -199,7 +199,7 @@ const SponsorSection = (props) => {
                                 <div className="testimonial-container18">
                                     <img
                                         alt="Klinika Ljubomirovski"
-                                        src="./sponsors/klinikaLjubomirovski.jpg"
+                                        src="/sponsors/klinikaLjubomirovski.JPG"
                                         className="testimonial-image4"
                                     />
                                     <div className="testimonial-container19">

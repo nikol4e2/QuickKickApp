@@ -1,0 +1,83 @@
+.registration-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem;
+    width: 100%;
+}
+
+.registration-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 900px;
+    text-align: left;
+    gap: 2rem;
+}
+
+.registration-content h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.registration-content p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+.rules {
+    font-size: 1.2rem;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.rules h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.rules ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.contact-link {
+    padding: 0.8rem 1.5rem;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.contact-link:hover {
+    background-color: #2980b9;
+}
+
+.contact-info h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
