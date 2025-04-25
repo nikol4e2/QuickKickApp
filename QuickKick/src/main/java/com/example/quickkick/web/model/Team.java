@@ -1,5 +1,7 @@
 package com.example.quickkick.web.model;
 
+import com.example.quickkick.web.model.enums.TeamGroup;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,8 +24,11 @@ public class Team {
     private String name;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     List<Player> players;
 
+    @Enumerated(EnumType.STRING)
+    private TeamGroup teamGroup;
 
 
 
@@ -37,7 +42,7 @@ public class Team {
     private int takenGoals;
 
 
-    public Team(String name) {
+    public Team(String name,TeamGroup teamGroup) {
         this.name = name;
         this.players = new ArrayList<Player>();
 
@@ -49,10 +54,13 @@ public class Team {
         this.points = 0;
         this.scoredGoals = 0;
         this.takenGoals = 0;
+        this.teamGroup = teamGroup;
 
     }
 
 
-    //TODO Implement
-    public void calculatePoints() {}
+
+    public void calculatePoints() {
+        this.points = (wins*3)+draws;
+    }
 }

@@ -59,7 +59,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public void finishMatch(Long matchId, int team1Goals, int team2Goals) {
+    public void finishMatch(Long matchId, int team1Goals, int team2Goals, Boolean isGroupPhase) {
         Match match=this.matchRepository.findById(matchId).orElseThrow(MatchNotFoundException::new);
         match.setStatus(MatchStatus.FINISHED);
         match.setGoalsTeam1(team1Goals);
@@ -67,25 +67,26 @@ public class MatchServiceImpl implements MatchService {
         Team team1=match.getTeam1();
         Team team2=match.getTeam2();
 
-        team1.setScoredGoals(team1.getScoredGoals()+team1Goals);
-        team2.setScoredGoals(team2.getScoredGoals()+team2Goals);
-        team1.setTakenGoals(team1.getTakenGoals()+team2Goals);
-        team2.setTakenGoals(team2.getTakenGoals()+team1Goals);
+        if(isGroupPhase) {
+            team1.setScoredGoals(team1.getScoredGoals() + team1Goals);
+            team2.setScoredGoals(team2.getScoredGoals() + team2Goals);
+            team1.setTakenGoals(team1.getTakenGoals() + team2Goals);
+            team2.setTakenGoals(team2.getTakenGoals() + team1Goals);
 
 
-        if(team1Goals>team2Goals) {
-            teamRepository.findByName(team1.getName()).get().setWins(team1.getWins() + 1);
-            teamRepository.findByName(team2.getName()).get().setLosses(team2.getLosses() + 1);
-        }else if(team2Goals>team1Goals) {
-            teamRepository.findByName(team2.getName()).get().setWins(team2.getWins() + 1);
-            teamRepository.findByName(team1.getName()).get().setLosses(team1.getLosses() + 1);
-        }else {
-            teamRepository.findByName(team1.getName()).get().setDraws(team2.getLosses() + 1);
-            teamRepository.findByName(team2.getName()).get().setDraws(team2.getLosses() + 1);
+            if (team1Goals > team2Goals) {
+                teamRepository.findByName(team1.getName()).get().setWins(team1.getWins() + 1);
+                teamRepository.findByName(team2.getName()).get().setLosses(team2.getLosses() + 1);
+            } else if (team2Goals > team1Goals) {
+                teamRepository.findByName(team2.getName()).get().setWins(team2.getWins() + 1);
+                teamRepository.findByName(team1.getName()).get().setLosses(team1.getLosses() + 1);
+            } else {
+                teamRepository.findByName(team1.getName()).get().setDraws(team2.getLosses() + 1);
+                teamRepository.findByName(team2.getName()).get().setDraws(team2.getLosses() + 1);
+            }
+            this.teamRepository.save(team1);
+            this.teamRepository.save(team2);
         }
-        this.teamRepository.save(team1);
-        this.teamRepository.save(team2);
-
         this.matchRepository.save(match);
     }
 

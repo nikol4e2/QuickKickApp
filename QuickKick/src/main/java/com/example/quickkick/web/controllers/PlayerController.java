@@ -2,12 +2,14 @@ package com.example.quickkick.web.controllers;
 
 
 import com.example.quickkick.web.model.Player;
+import com.example.quickkick.web.model.dto.PlayerDto;
 import com.example.quickkick.web.service.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/players")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PlayerController {
 
 
@@ -29,11 +31,11 @@ public class PlayerController {
     }
 
 
-    //TODO Create AddPlayerRequestDTo
+
     @PostMapping
-    public ResponseEntity<Player> addPlayer(@RequestBody String firstName, @RequestBody String lastName,@RequestBody Long teamId)
+    public ResponseEntity<Player> addPlayer(@RequestBody PlayerDto playerDto)
     {
-        return ResponseEntity.ok(this.playerService.addPlayer(firstName,lastName,teamId));
+        return ResponseEntity.ok(this.playerService.addPlayer(playerDto.getFirstName(), playerDto.getLastName(), playerDto.getTeamId()));
     }
 
     @DeleteMapping("/{id}")

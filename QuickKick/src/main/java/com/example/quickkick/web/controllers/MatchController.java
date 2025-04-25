@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.quickkick.web.model.Team;
+import com.example.quickkick.web.model.dto.FinishMatchRequest;
 import com.example.quickkick.web.model.dto.MatchDTO;
 import com.example.quickkick.web.model.enums.MatchStatus;
 import com.example.quickkick.web.service.MatchService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/matches")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MatchController {
 
 
@@ -57,10 +59,11 @@ public class MatchController {
     }
 
 
+
     @PostMapping("/{id}/finish")
-    public ResponseEntity<Match> finishMatch(@PathVariable Long id,@RequestBody int goalsTeam1,@RequestBody int goalsTeam2)
+    public ResponseEntity<Match> finishMatch(@PathVariable Long id, @RequestBody FinishMatchRequest finishMatchRequest)
     {
-        this.matchService.finishMatch(id,goalsTeam1,goalsTeam2);
+        this.matchService.finishMatch(id,finishMatchRequest.getGoalsTeam1(), finishMatchRequest.getGoalsTeam2(), finishMatchRequest.getIsGroupPhase());
         return ResponseEntity.noContent().build();
     }
 

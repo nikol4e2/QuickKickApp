@@ -2,6 +2,8 @@ package com.example.quickkick.web.service.impl;
 
 import com.example.quickkick.web.model.Player;
 import com.example.quickkick.web.model.Team;
+import com.example.quickkick.web.model.enums.TeamGroup;
+import com.example.quickkick.web.model.exceptions.TeamNotFoundException;
 import com.example.quickkick.web.repository.TeamRepository;
 import com.example.quickkick.web.service.TeamService;
 import org.springframework.stereotype.Service;
@@ -35,11 +37,21 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Team save(String name) {
+    public Team save(String name,String group) {
+        group=group.toLowerCase();
         if(name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
-        Team team = new Team(name);
+        TeamGroup teamGroup=null;
+        switch (group)
+        {
+            case "a": teamGroup=TeamGroup.A;break;
+            case "b": teamGroup=TeamGroup.B;break;
+            case "c": teamGroup=TeamGroup.C;break;
+            case "d": teamGroup=TeamGroup.D;break;
+
+        }
+        Team team = new Team(name,teamGroup);
         return this.teamRepository.save(team);
     }
 
@@ -56,8 +68,9 @@ public class TeamServiceImpl implements TeamService {
             Team team = this.findById(teamId).get();
             List<Player> players=team.getPlayers();
             players.add(player);
+            player.setTeam(team);
             team.setPlayers(players);
-            this.teamRepository.save(team);
+
         }else
             throw new IllegalArgumentException("Team does not exist");
     }
@@ -95,8 +108,27 @@ public class TeamServiceImpl implements TeamService {
         return 0;
     }
 
+    @Override
+    public List<Team> findAllByGroup(TeamGroup teamGroup) {
 
-/*
+
+        return this.teamRepository.findAllByTeamGroup(teamGroup);
+
+
+
+
+    }
+
+    @Override
+    public void putTeamInGroup(Long teamId, TeamGroup teamGroup) {
+        Team team = this.findById(teamId).orElseThrow(() -> new TeamNotFoundException());
+        team.setTeamGroup(teamGroup);
+        this.teamRepository.save(team);
+
+
+    }
+
+    /*
     @Override
     public void addFinshedMatchToTeam(Long teamId, Match match) {
         Optional<Team> optionalTeam = this.findById(teamId);

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/playing-matches")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PlayingMatchController {
 
     private final PlayingMatchService playingMatchService;

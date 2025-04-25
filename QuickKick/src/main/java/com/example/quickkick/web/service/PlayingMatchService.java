@@ -22,7 +22,7 @@ public interface PlayingMatchService {
     void signalHalfTime(Long playingMatchId);
     void signalTimeout(Long playingMatchId, TimeoutType timeoutType);
     void signalPlayingAgain(Long playingMatchId);
-    void finishPlayingMatch(Long playingMatchId);
+    void finishPlayingMatch(Long playingMatchId,Boolean isGroupPhase);
 
 
     void deletePlayingMatch(Long playingMatchId);

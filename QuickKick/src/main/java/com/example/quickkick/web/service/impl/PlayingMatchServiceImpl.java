@@ -162,17 +162,15 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
 
     @Override
     public void signalTimeout(Long playingMatchId, TimeoutType timeoutType) {
-        //TODO Refactor code
-        Optional<PlayingMatch> playingMatch=this.playingMatchRepository.findById(playingMatchId);
-        if(playingMatch.isPresent()) {
-            if(timeoutType==TimeoutType.HALF_TIME) {
-                playingMatch.get().setStatus(PlayingMatchStatus.HALF_TIME_TIMEOUT);
-            }else if(timeoutType==TimeoutType.TEAM)
-            {
-                playingMatch.get().setStatus(PlayingMatchStatus.TEAM_TIMEOUT);
-            }
-            this.playingMatchRepository.save(playingMatch.get());
+
+        PlayingMatch playingMatch=this.playingMatchRepository.findById(playingMatchId).orElseThrow(()-> new MatchNotFoundException());
+        if(timeoutType==TimeoutType.HALF_TIME) {
+            playingMatch.setStatus(PlayingMatchStatus.HALF_TIME_TIMEOUT);
+        }else if(timeoutType==TimeoutType.TEAM)
+        {
+            playingMatch.setStatus(PlayingMatchStatus.TEAM_TIMEOUT);
         }
+        this.playingMatchRepository.save(playingMatch);
     }
 
     @Override
@@ -184,13 +182,13 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
     }
 
     @Override
-    public void finishPlayingMatch(Long playingMatchId) {
+    public void finishPlayingMatch(Long playingMatchId,Boolean isGroupPhase) {
         PlayingMatch playingMatch = this.playingMatchRepository.findById(playingMatchId)
                 .orElseThrow(MatchNotFoundException::new);
 
         this.matchService.finishMatch(playingMatch.getMatch().getId(),
                 playingMatch.getGoalsTeam1(),
-                playingMatch.getGoalsTeam2());
+                playingMatch.getGoalsTeam2(),isGroupPhase);
 
         playingMatch.setStatus(PlayingMatchStatus.FINISHED);
 

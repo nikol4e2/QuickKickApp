@@ -2,6 +2,7 @@ package com.example.quickkick.web.service;
 
 import com.example.quickkick.web.model.Player;
 import com.example.quickkick.web.model.Team;
+import com.example.quickkick.web.model.enums.TeamGroup;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,12 +10,13 @@ import java.util.Optional;
 public interface TeamService {
 
     List<Team> findAll();
+    List<Team> findAllByGroup(TeamGroup teamGroup);
 
     Optional<Team> findById(long id);
 
     Optional<Team> findByName(String name);
 
-    Team save(String name);
+    Team save(String name,String group);
     void delete(Long teamId);
 
 
@@ -26,4 +28,8 @@ public interface TeamService {
     int getPointsForTeam(Long id);
 
     //void addFinshedMatchToTeam(Long teamID, Match match);
+
+    void putTeamInGroup(Long teamId, TeamGroup teamGroup);
+
+
 }
