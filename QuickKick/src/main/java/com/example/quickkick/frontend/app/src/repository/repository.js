@@ -11,6 +11,9 @@ const Service = {
     updateTeam: (id,teamData) =>{
         return axios.put(`/teams/${id}`, teamData);
     },
+    addTeam: (teamData) =>{
+        return axios.post("/teams", teamData);
+    },
 
     fetchTeamsByGroup:(group)=>{
         return axios.get("/teams/group",{

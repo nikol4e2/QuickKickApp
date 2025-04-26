@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Service from '../../../repository/repository.js';
 import {Link} from "react-router-dom";
-
+import "./teamList.css"
 const TeamsList = () => {
     const [teams, setTeams] = React.useState([]);
 
@@ -36,6 +36,7 @@ const TeamsList = () => {
 
                 </table>
             </div>
+            <Link to={"/admin/add-team"}><button className="add-team-button">Додај тим</button></Link>
         </div>
     );
 };

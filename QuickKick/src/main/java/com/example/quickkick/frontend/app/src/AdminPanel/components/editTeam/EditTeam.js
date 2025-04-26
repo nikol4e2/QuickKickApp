@@ -2,6 +2,7 @@ import React from 'react' ;
 import {useParams, useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import Service from "../../../repository/repository";
+import "./editTeam.css"
 const EditTeam = () => {
 
     const navigate = useNavigate();
@@ -42,42 +43,42 @@ const EditTeam = () => {
 
     return (
         <div className="edit-team-container">
-            <h2>Edit Team</h2>
+            <h2>Измени Тим</h2>
             <form onSubmit={handleSubmit} className="edit-team-form">
                 <div>
-                    <label htmlFor="">Name:</label>
+                    <label htmlFor="">Име:</label>
                     <input type="text" name="name" value={team.name} onChange={handleChange}  required/>
                 </div>
                 <div>
-                    <label htmlFor="">TeamGroup:</label>
+                    <label htmlFor="">Група:</label>
                     <input type="text" name="teamGroup" value={team.teamGroup} onChange={handleChange}  required/>
                     <span>Insert A, B, C or D</span>
                 </div>
                 <div>
-                    <label htmlFor="">Wins:</label>
+                    <label htmlFor="">Број на победи:</label>
                     <input type="number" name="wins" value={team.wins} onChange={handleChange}  required/>
                 </div>
                 <div>
-                    <label htmlFor="">Losses:</label>
+                    <label htmlFor="">Број на загуби:</label>
                     <input type="number" name="losses" value={team.losses} onChange={handleChange}  required/>
                 </div>
                 <div>
-                    <label htmlFor="">Draws:</label>
+                    <label htmlFor="">Нерешени:</label>
                     <input type="number" name="draws" value={team.draws} onChange={handleChange}  required/>
                 </div>
                 <div>
-                    <label htmlFor="">Points:</label>
+                    <label htmlFor="">Поени:</label>
                     <input type="number" name="points" value={team.points} onChange={handleChange}  required/>
                 </div>
                 <div>
-                    <label htmlFor="">Scored Goals:</label>
+                    <label htmlFor="">Постигнати голови:</label>
                     <input type="number" name="scoredGoals" value={team.scoredGoals} onChange={handleChange}></input>
                 </div>
                 <div>
-                    <label htmlFor="">Taken Goals:</label>
+                    <label htmlFor="">Примани голови:</label>
                     <input type="number" name="takenGoals" value={team.takenGoals} onChange={handleChange}></input>
                 </div>
-                <button type="submit">Save Changes</button>
+                <button type="submit">Зачувај</button>
 
             </form>
 

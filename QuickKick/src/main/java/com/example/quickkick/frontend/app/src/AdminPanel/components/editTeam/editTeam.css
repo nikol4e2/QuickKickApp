@@ -1,0 +1,47 @@
+.edit-team-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.edit-team-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-team-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-team-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.edit-team-container input,
+.edit-team-container select {
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.edit-team-container button {
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-team-container button:hover {
+    background-color: #45a049;
+}
+
