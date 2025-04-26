@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import Service from "../../../repository/repository";
-
+import "./addTeam.css"
 const AddTeam = () => {
 
     const navigate = useNavigate();
@@ -34,7 +34,7 @@ const AddTeam = () => {
                 </div>
                 <div>
                     <label htmlFor="">Група</label>
-                    
+
                     <select name="group" value={group} onChange={handleChangeGroup}>
                         <option value="">Избери група</option>
                         <option value="A">Група А</option>
