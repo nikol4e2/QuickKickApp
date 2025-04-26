@@ -34,7 +34,14 @@ const AddTeam = () => {
                 </div>
                 <div>
                     <label htmlFor="">Група</label>
-                    <input type="text" name="group" value={group} onChange={handleChangeGroup} />
+                    
+                    <select name="group" value={group} onChange={handleChangeGroup}>
+                        <option value="">Избери група</option>
+                        <option value="A">Група А</option>
+                        <option value="B">Група Б</option>
+                        <option value="C">Група В</option>
+                        <option value="D">Група Г</option>
+                    </select>
                 </div>
                 <button type="submit">ДОДАДИ ТИМ</button>
             </form>
