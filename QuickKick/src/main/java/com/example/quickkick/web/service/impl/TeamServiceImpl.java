@@ -112,7 +112,7 @@ public class TeamServiceImpl implements TeamService {
     public List<Team> findAllByGroup(TeamGroup teamGroup) {
 
 
-        return this.teamRepository.findAllByTeamGroup(teamGroup);
+        return this.teamRepository.findAllByTeamGroupOrderByPoints(teamGroup);
 
 
 

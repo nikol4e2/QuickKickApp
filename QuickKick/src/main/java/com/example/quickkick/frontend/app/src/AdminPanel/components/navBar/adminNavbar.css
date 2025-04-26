@@ -1,0 +1,38 @@
+.admin-navbar {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-navbar-brand {
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.admin-navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-nav-item {}
+
+.admin-nav-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+}
+
+.admin-nav-link:hover {
+    color: #000;
+}

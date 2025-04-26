@@ -51,6 +51,20 @@ const MatchesSection = () => {
               </span>
                         </div>
                     </div>
+                    <div
+                        onClick={() => setActiveTab(2)}
+                        className="features1-tab-horizontal2"
+                    >
+                        <div className="features1-divider-container2">
+                            {activeTab === 2 && <div className="features1-container4"></div>}
+                        </div>
+                        <div className="features1-content2">
+                            <h2 className="thq-heading-2">Топ 10 стрелци</h2>
+                            <span className="thq-body-small">
+                Моменталните ТОП10 Стрелци
+              </span>
+                        </div>
+                    </div>
 
                 </div>
             </div>

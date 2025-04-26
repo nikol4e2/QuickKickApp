@@ -9,6 +9,8 @@ import Registration from "./components/registration/Registration";
 import Contact from "./components/contact/Contact";
 import Gallery from "./components/gallery/Gallery";
 import TeamsSection from "./components/teams/teamsSection/TeamsSection";
+import Results from "./components/results/results";
+import AdminPanel from "./AdminPanel/AdminPanel";
 function App() {
   return (
     <div className="App">
@@ -20,6 +22,9 @@ function App() {
           <Route path="/contact" element={<Contact></Contact>}></Route>
           <Route path="/photos" element={<Gallery></Gallery>}></Route>
           <Route path="/teams" element={<TeamsSection></TeamsSection>}></Route>
+          <Route path="/results" element={<Results></Results>}></Route>
+
+
       </Routes>
         <Footer/>
     </div>

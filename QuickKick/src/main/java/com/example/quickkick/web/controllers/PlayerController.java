@@ -7,6 +7,8 @@ import com.example.quickkick.web.service.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/players")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -28,6 +30,13 @@ public class PlayerController {
             return ResponseEntity.ok(this.playerService.getPlayerById(id));
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping
+    public List<Player> getAllPlayers()
+    {
+        return this.playerService.getAllPlayers();
+
     }
 
 

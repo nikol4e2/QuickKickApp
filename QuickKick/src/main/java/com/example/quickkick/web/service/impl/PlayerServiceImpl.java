@@ -9,6 +9,8 @@ import com.example.quickkick.web.service.PlayerService;
 import com.example.quickkick.web.service.TeamService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlayerServiceImpl implements PlayerService {
 
@@ -48,5 +50,10 @@ public class PlayerServiceImpl implements PlayerService {
            player.setGoals(player.getGoals() + goal);
            playerRepository.save(player);
        }
+    }
+
+    @Override
+    public List<Player> getAllPlayers() {
+        return playerRepository.findAll();
     }
 }

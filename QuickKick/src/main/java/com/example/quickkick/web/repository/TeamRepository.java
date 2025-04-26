@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface TeamRepository extends JpaRepository<Team,Long> {
 
     Optional<Team> findByName(String name);
-    List<Team> findAllByTeamGroup(TeamGroup teamGroup);
+    List<Team> findAllByTeamGroupOrderByPoints(TeamGroup teamGroup);
 
 }

@@ -1,0 +1,28 @@
+.groupSection {
+    padding: 2rem;
+}
+
+.group-title{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: #333;
+
+}
+
+.group-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+
+}
+
+.group-table th, .group-table td{
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table-head{
+    background-color: #f0f0f0;
+    font-weight: bold ;
+}
