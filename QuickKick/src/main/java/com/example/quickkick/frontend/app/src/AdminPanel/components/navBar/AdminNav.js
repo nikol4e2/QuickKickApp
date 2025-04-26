@@ -10,13 +10,13 @@ const AdminNav = () => {
 
                 <ul className="admin-navbar-menu">
                     <li className="admin-nav-item">
-                        <Link to="/admin/teams" className="admin-nav-link">Teams</Link>
+                        <Link to="/admin/teams" className="admin-nav-link">ТИМОВИ</Link>
                     </li>
                     <li className="admin-nav-item">
-                        <Link to="/admin/players" className="admin-nav-link">Players</Link>
+                        <Link to="/admin/players" className="admin-nav-link">ИГРАЧИ</Link>
                     </li>
                     <li className="admin-nav-item">
-                        <Link to="/admin/matches" className="admin-nav-link">Matches</Link>
+                        <Link to="/admin/matches" className="admin-nav-link">НАТПРЕВАРИ</Link>
                     </li>
                 </ul>
             </div>

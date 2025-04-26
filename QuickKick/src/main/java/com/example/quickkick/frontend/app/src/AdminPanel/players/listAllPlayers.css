@@ -1,0 +1,44 @@
+.players-wrapper {
+    padding: 4rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.players-title {
+    font-size: 2rem;
+    margin-bottom:2rem;
+    color: #222;
+    text-align: center;
+}
+
+.player-table-container {
+    width: 100%;
+    max-width: 700px;
+    overflow-x: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    background: #fff;
+}
+
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 1rem;
+}
+.players-table th, .players-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eaeaea;
+    font-weight: bold;
+}
+
+.players-table tr:hover {
+    background-color: #f9f9f9;
+    transition: backgrond 0.3s ease;
+}
+a{
+    text-decoration: none;
+    color: red;
+}

@@ -21,6 +21,9 @@ const Service = {
                 group: group
             }
         });
+    },
+    fetchAllPlayers: () =>{
+        return axios.get("/players");
     }
 }
 
