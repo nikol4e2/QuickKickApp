@@ -5,6 +5,7 @@ import com.example.quickkick.web.model.Player;
 import com.example.quickkick.web.model.Team;
 import com.example.quickkick.web.model.dto.TeamDto;
 import com.example.quickkick.web.model.enums.TeamGroup;
+import com.example.quickkick.web.repository.TeamRepository;
 import com.example.quickkick.web.service.PlayerService;
 import com.example.quickkick.web.service.TeamService;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +21,12 @@ public class TeamController {
 
     private final TeamService teamService;
     private final PlayerService playerService;
+    private final TeamRepository teamRepository;
 
-    public TeamController(TeamService teamService, PlayerService playerService) {
+    public TeamController(TeamService teamService, PlayerService playerService, TeamRepository teamRepository) {
         this.teamService = teamService;
         this.playerService = playerService;
+        this.teamRepository = teamRepository;
     }
 
     @GetMapping
@@ -60,6 +63,24 @@ public class TeamController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Team> updateTeam(@PathVariable Long id, @RequestBody Team updatedTeam) {
+        return teamRepository.findById(id)
+                .map(existingTeam->{
+                    existingTeam.setName(updatedTeam.getName());
+                    existingTeam.setTeamGroup(updatedTeam.getTeamGroup());
+                    existingTeam.setWins(updatedTeam.getWins());
+                    existingTeam.setLosses(updatedTeam.getLosses());
+                    existingTeam.setDraws(updatedTeam.getDraws());
+                    existingTeam.setPoints(updatedTeam.getPoints());
+                    existingTeam.setScoredGoals(updatedTeam.getScoredGoals());
+                    existingTeam.setTakenGoals(updatedTeam.getTakenGoals());
+
+                    teamRepository.save(existingTeam);
+                    return ResponseEntity.ok(existingTeam);
+                })
+                .orElseGet(()->ResponseEntity.notFound().build());
+    }
 
 
 
