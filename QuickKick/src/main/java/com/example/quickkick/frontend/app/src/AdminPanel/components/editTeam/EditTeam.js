@@ -1,5 +1,5 @@
 import React from 'react' ;
-import {useParams, useNavigate} from 'react-router-dom';
+import {useParams, useNavigate, Link} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import Service from "../../../repository/repository";
 import "./editTeam.css"
@@ -77,10 +77,16 @@ const EditTeam = () => {
                 <div>
                     <label htmlFor="">Примани голови:</label>
                     <input type="number" name="takenGoals" value={team.takenGoals} onChange={handleChange}></input>
+
                 </div>
+
                 <button type="submit">Зачувај</button>
 
+
+                <button className="players-button"><Link className="team-players" to={`/admin/teams/${teamId.id}/players`}>Оди кон играчите во тимот</Link></button>
+
             </form>
+
 
         </div>
     );

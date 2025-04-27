@@ -45,3 +45,12 @@
     background-color: #45a049;
 }
 
+.team-players{
+    color: white;
+}
+
+.players-button{
+    margin-top: 20px;
+    background-color: red !important;
+}
+

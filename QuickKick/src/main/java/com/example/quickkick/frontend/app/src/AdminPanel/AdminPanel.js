@@ -6,6 +6,9 @@ import {Route, Routes} from "react-router-dom";
 import EditTeam from "./components/editTeam/EditTeam";
 import AddTeam from "./components/addTeam/AddTeam";
 import ListAllPlayers from "./players/ListAllPlayers";
+import ListPlayersByTeam from "./players/ListPlayersByTeam/ListPlayersByTeam";
+import AddPlayerToTeam from "./players/addPlayer/AddPlayerToTeam";
+import AddPlayer from "./players/addPlayer/AddPlayer";
 
 const AdminPanel = () => {
     return (
@@ -16,6 +19,9 @@ const AdminPanel = () => {
                 <Route path="/teams/:id" element={<EditTeam></EditTeam>}></Route>
                 <Route path="/add-team" element={<AddTeam></AddTeam>}></Route>
                 <Route path="/players" element={<ListAllPlayers></ListAllPlayers>}></Route>
+                <Route path={"/teams/:id/players"} element={<ListPlayersByTeam />}></Route>
+                <Route path={"/teams/:id/add-player"} element={<AddPlayerToTeam></AddPlayerToTeam>}></Route>
+                <Route path={"/players/add-player"} element={<AddPlayer></AddPlayer>}></Route>
             </Routes>
 
         </div>

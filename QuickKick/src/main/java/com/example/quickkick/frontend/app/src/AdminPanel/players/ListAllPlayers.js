@@ -2,21 +2,28 @@ import React, {useEffect} from 'react';
 import Service from "../../repository/repository";
 import "./listAllPlayers.css"
 import {Link} from "react-router-dom";
-const ListAllPlayers = () => {
+const ListAllPlayers = ({teamId}) => {
 
     const [players, setPlayers] = React.useState([]);
 
     useEffect(() => {
-        loadPlayers();
+        if(teamId!=null){
+            loadPlayersByTeam(teamId);
+        }else{loadPlayers();}
+
     }, []);
 
     const loadPlayers = () => {
         Service.fetchAllPlayers().then((response) => {setPlayers(response.data);}).catch((error) => {console.log(error)});
     }
 
+    const loadPlayersByTeam = (teamId) => {
+        Service.fetchAllPlayersByTeam(teamId).then((response) => {setPlayers(response.data);}).catch((error) => {console.log(error)});
+    }
+
 
         
-    
+
     return (
         <>
 
@@ -42,7 +49,7 @@ const ListAllPlayers = () => {
                             </tbody>
                     </table>
                 </div>
-
+                {!teamId && <button><Link to={`/admin/players/add-player`}>Додадете нов играч!</Link></button>}
 
             </div>
         </>

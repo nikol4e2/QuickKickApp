@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.add-player-button{
+    border-color: green;
+    border-style: solid;
+    border-radius: 7px;
+    color: white;
+    background-color: green;
+}
+.add-player-button a{
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}

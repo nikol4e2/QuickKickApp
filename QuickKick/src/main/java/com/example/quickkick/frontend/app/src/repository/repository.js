@@ -24,6 +24,12 @@ const Service = {
     },
     fetchAllPlayers: () =>{
         return axios.get("/players");
+    },
+    fetchAllPlayersByTeam: (teamId) =>{
+        return axios.get(`/teams/${teamId}/players`);
+    },
+    addPlayerToTeam: (playerData) =>{
+        return axios.post(`/players`, playerData);
     }
 }
 
