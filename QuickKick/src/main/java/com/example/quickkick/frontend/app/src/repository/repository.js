@@ -42,6 +42,13 @@ const Service = {
     },
     updatePlayer: (playerId,playerData) =>{
         return axios.put(`/players/${playerId}`, playerData);
+    },
+
+
+
+
+    fetchAllMatches: () =>{
+        return axios.get("/matches");
     }
 }
 
