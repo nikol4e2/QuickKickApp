@@ -56,4 +56,9 @@ public class PlayerServiceImpl implements PlayerService {
     public List<Player> getAllPlayers() {
         return playerRepository.findAll();
     }
+
+    @Override
+    public Player updatePlayer(Player player) {
+        return this.playerRepository.save(player);
+    }
 }

@@ -11,4 +11,5 @@ public interface PlayerService {
     void deletePlayer(Long playerId);
     void addGoalToPlayer(Long playerId, int goal);
     List<Player> getAllPlayers();
+    Player updatePlayer(Player player);
 }

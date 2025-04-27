@@ -3,6 +3,7 @@ package com.example.quickkick.web.controllers;
 
 import com.example.quickkick.web.model.Player;
 import com.example.quickkick.web.model.dto.PlayerDto;
+import com.example.quickkick.web.model.dto.PlayerEditDto;
 import com.example.quickkick.web.service.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -59,5 +60,16 @@ public class PlayerController {
     {
         playerService.addGoalToPlayer(id,goals);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Player> editPlayer(@PathVariable Long id, @RequestBody PlayerEditDto playerEditDto)
+    {
+
+        Player player=this.playerService.getPlayerById(id);
+        player.setFirstName(playerEditDto.getFirstName());
+        player.setSecondName(playerEditDto.getSecondName());
+        player.setGoals(playerEditDto.getGoals());
+        return ResponseEntity.ok(this.playerService.updatePlayer(player));
     }
 }

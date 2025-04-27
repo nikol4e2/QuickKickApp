@@ -12,6 +12,17 @@ const TeamsList = () => {
     const loadTeams = () => {
         Service.fetchTeams().then(data => {setTeams(data.data)}).catch(error => console.log(error));
     }
+
+    const handleDelete=(e,id) =>{
+        e.preventDefault();
+        const confirmDelete = window.confirm("Дали си сигурен дека сакаш да го избришеш овој тим?");
+        if (!confirmDelete) {
+            return;
+        }
+        Service.deleteTeam(id).then(()=>{
+            loadTeams();
+        }).catch(error => console.log(error));
+    }
     return (
         <div className="teams-wrapper">
             <h2 className="teams-title">Екипи</h2>
@@ -28,6 +39,11 @@ const TeamsList = () => {
                         <tr key={team.id}>
                             <td>{team.name}</td>
                             <td><Link to={`/admin/teams/${team.id}`}>ИЗМЕНИ</Link></td>
+                            <td>
+                                <form onSubmit={(e)=>handleDelete(e,team.id)}>
+                                    <button type="submit">Избриши тим</button>
+                                </form>
+                            </td>
                         </tr>
                     ))}
                     </tbody>

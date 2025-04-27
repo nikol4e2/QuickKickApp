@@ -9,6 +9,7 @@ import ListAllPlayers from "./players/ListAllPlayers";
 import ListPlayersByTeam from "./players/ListPlayersByTeam/ListPlayersByTeam";
 import AddPlayerToTeam from "./players/addPlayer/AddPlayerToTeam";
 import AddPlayer from "./players/addPlayer/AddPlayer";
+import EditPlayer from "./players/editPlayer/EditPlayer";
 
 const AdminPanel = () => {
     return (
@@ -22,6 +23,7 @@ const AdminPanel = () => {
                 <Route path={"/teams/:id/players"} element={<ListPlayersByTeam />}></Route>
                 <Route path={"/teams/:id/add-player"} element={<AddPlayerToTeam></AddPlayerToTeam>}></Route>
                 <Route path={"/players/add-player"} element={<AddPlayer></AddPlayer>}></Route>
+                <Route path={"/players/:id"} element={<EditPlayer></EditPlayer>}></Route>
             </Routes>
 
         </div>

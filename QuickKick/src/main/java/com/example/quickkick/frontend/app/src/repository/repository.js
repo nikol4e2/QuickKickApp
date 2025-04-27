@@ -22,6 +22,9 @@ const Service = {
             }
         });
     },
+    deleteTeam: (id)=>{
+        return axios.delete(`/teams/${id}`);
+    },
     fetchAllPlayers: () =>{
         return axios.get("/players");
     },
@@ -33,6 +36,12 @@ const Service = {
     },
     deletePlayer:(playerId) =>{
         return axios.delete(`/players/${playerId}`);
+    },
+    fetchPlayer: (playerId) =>{
+        return axios.get(`/players/${playerId}`);
+    },
+    updatePlayer: (playerId,playerData) =>{
+        return axios.put(`/players/${playerId}`, playerData);
     }
 }
 
