@@ -30,6 +30,9 @@ const Service = {
     },
     addPlayerToTeam: (playerData) =>{
         return axios.post(`/players`, playerData);
+    },
+    deletePlayer:(playerId) =>{
+        return axios.delete(`/players/${playerId}`);
     }
 }
 

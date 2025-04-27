@@ -21,6 +21,15 @@ const ListAllPlayers = ({teamId}) => {
         Service.fetchAllPlayersByTeam(teamId).then((response) => {setPlayers(response.data);}).catch((error) => {console.log(error)});
     }
 
+    const handleSubmit = (e,playerId) => {
+        e.preventDefault();
+        const confirmed=window.confirm('Дали сте сигурурни дека сакате да го избришите играчот?');
+        if(!confirmed){
+            return;
+        }
+        Service.deletePlayer(playerId).then(()=>{setPlayers(prevState => prevState.filter(player => player.id !== playerId));})
+            .catch((error) => {console.log(error)});
+    }
 
         
 
@@ -44,6 +53,8 @@ const ListAllPlayers = ({teamId}) => {
                                     <td>{player.firstName}</td>
                                     <td>{player.secondName}</td>
                                     <td><Link to={`/admin/players/${player.id}`}>Измени</Link></td>
+                                    <td>
+                                        <form onSubmit={(e)=>handleSubmit(e,player.id)}><button>Избрши играч</button></form></td>
                                 </tr>
                             ))}
                             </tbody>

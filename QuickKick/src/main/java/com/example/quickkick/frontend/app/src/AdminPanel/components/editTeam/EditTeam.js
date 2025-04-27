@@ -83,10 +83,10 @@ const EditTeam = () => {
                 <button type="submit">Зачувај</button>
 
 
-                <button className="players-button"><Link className="team-players" to={`/admin/teams/${teamId.id}/players`}>Оди кон играчите во тимот</Link></button>
+
 
             </form>
-
+           <Link className="players-button" to={`/admin/teams/${teamId.id}/players`}>Оди кон играчите во тимот</Link>
 
         </div>
     );
