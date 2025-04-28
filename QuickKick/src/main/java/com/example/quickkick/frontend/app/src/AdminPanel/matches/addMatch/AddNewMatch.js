@@ -46,10 +46,7 @@ const AddNewMatch = () => {
             return;
         }
 
-        const formattedMatch={
-            ...match,
-            date: new Date(match.date)
-        }
+
 
         Service.addMatch(match)
             .then(()=>{navigate("/admin/matches")}).catch(error => {console.log(error)});

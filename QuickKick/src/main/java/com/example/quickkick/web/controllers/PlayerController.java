@@ -22,6 +22,11 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
+    @GetMapping("/top-players")
+    public List<Player> getTop10Players(){
+        return playerService.getTop10PlayersByGoals();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Player> getPlayer(@PathVariable Long id)
     {
@@ -72,4 +77,6 @@ public class PlayerController {
         player.setGoals(playerEditDto.getGoals());
         return ResponseEntity.ok(this.playerService.updatePlayer(player));
     }
+
+
 }

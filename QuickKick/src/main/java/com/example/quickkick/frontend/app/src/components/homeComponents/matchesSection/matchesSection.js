@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import "./matchesSection.css"
+import TopTenPlayers from "../../topTenPlayers/TopTenPlayers";
 const MatchesSection = () => {
     const [activeTab, setActiveTab] = useState(0)
     return (
@@ -19,6 +20,9 @@ const MatchesSection = () => {
                             src=""
                             className="features1-image2 thq-img-ratio-16-9"
                         />
+                    )}
+                    {activeTab === 2 && (
+                        <TopTenPlayers></TopTenPlayers>
                     )}
 
                 </div>

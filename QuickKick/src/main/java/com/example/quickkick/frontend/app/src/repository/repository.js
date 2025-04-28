@@ -61,6 +61,9 @@ const Service = {
     },
     deleteMatch: (matchId) =>{
         return axios.delete(`/matches/${matchId}`);
+    },
+    fetchTopTenPlayers: () =>{
+        return axios.get("/players/top-players");
     }
 
 }

@@ -12,4 +12,5 @@ public interface PlayerService {
     void addGoalToPlayer(Long playerId, int goal);
     List<Player> getAllPlayers();
     Player updatePlayer(Player player);
+    List<Player> getTop10PlayersByGoals();
 }

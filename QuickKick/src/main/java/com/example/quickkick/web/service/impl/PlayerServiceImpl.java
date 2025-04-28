@@ -10,6 +10,7 @@ import com.example.quickkick.web.service.TeamService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -60,5 +61,11 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Player updatePlayer(Player player) {
         return this.playerRepository.save(player);
+    }
+
+    @Override
+    public List<Player> getTop10PlayersByGoals() {
+        return playerRepository.findAll().stream()
+                .sorted((p1,p2) -> Integer.compare(p2.getGoals(),p1.getGoals())).limit(10).collect(Collectors.toList());
     }
 }
