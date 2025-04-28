@@ -46,6 +46,14 @@ public class MatchController {
         }
         return ResponseEntity.ok(matches);
     }
+    @GetMapping("/upcoming")
+    public ResponseEntity<List<Match>> getUpcomingMatches() {
+        List<Match> matches=this.matchService.getNextThreeMatches();
+        if(matches.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(matches);
+    }
 
     @PostMapping
     public ResponseEntity<Match> createMatch(@RequestBody MatchDTO matchDTO) {
@@ -80,6 +88,8 @@ public class MatchController {
         List<Match> matches=this.matchService.findAllByStatus(status);
         return ResponseEntity.ok(matches);
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Match> editMatch(@PathVariable Long id,@RequestBody MatchDTO matchDTO)

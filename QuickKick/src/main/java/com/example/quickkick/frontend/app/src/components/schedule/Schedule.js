@@ -58,7 +58,7 @@ const Schedule = () => {
         <div className="matches-container-schedule">
             <div style={{marginBottom: '20px'}}>
                 <button onClick={()=>setFilter("ALL")}>Сите</button>
-                <button onClick={()=>setFilter("SCHEDULED")}>Закажани</button>
+                <button onClick={()=>setFilter("SCHEDULED")}>Следни</button>
 
                 <button onClick={()=>setFilter("FINISHED")}>Завршени</button>
             </div>

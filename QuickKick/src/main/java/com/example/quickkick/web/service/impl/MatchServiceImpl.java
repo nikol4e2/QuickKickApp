@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MatchServiceImpl implements MatchService {
@@ -113,5 +114,15 @@ public class MatchServiceImpl implements MatchService {
     @Override
     public List<Match> getLastFinishedMatches() {
         return this.matchRepository.findTop3ByStatusOrderByDateDesc(MatchStatus.FINISHED);
+    }
+
+    @Override
+    public List<Match> getNextThreeMatches() {
+        LocalDateTime now=LocalDateTime.now();
+
+        return this.matchRepository.findAllByDateAfterAndStatusOrderByDateAsc(now,MatchStatus.SCHEDULED)
+                .stream()
+                .limit(3)
+                .collect(Collectors.toList());
     }
 }

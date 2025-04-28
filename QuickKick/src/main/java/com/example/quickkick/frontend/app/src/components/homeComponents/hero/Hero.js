@@ -4,6 +4,7 @@ import React from 'react'
 import Script from 'react-dangerous-html'
 
 import './hero.css'
+import {Link} from "react-router-dom";
 
 const Hero = () => {
     return (
@@ -18,7 +19,7 @@ const Hero = () => {
                         <span className="thq-body-small">РЕЗУЛАТИ ВО ЖИВО</span>
                     </button>
                     <button className="thq-button-outline hero-button2">
-                        <span className="thq-body-small">РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</span>
+                        <span className="thq-body-small"><Link to={"/results"}>РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</Link></span>
                     </button>
                 </div>
             </div>

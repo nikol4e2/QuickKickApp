@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import "./matchesSection.css"
 import TopTenPlayers from "../../topTenPlayers/TopTenPlayers";
 import LastThreeFinishedMatches from "../lastThreeFinishedMatches/LastThreeFinishedMatches";
+import UpcomingThreeMatches from "../../upcomingMatches/UpcomingThreeMatches";
 const MatchesSection = () => {
     const [activeTab, setActiveTab] = useState(0)
     return (
@@ -12,11 +13,7 @@ const MatchesSection = () => {
                         <LastThreeFinishedMatches></LastThreeFinishedMatches>
                     )}
                     {activeTab === 1 && (
-                        <img
-                            alt=""
-                            src=""
-                            className="features1-image2 thq-img-ratio-16-9"
-                        />
+                        <UpcomingThreeMatches></UpcomingThreeMatches>
                     )}
                     {activeTab === 2 && (
                         <TopTenPlayers></TopTenPlayers>

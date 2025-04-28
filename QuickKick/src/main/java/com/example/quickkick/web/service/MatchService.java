@@ -20,6 +20,7 @@ public interface MatchService {
     void changeMatchStatus(Long matchId, MatchStatus status);
     //TODO Implement getting matches by Team
     List<Match> getLastFinishedMatches();
+    List<Match> getNextThreeMatches();
 
 
 }

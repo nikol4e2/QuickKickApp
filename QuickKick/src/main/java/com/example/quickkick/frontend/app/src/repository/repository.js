@@ -68,6 +68,9 @@ const Service = {
     loadLastMatches: () => {
         return axios.get("matches/last-finished");
     },
+    fetchUpcomingMatches:()=>{
+        return axios.get("matches/upcoming");
+    }
 
 
 }

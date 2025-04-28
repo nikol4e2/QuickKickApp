@@ -4,10 +4,11 @@
     align-items: center;
     gap: 2rem;
     margin-top: 2rem;
+    padding: 0 1rem;
 }
 
 .match-card {
-    width: 90%;
+    width: 100%;
     max-width: 900px;
     background-color: #eaeaea;
     border: 2px solid #ff4d4f;
@@ -28,6 +29,7 @@
     font-size: 2.2rem;
     font-weight: 800;
     text-align: center;
+    word-break: break-word;
 }
 
 .match-card p {
@@ -35,7 +37,7 @@
     margin: 0.5rem 0;
     font-size: 1.4rem;
     text-align: center;
-
+    word-break: break-word;
 }
 
 .match-card p.result {
@@ -44,4 +46,40 @@
     color: #d32f2f;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .match-card {
+        padding: 2rem;
+    }
+
+    .match-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .match-card p {
+        font-size: 1.2rem;
+    }
+
+    .match-card p.result {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .match-card {
+        padding: 1.5rem;
+    }
+
+    .match-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .match-card p {
+        font-size: 1rem;
+    }
+
+    .match-card p.result {
+        font-size: 1.4rem;
+    }
 }
