@@ -29,7 +29,7 @@
     position: sticky;
     transform: rotate(-2deg);
     margin-bottom: var(--dl-layout-space-twounits);
-    background-color: var(--dl-color-theme-accent1);
+    background-color: #eaeaea;
 }
 
 .steps-text11 {
@@ -53,7 +53,7 @@
     position: sticky;
     transform: rotate(2deg);
     margin-bottom: var(--dl-layout-space-twounits);
-    background-color: var(--dl-color-theme-accent2);
+    background-color: #bdbdbd;
 }
 
 .steps-text14 {
@@ -75,7 +75,7 @@
     position: sticky;
     transform: rotate(-2deg);
     margin-bottom: var(--dl-layout-space-twounits);
-    background-color: var(--dl-color-theme-accent1);
+    background-color: #eaeaea;
 }
 
 .steps-text17 {
@@ -96,7 +96,7 @@
     top: 10%;
     position: sticky;
     transform: rotate(2deg);
-    background-color: var(--dl-color-theme-accent2);
+    background-color: #bdbdbd;
 }
 
 .steps-text20 {

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Service from "../../repository/repository";
-import {Link} from "react-router-dom";
+
 import "./schedule.css"
 const Schedule = () => {
 
@@ -42,8 +42,7 @@ const Schedule = () => {
         switch (status) {
             case "SCHEDULED":
                 return "Закажан";
-            case "PLAYING":
-                return "Во тек";
+
             case "FINISHED":
                 return "Завршен";
             default:
@@ -56,11 +55,11 @@ const Schedule = () => {
 
 
     return (
-        <div className="matches-container">
+        <div className="matches-container-schedule">
             <div style={{marginBottom: '20px'}}>
                 <button onClick={()=>setFilter("ALL")}>Сите</button>
                 <button onClick={()=>setFilter("SCHEDULED")}>Закажани</button>
-                <button onClick={()=>setFilter("PLAYING")}>Во тек</button>
+
                 <button onClick={()=>setFilter("FINISHED")}>Завршени</button>
             </div>
             <div>
@@ -69,14 +68,14 @@ const Schedule = () => {
                         const { formattedDate, formattedTime } = formatDate(match.date);
 
                         return (
-                            <div key={match.id} className="match-card">
+                            <div key={match.id} className="match-card-schedule">
                                 <h3>{match.team1.name} - {match.team2.name}</h3>
                                 <p>Статус: {translateStatus(match.status)}</p>
                                 <p>Датум: {formattedDate}</p>
                                 <p>Време: {formattedTime}</p>
 
                                 {match.status === "FINISHED" &&(
-                                    <p className="result">Резултат: {match.goalsTeam1} - {match.goalsTeam2}</p>
+                                    <p>Резултат:<span className="result-schedule"> {match.goalsTeam1} - {match.goalsTeam2}</span></p>
                                 )}
 
 

@@ -1,4 +1,4 @@
-.matches-container {
+.matches-container-schedule {
     width: 90%;
     max-width: 1200px;
     margin: 40px auto;
@@ -8,14 +8,14 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.matches-container > div:first-child {
+.matches-container-schedule > div:first-child {
     display: flex;
     gap: 10px;
     justify-content: center;
     margin-bottom: 30px;
 }
 
-.matches-container button {
+.matches-container-schedule button {
     padding: 10px 20px;
     background-color: red;
     color: white;
@@ -26,34 +26,34 @@
     transition: background-color 0.3s;
 }
 
-.matches-container button:hover {
+.matches-container-schedule button:hover {
     background-color: red;
 }
 
-.matches-container button:focus {
+.matches-container-schedule button:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.4);
 }
 
-.matches-container > div:nth-child(2) {
+.matches-container-schedule > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.matches-container h3 {
-    font-size: 24px;
+.matches-container-schedule h3 {
+    font-size: 28px;
     margin-bottom: 8px;
     color: #333;
 }
 
-.matches-container p {
-    font-size: 16px;
+.matches-container-schedule p {
+    font-size: 20px;
     color: #555;
     margin: 4px 0;
 }
 
-.match-card {
+.match-card-schedule {
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -65,4 +65,9 @@
     font-size: 18px;
     color: #888;
     margin-top: 50px;
+}
+
+.result-schedule  {
+    font-size: 1.5rem !important;
+    color:red !important;
 }

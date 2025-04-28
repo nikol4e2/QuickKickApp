@@ -43,6 +43,9 @@ const Service = {
     updatePlayer: (playerId,playerData) =>{
         return axios.put(`/players/${playerId}`, playerData);
     },
+        fetchTopTenPlayers: () =>{
+        return axios.get("/players/top-players");
+        },
 
 
 
@@ -62,9 +65,10 @@ const Service = {
     deleteMatch: (matchId) =>{
         return axios.delete(`/matches/${matchId}`);
     },
-    fetchTopTenPlayers: () =>{
-        return axios.get("/players/top-players");
-    }
+    loadLastMatches: () => {
+        return axios.get("matches/last-finished");
+    },
+
 
 }
 

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import PropTypes from 'prop-types'
+
 
 import "./awardssection.css"
 
-const Steps = (props) => {
+const Steps = () => {
     return (
         <div className="steps-container1 thq-section-padding">
             <span className="heading-awards">Награден фонд</span>
@@ -44,30 +44,6 @@ const Steps = (props) => {
     )
 }
 
-Steps.defaultProps = {
-    step3Description:
-        'Explore match statistics, scores, and other relevant information to stay updated with the latest soccer match results.',
-    step1Title: 'Прво место',
-    step4Description:
-        'Bookmark matches, set reminders, and receive notifications to never miss out on any important soccer match updates.',
-    step3Title: 'View Match Details',
-    step1Description:
-        'Enter the team names or match details to search for the desired soccer match results.',
-    step4Title: 'Stay Informed',
-    step2Title: 'Select Match',
-    step2Description:
-        'Choose the specific match from the search results to view detailed information and results.',
-}
 
-Steps.propTypes = {
-    step3Description: PropTypes.string,
-    step1Title: PropTypes.string,
-    step4Description: PropTypes.string,
-    step3Title: PropTypes.string,
-    step1Description: PropTypes.string,
-    step4Title: PropTypes.string,
-    step2Title: PropTypes.string,
-    step2Description: PropTypes.string,
-}
 
 export default Steps

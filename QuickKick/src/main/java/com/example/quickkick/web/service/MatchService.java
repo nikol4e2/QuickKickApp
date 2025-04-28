@@ -19,6 +19,7 @@ public interface MatchService {
     List<Match> findAllByStatus(MatchStatus status);
     void changeMatchStatus(Long matchId, MatchStatus status);
     //TODO Implement getting matches by Team
+    List<Match> getLastFinishedMatches();
 
 
 }

@@ -21,7 +21,7 @@ const SponsorSection = (props) => {
                                         className="testimonial-image1"
                                     />
                                     <div className="testimonial-container13">
-                                        <strong className="thq-body-large">
+                                        <strong className="thq-body-large ">
                                             Nale Trans
                                         </strong>
                                         <span className="thq-body-small">

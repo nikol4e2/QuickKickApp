@@ -38,6 +38,14 @@ public class MatchController {
        Optional<Match> match = matchService.getMatchById(id);
        return match.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    @GetMapping("/last-finished")
+    public ResponseEntity<List<Match>> getLastFinishedMatches() {
+        List<Match> matches = matchService.getLastFinishedMatches();
+        if(matches.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(matches);
+    }
 
     @PostMapping
     public ResponseEntity<Match> createMatch(@RequestBody MatchDTO matchDTO) {
@@ -84,6 +92,8 @@ public class MatchController {
         }
         return ResponseEntity.notFound().build();
     }
+
+
 
 
 

@@ -109,4 +109,9 @@ public class MatchServiceImpl implements MatchService {
             this.matchRepository.save(match.get());
         }
     }
+
+    @Override
+    public List<Match> getLastFinishedMatches() {
+        return this.matchRepository.findTop3ByStatusOrderByDateDesc(MatchStatus.FINISHED);
+    }
 }

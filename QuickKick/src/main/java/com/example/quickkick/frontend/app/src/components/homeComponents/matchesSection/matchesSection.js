@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./matchesSection.css"
 import TopTenPlayers from "../../topTenPlayers/TopTenPlayers";
+import LastThreeFinishedMatches from "../lastThreeFinishedMatches/LastThreeFinishedMatches";
 const MatchesSection = () => {
     const [activeTab, setActiveTab] = useState(0)
     return (
@@ -8,11 +9,7 @@ const MatchesSection = () => {
             <div className="features1-container2 thq-section-max-width">
                 <div className="features1-image-container">
                     {activeTab === 0 && (
-                        <img
-                            alt=""
-                            src=""
-                            className="features1-image1 thq-img-ratio-16-9"
-                        />
+                        <LastThreeFinishedMatches></LastThreeFinishedMatches>
                     )}
                     {activeTab === 1 && (
                         <img
