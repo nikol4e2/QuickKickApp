@@ -58,7 +58,11 @@ const Service = {
     },
     editMatch: (matchId,matchData) =>{
         return axios.put(`/matches/${matchId}`, matchData);
+    },
+    deleteMatch: (matchId) =>{
+        return axios.delete(`/matches/${matchId}`);
     }
+
 }
 
 export default Service;

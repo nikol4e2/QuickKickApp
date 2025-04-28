@@ -35,6 +35,11 @@ const MatchesList = () => {
         return {formattedDate, formattedTime};
     }
 
+    const handleDelete=(e,id) =>{
+        e.preventDefault();
+        Service.deleteMatch(id).then(() => {loadMatches();}).catch(error => {console.log(error)});
+    }
+
 
     return (
         <div className="matches-container">
@@ -59,6 +64,11 @@ const MatchesList = () => {
 
                                 <div className={"edit-match-button"}>
                                     <Link to={`/admin/matches/${match.id}`}><button>Измени</button></Link>
+                                </div>
+                                <div className={"delete-match-button"}>
+                                    <form onSubmit={(e)=>handleDelete(e,match.id)}>
+                                        <button type={"submit"}>ИЗБРИШИ НАТПРЕВАР!</button>
+                                    </form>
                                 </div>
                             </div>
 
