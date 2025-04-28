@@ -10,6 +10,7 @@ import com.example.quickkick.web.repository.TeamRepository;
 import com.example.quickkick.web.service.MatchService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public Match saveMatch(Date date, Team team1, Team team2) throws TeamNullException {
+    public Match saveMatch(LocalDateTime date, Team team1, Team team2) throws TeamNullException {
         if(team1 == null || team2 == null) {
             throw new TeamNullException();
         }
@@ -41,14 +42,14 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public void delteMatchById(Long matchId) {
+    public void deleteMatchById(Long matchId) {
         if(this.matchRepository.existsById(matchId)) {
             this.matchRepository.deleteById(matchId);
         }
     }
 
     @Override
-    public Match editMatch(Long matchId, Date date, Team team1, Team team2) {
+    public Match editMatch(Long matchId, LocalDateTime date, Team team1, Team team2) {
         Match match = this.matchRepository.findById(matchId)
                 .orElseThrow(() -> new MatchNotFoundException());
 

@@ -24,6 +24,17 @@ const MatchesList = () => {
         Service.fetchAllMatches().then(response => {setMatches(response.data);}).catch(error => {console.log(error)});
     }
 
+    const formatDate= (dateString) =>{
+        const dateObj = new Date(dateString);
+        const formattedDate = dateObj.toLocaleDateString('mk-MK',{
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        });
+        const formattedTime = dateObj.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+        return {formattedDate, formattedTime};
+    }
+
 
     return (
         <div className="matches-container">
@@ -35,19 +46,25 @@ const MatchesList = () => {
             </div>
             <div>
                 {filteredMatches.length > 0 ?
-                filteredMatches.map((match) => (
-                    <div key={match.id}>
-                        <h3>{match.team1.name} vs {match.team2.name}</h3>
-                        <p>Статус: {match.status}</p>
-                    </div>
-                )): (
+                    filteredMatches.map((match) => {
+                        const { formattedDate, formattedTime } = formatDate(match.date);
+
+                        return (
+                            <div key={match.id}>
+                                <h3>{match.team1.name} vs {match.team2.name}</h3>
+                                <p>Статус: {match.status}</p>
+                                <p>Датум: {formattedDate}</p>
+                                <p>Време: {formattedTime}</p>
+                            </div>
+                        );
+                    }): (
                         <p>Нема натрепвари за прикажување</p>
                         )}
             </div>
 
 
             <div className="add-match-button">
-                <Link to={"/matches/add-match"}>Додади нов натпревар</Link>
+                <Link to={"/admin/matches/add-match"}>Додади нов натпревар</Link>
             </div>
         </div>
     );

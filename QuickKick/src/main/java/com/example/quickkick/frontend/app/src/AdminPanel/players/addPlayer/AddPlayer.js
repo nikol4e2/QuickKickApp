@@ -53,7 +53,7 @@ const AddPlayer = () => {
                 <select onChange={handleChange} required name="teamId" >
                     <option>Изберете тим</option>
                     {teams.length>0 && teams.map((team) => (
-                        <option key={team.id} value={team.id}>{team.id}</option>
+                        <option key={team.id} value={team.id}>{team.name}</option>
 
 
                     ))}

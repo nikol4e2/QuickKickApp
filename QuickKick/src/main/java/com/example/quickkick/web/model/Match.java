@@ -1,11 +1,13 @@
 package com.example.quickkick.web.model;
 
 import com.example.quickkick.web.model.enums.MatchStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -19,8 +21,9 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    @Column(name = "date", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm", shape = JsonFormat.Shape.STRING)
+    private LocalDateTime date;
     @Enumerated(EnumType.STRING)
     private MatchStatus status;
 
@@ -35,7 +38,7 @@ public class Match {
     private int goalsTeam1;
     private int goalsTeam2;
 
-    public Match(Date date, Team team1, Team team2) {
+    public Match(LocalDateTime date, Team team1, Team team2) {
         this.date = date;
         this.team1 = team1;
         this.team2 = team2;
@@ -52,11 +55,11 @@ public class Match {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

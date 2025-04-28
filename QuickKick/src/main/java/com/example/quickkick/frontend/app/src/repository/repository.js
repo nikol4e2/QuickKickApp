@@ -49,7 +49,10 @@ const Service = {
 
     fetchAllMatches: () =>{
         return axios.get("/matches");
-    }
+    },
+    addMatch:(matchData) =>{
+        return axios.post(`/matches`, matchData);
+    },
 }
 
 export default Service;
