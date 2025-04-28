@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import Service from "../../../repository/repository";
+import Service from "../../repository/repository";
 import {Link} from "react-router-dom";
-
-const MatchesList = () => {
+import "./schedule.css"
+const Schedule = () => {
 
     const [matches, setMatches] = React.useState([]);
 
@@ -38,10 +38,21 @@ const MatchesList = () => {
         return {formattedDate, formattedTime};
     }
 
-    const handleDelete=(e,id) =>{
-        e.preventDefault();
-        Service.deleteMatch(id).then(() => {loadMatches();}).catch(error => {console.log(error)});
-    }
+     const translateStatus= (status) => {
+        switch (status) {
+            case "SCHEDULED":
+                return "Закажан";
+            case "PLAYING":
+                return "Во тек";
+            case "FINISHED":
+                return "Завршен";
+            default:
+                return "Непознат";
+        }
+     }
+
+
+
 
 
     return (
@@ -58,37 +69,32 @@ const MatchesList = () => {
                         const { formattedDate, formattedTime } = formatDate(match.date);
 
                         return (
-                            <div key={match.id}>
-                                <h3>{match.team1.name} vs {match.team2.name}</h3>
-                                <p>Статус: {match.status}</p>
+                            <div key={match.id} className="match-card">
+                                <h3>{match.team1.name} - {match.team2.name}</h3>
+                                <p>Статус: {translateStatus(match.status)}</p>
                                 <p>Датум: {formattedDate}</p>
                                 <p>Време: {formattedTime}</p>
 
+                                {match.status === "FINISHED" &&(
+                                    <p className="result">Резултат: {match.goalsTeam1} - {match.goalsTeam2}</p>
+                                )}
 
-                                <div className={"edit-match-button"}>
-                                    <Link to={`/admin/matches/${match.id}`}><button>Измени</button></Link>
-                                </div>
-                                <div className={"delete-match-button"}>
-                                    <form onSubmit={(e)=>handleDelete(e,match.id)}>
-                                        <button type={"submit"}>ИЗБРИШИ НАТПРЕВАР!</button>
-                                    </form>
-                                </div>
+
+
                             </div>
 
                         );
 
                     }): (
-                        <p>Нема натрепвари за прикажување</p>
-                        )}
+                        <p className="no-matches-message">Нема натрепвари за прикажување</p>
+                    )}
             </div>
 
 
-            <div className="add-match-button">
-                <Link to={"/admin/matches/add-match"}>Додади нов натпревар</Link>
-            </div>
+
 
         </div>
     );
 };
 
-export default MatchesList;
+export default Schedule;

@@ -11,6 +11,7 @@ import Gallery from "./components/gallery/Gallery";
 import TeamsSection from "./components/teams/teamsSection/TeamsSection";
 import Results from "./components/results/results";
 import AdminPanel from "./AdminPanel/AdminPanel";
+import Schedule from "./components/schedule/Schedule";
 function App() {
   return (
     <div className="App">
@@ -23,7 +24,7 @@ function App() {
           <Route path="/photos" element={<Gallery></Gallery>}></Route>
           <Route path="/teams" element={<TeamsSection></TeamsSection>}></Route>
           <Route path="/results" element={<Results></Results>}></Route>
-
+          <Route path="/schedule" element={<Schedule></Schedule>}></Route>
 
       </Routes>
         <Footer/>
