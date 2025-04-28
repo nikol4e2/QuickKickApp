@@ -53,6 +53,12 @@ const Service = {
     addMatch:(matchData) =>{
         return axios.post(`/matches`, matchData);
     },
+    fetchMatch: (matchId) =>{
+        return axios.get(`/matches/${matchId}`);
+    },
+    editMatch: (matchId,matchData) =>{
+        return axios.put(`/matches/${matchId}`, matchData);
+    }
 }
 
 export default Service;

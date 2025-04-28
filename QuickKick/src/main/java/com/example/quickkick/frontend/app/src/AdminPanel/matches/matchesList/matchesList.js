@@ -55,8 +55,15 @@ const MatchesList = () => {
                                 <p>Статус: {match.status}</p>
                                 <p>Датум: {formattedDate}</p>
                                 <p>Време: {formattedTime}</p>
+
+
+                                <div className={"edit-match-button"}>
+                                    <Link to={`/admin/matches/${match.id}`}><button>Измени</button></Link>
+                                </div>
                             </div>
+
                         );
+
                     }): (
                         <p>Нема натрепвари за прикажување</p>
                         )}
@@ -66,6 +73,7 @@ const MatchesList = () => {
             <div className="add-match-button">
                 <Link to={"/admin/matches/add-match"}>Додади нов натпревар</Link>
             </div>
+
         </div>
     );
 };

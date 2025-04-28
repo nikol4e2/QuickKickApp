@@ -12,6 +12,7 @@ import AddPlayer from "./players/addPlayer/AddPlayer";
 import EditPlayer from "./players/editPlayer/EditPlayer";
 import MatchesList from "./matches/matchesList/matchesList";
 import AddNewMatch from "./matches/addMatch/AddNewMatch";
+import EditMatch from "./matches/editMatch/EditMatch";
 
 const AdminPanel = () => {
     return (
@@ -28,6 +29,7 @@ const AdminPanel = () => {
                 <Route path={"/players/:id"} element={<EditPlayer></EditPlayer>}></Route>
                 <Route path={"/matches"} element={<MatchesList></MatchesList>}></Route>
                 <Route path={"/matches/add-match"} element={<AddNewMatch></AddNewMatch>}></Route>
+                <Route path={"/matches/:id"} element={<EditMatch></EditMatch>}></Route>
             </Routes>
 
         </div>

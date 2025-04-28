@@ -26,6 +26,7 @@ const AddNewMatch = () => {
 
     const loadTeams = () => {
         Service.fetchTeams().then(response => {setTeams(response.data);}).catch(error => {console.log(error)});
+        console.log(teams)
     }
 
 
@@ -36,11 +37,11 @@ const AddNewMatch = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(match.team1Id==="" || match.team2Id===""){
+        if(match.team1==="" || match.team===""){
             window.alert("ВНЕСЕТЕ ТИМОВИ!");
             return;
         }
-        if(parseInt(match.team1Id) === parseInt(match.team2Id)){
+        if(parseInt(match.team1) === parseInt(match.team2)){
             window.alert("ИМАТЕ ИЗБЕРЕНО ДВА ИСТИ ТИМА ЗА ПРОТИВНИЦИ");
             return;
         }
@@ -63,7 +64,7 @@ const AddNewMatch = () => {
                 <div>
                     <label htmlFor="">Изберете ТИМ1</label>
                     <select onChange={handleChange} required name="team1" >
-                        <option>Изберете тим1</option>
+                        <option >Изберете тим1</option>
                         {teams.length>0 && teams.map((team) => (
                             <option key={team.id} value={team.id}>{team.name}</option>
 
@@ -75,7 +76,7 @@ const AddNewMatch = () => {
                 <div>
                     <label htmlFor="">Изберете ТИМ2</label>
                     <select onChange={handleChange} required name="team2" >
-                        <option>Изберете тим2</option>
+                        <option >Изберете тим2</option>
                         {teams.length>0 && teams.map((team) => (
                             <option key={team.id} value={team.id}>{team.name}</option>
 

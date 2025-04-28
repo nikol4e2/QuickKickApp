@@ -78,7 +78,7 @@ public class MatchController {
     {
         Optional<Team> team1=this.teamService.findById(matchDTO.getTeam1());
         Optional<Team> team2=this.teamService.findById(matchDTO.getTeam2());
-        if(!team1.isPresent() || !team2.isPresent()) {
+        if(team1.isPresent() || team2.isPresent()) {
             Match match = this.matchService.editMatch(id, matchDTO.getDate(), team1.get(), team2.get());
             return ResponseEntity.ok(match);
         }
