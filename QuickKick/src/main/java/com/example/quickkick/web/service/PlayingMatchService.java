@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface PlayingMatchService {
 
-    Optional<PlayingMatch> getPlayingMatch(Long matchId);
+    Optional<PlayingMatch> getPlayingMatch(Long playingMatchId);
+    Optional<PlayingMatch> getPlayingMatchByMatchId(Long matchId);
     List<PlayingMatch> findAll();
     PlayingMatch createPlayingMatch(Long matchId, int minutesForHalfTime, int pauseTime, int timeoutTime);
     PlayingMatch startPlayingMatch(Long playingMatchId);

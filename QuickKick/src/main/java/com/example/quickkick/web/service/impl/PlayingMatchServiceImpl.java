@@ -27,8 +27,13 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
 
 
     @Override
-    public Optional<PlayingMatch> getPlayingMatch(Long matchId) {
-        return this.playingMatchRepository.findById(matchId);
+    public Optional<PlayingMatch> getPlayingMatch(Long playingMatchId) {
+        return this.playingMatchRepository.findById(playingMatchId);
+    }
+
+    @Override
+    public Optional<PlayingMatch> getPlayingMatchByMatchId(Long matchId) {
+        return Optional.of(playingMatchRepository.findByMatchId(matchId));
     }
 
     @Override
@@ -49,7 +54,7 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
     public PlayingMatch startPlayingMatch(Long playingMatchId) {
         Optional<PlayingMatch> playingMatch=this.playingMatchRepository.findById(playingMatchId);
         if(playingMatch.isPresent()) {
-            this.matchService.changeMatchStatus(playingMatch.get().getId(), MatchStatus.PLAYING);
+            this.matchService.changeMatchStatus(playingMatch.get().getMatch().getId(), MatchStatus.PLAYING);
             playingMatch.get().setStatus(PlayingMatchStatus.PLAYING);
             return playingMatch.get();
         }else throw new MatchNotFoundException();

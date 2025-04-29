@@ -13,6 +13,7 @@ import Results from "./components/results/results";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import Schedule from "./components/schedule/Schedule";
 import TeamsInfo from "./components/teams/teamsInfo/TeamsInfo";
+import ListLiveMatch from "./components/LIVE/ListLiveMatch/ListLiveMatch";
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
           <Route path="/results" element={<Results></Results>}></Route>
           <Route path="/schedule" element={<Schedule></Schedule>}></Route>
           <Route path="/teams/:id" element={<TeamsInfo></TeamsInfo>}></Route>
+          <Route path="/live" element={<ListLiveMatch></ListLiveMatch>}></Route>
 
       </Routes>
         <Footer/>

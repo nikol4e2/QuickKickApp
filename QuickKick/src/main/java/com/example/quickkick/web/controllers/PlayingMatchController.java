@@ -3,6 +3,7 @@ package com.example.quickkick.web.controllers;
 import com.example.quickkick.web.model.PlayingMatch;
 import com.example.quickkick.web.model.dto.PlayingMatchCreateRequestDto;
 import com.example.quickkick.web.model.enums.TimeoutType;
+import com.example.quickkick.web.model.exceptions.MatchNotFoundException;
 import com.example.quickkick.web.service.PlayingMatchService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -37,6 +38,13 @@ public class PlayingMatchController {
             return ResponseEntity.ok(this.playingMatchService.getPlayingMatch(id).get());
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/match/{matchId}")
+    public ResponseEntity<PlayingMatch> getPlayingMatchByMatchId(@PathVariable Long matchId)
+    {
+        PlayingMatch playingMatch=this.playingMatchService.getPlayingMatchByMatchId(matchId).orElseThrow(()-> new MatchNotFoundException());
+        return ResponseEntity.ok(playingMatch);
     }
 
     @PostMapping

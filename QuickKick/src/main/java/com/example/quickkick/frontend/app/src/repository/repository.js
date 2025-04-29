@@ -1,6 +1,8 @@
 import axios from "../custom-axios/axios.js"
 
 const Service = {
+
+    //TEAMS
     fetchTeams: () =>{
         return axios.get("/teams");
     },
@@ -25,6 +27,8 @@ const Service = {
     deleteTeam: (id)=>{
         return axios.delete(`/teams/${id}`);
     },
+
+    //PLAYERS
     fetchAllPlayers: () =>{
         return axios.get("/players");
     },
@@ -48,7 +52,7 @@ const Service = {
         },
 
 
-
+    //MATCHES
 
     fetchAllMatches: () =>{
         return axios.get("/matches");
@@ -78,6 +82,13 @@ const Service = {
         return axios.get(`/matches/status`,{
             params:matchStatus
         });
+    },
+
+
+
+    //PLAYINGMATCHES
+    fetchPlayingMatchByMatchId: (matchId) =>{
+        return axios.get(`/playing-matches/match/${matchId}`);
     }
 
 

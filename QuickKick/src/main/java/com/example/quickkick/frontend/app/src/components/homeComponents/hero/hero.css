@@ -184,6 +184,9 @@
 .hero-container2 {
     display: contents;
 }
+.watch-live-button{
+    color:white;
+}
 
 @media(max-width: 767px) {
     .hero-content2 {

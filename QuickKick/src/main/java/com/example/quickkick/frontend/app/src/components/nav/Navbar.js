@@ -27,7 +27,7 @@ const Navbar = () => {
                     </nav>
                     <div className="navbar-buttons1">
                         <button className="navbar-action11 thq-button-animated thq-button-filled">
-                            <span className="thq-body-small">РЕЗУЛТАТИ ВО ЖИВО</span>
+                            <span className="thq-body-small"><Link className="watch-live-button" to="/live">РЕЗУЛТАТИ ВО ЖИВО</Link></span>
                         </button>
 
                     </div>

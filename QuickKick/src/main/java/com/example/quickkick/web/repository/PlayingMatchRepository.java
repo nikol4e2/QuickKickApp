@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlayingMatchRepository extends JpaRepository<PlayingMatch, Long> {
+
+    PlayingMatch findByMatchId(Long matchId);
 }

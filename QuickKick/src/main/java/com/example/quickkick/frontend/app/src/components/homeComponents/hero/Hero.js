@@ -16,7 +16,7 @@ const Hero = () => {
                 </div>
                 <div className="hero-actions">
                     <button className="thq-button-filled hero-button1">
-                        <span className="thq-body-small">РЕЗУЛАТИ ВО ЖИВО</span>
+                        <span className="thq-body-small"><Link className="watch-live-button" to="/live">РЕЗУЛАТИ ВО ЖИВО</Link></span>
                     </button>
                     <button className="thq-button-outline hero-button2">
                         <span className="thq-body-small"><Link to={"/results"}>РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</Link></span>
