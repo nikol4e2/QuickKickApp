@@ -1,11 +1,14 @@
 package com.example.quickkick.web.controllers;
 
 
+import com.example.quickkick.web.model.Match;
 import com.example.quickkick.web.model.Player;
 import com.example.quickkick.web.model.Team;
 import com.example.quickkick.web.model.dto.TeamDto;
 import com.example.quickkick.web.model.enums.TeamGroup;
+import com.example.quickkick.web.repository.MatchRepository;
 import com.example.quickkick.web.repository.TeamRepository;
+import com.example.quickkick.web.service.MatchService;
 import com.example.quickkick.web.service.PlayerService;
 import com.example.quickkick.web.service.TeamService;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +25,13 @@ public class TeamController {
     private final TeamService teamService;
     private final PlayerService playerService;
     private final TeamRepository teamRepository;
-
-    public TeamController(TeamService teamService, PlayerService playerService, TeamRepository teamRepository) {
+    private final MatchService matchService;
+    public TeamController(TeamService teamService, PlayerService playerService, TeamRepository teamRepository, MatchService matchService) {
         this.teamService = teamService;
         this.playerService = playerService;
         this.teamRepository = teamRepository;
+        this.matchService = matchService;
+
     }
 
     @GetMapping
@@ -103,6 +108,13 @@ public class TeamController {
         return ResponseEntity.ok(teamService.getPointsForTeam(teamId));
     }
 
+    @GetMapping("/{teamId}/matches")
+    public ResponseEntity<List<Match>> getMatchesForTeam(@PathVariable Long teamId) {
+        List<Match> matches=this.matchService.getMatchesForTeam(teamId);
+        if(matches.isEmpty())
+            return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(matches);
+    }
 
 
 

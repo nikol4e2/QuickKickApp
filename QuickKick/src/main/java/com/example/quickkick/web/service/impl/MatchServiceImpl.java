@@ -125,4 +125,9 @@ public class MatchServiceImpl implements MatchService {
                 .limit(3)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Match> getMatchesForTeam(Long teamId) {
+        return this.matchRepository.findAllByTeam1_IdOrTeam2_Id(teamId,teamId);
+    }
 }

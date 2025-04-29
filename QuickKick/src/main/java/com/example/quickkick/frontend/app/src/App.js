@@ -12,6 +12,7 @@ import TeamsSection from "./components/teams/teamsSection/TeamsSection";
 import Results from "./components/results/results";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import Schedule from "./components/schedule/Schedule";
+import TeamsInfo from "./components/teams/teamsInfo/TeamsInfo";
 function App() {
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
           <Route path="/teams" element={<TeamsSection></TeamsSection>}></Route>
           <Route path="/results" element={<Results></Results>}></Route>
           <Route path="/schedule" element={<Schedule></Schedule>}></Route>
+          <Route path="/teams/:id" element={<TeamsInfo></TeamsInfo>}></Route>
 
       </Routes>
         <Footer/>

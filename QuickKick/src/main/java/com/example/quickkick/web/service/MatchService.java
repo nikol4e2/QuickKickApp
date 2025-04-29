@@ -21,6 +21,7 @@ public interface MatchService {
     //TODO Implement getting matches by Team
     List<Match> getLastFinishedMatches();
     List<Match> getNextThreeMatches();
+    List<Match> getMatchesForTeam(Long teamId);
 
 
 }

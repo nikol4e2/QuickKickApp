@@ -1,0 +1,101 @@
+.team-info-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+.team-details-box {
+    flex: 1;
+    min-width: 280px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.team-details-box h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #b30000;
+}
+
+.team-details-box p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+.matches-panel {
+    flex: 2;
+    min-width: 300px;
+}
+
+.matches-section {
+    margin-bottom: 2rem;
+}
+
+.matches-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #b30000;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.4rem;
+}
+
+.match-box {
+    background-color: #fff;
+    border-left: 6px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.match-box.finished {
+    border-left-color: #28a745;
+}
+
+.match-box.upcoming {
+    border-left-color: #007bff;
+}
+
+.match-teams {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 0.3rem;
+}
+
+.match-score {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0 0.4rem;
+    color: #b30000;
+}
+
+.match-date {
+    font-size: 1.2rem;
+    color: #1b1b1b;
+}
+
+
+@media (max-width: 768px) {
+    .team-info-layout {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .team-details-box,
+    .matches-panel {
+        width: 100%;
+    }
+
+    .team-details-box {
+        margin-bottom: 2rem;
+    }
+}

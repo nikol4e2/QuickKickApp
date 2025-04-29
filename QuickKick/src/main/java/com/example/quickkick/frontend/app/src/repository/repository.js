@@ -70,6 +70,9 @@ const Service = {
     },
     fetchUpcomingMatches:()=>{
         return axios.get("matches/upcoming");
+    },
+    fetchMatchesByTeam: (teamId) =>{
+        return axios.get(`/teams/${teamId}/matches`);
     }
 
 
