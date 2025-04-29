@@ -73,6 +73,11 @@ const Service = {
     },
     fetchMatchesByTeam: (teamId) =>{
         return axios.get(`/teams/${teamId}/matches`);
+    },
+    fetchAllMatchesByStatus: (matchStatus) =>{
+        return axios.get(`/matches/status`,{
+            params:matchStatus
+        });
     }
 
 

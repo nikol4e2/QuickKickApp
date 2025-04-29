@@ -28,38 +28,40 @@ const GroupsSection = () => {
 
 
     const renderGroupTable = (title, teams) =>(
-        <div className="group-table-wrapper">
-            <h3 className="group-title">{title}</h3>
-            <table className="group-table">
-                <thead>
-                    <tr className="table=head">
-                        <th>Екипа</th>
-                        <th>Одиграни</th>
-                        <th>Победи</th>
-                        <th>Нерешени</th>
-                        <th>Дадени голови</th>
-                        <th>Примени голови</th>
-                        <th>Гол разлика</th>
-                        <th>Бодови</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {teams.length >0 ? (teams.map(team=>(
-                    <tr key={team.id}>
-                        <td>{team.name}</td>
-                        <td>{team.wins+team.draws+team.losses}</td>
-                        <td>{team.wins}</td>
-                        <td>{team.draws}</td>
-                        <td>{team.scoredGoals}</td>
-                        <td>{team.takenGoals}</td>
-                        <td>{team.scoredGoals-team.takenGoals}</td>
-                        <td>{team.points}</td>
 
-                    </tr>
-                ))) : <tr> <td>Нема внесени тимови</td></tr>}
-                </tbody>
-            </table>
-        </div>
+            <div className="group-table-wrapper">
+                <h3 className="group-title">{title}</h3>
+                <table className="group-table">
+                    <thead>
+                        <tr className="table=head">
+                            <th>Екипа</th>
+                            <th>Одиграни</th>
+                            <th>Победи</th>
+                            <th>Нерешени</th>
+                            <th>Дадени голови</th>
+                            <th>Примени голови</th>
+                            <th>Гол разлика</th>
+                            <th>Бодови</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {teams.length >0 ? (teams.map(team=>(
+                        <tr key={team.id}>
+                            <td>{team.name}</td>
+                            <td>{team.wins+team.draws+team.losses}</td>
+                            <td>{team.wins}</td>
+                            <td>{team.draws}</td>
+                            <td>{team.scoredGoals}</td>
+                            <td>{team.takenGoals}</td>
+                            <td>{team.scoredGoals-team.takenGoals}</td>
+                            <td>{team.points}</td>
+
+                        </tr>
+                    ))) : <tr> <td>Нема внесени тимови</td></tr>}
+                    </tbody>
+                </table>
+            </div>
+
     )
 
     return (
