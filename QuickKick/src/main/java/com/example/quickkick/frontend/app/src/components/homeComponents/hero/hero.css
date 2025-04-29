@@ -188,6 +188,17 @@
     color:white;
 }
 
+.get-results-button
+{
+    text-wrap: wrap;
+    text-align: center;
+
+   padding: 8.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 @media(max-width: 767px) {
     .hero-content2 {
         width: 100%;

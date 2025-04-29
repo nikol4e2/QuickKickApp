@@ -15,12 +15,11 @@ const Hero = () => {
                     <p className="hero-text2 thq-body-large">Меморијалниот турнир во мал фудбал „Андреј Митев“ е настан кој обединува спорт, пријателство и почит кон еден наш драг пријател. Турнирот се одржува со цел да се оддаде чест на Андреј, преку натпревари исполнети со фер-плеј, тимска енергија и спортски дух.</p>
                 </div>
                 <div className="hero-actions">
-                    <button className="thq-button-filled hero-button1">
-                        <span className="thq-body-small"><Link className="watch-live-button" to="/live">РЕЗУЛАТИ ВО ЖИВО</Link></span>
-                    </button>
-                    <button className="thq-button-outline hero-button2">
-                        <span className="thq-body-small"><Link to={"/results"}>РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</Link></span>
-                    </button>
+
+                    <Link className="navbar-action11 thq-button-animated thq-button-filled watch-live-button" to="/live">РЕЗУЛТАТИ ВО ЖИВО</Link>
+
+                        <Link className="thq-button-outline hero-button2 thq-body-small get-results-button" to={"/results"}>РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</Link>
+
                 </div>
             </div>
             <div className="hero-content2">

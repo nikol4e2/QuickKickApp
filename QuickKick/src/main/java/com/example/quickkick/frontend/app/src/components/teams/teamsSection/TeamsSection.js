@@ -15,7 +15,7 @@ const TeamsSection = () => {
     }
     return (
         <div className="teams-wrapper">
-            <h2 className="teams-title">Екипи</h2>
+            <h2 className="teams-title">ТИМОВИ</h2>
             <div className="teams-table-container">
                 <table className="teams-table">
                     <thead>
