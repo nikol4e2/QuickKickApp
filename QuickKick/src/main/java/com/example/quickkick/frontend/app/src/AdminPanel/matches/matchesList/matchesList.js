@@ -44,6 +44,14 @@ const MatchesList = () => {
     }
 
 
+    const isToday=(dateString) =>{
+        const matchDate=new Date(dateString);
+        const today=new Date();
+
+        return(matchDate.getFullYear() === today.getFullYear() && matchDate.getMonth() === today.getMonth() &&matchDate.getDate() === today.getDate());
+    }
+
+
     return (
         <div className="matches-container">
             <div style={{marginBottom: '20px'}}>
@@ -68,9 +76,15 @@ const MatchesList = () => {
                                 <div className={"edit-match-button"}>
                                     <Link to={`/admin/matches/${match.id}`}><button>Измени</button></Link>
                                 </div>
+
+                                {isToday(match.date) && (
+                                    <div className="start-match-button-admin">
+                                        <Link to={`/admin/playing-match/start-settings/${match.id}`}>ЗАПОЧНИ ГО НАТПРЕВАРОТ</Link>
+                                    </div>
+                                )}
                                 <div className={"delete-match-button"}>
                                     <form onSubmit={(e)=>handleDelete(e,match.id)}>
-                                        <button type={"submit"}>ИЗБРИШИ НАТПРЕВАР!</button>
+                                        <button type={"submit"}>ИЗБРИШИ ГО НАТПРЕВАРОТ</button>
                                     </form>
                                 </div>
                             </div>
