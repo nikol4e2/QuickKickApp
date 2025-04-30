@@ -10,7 +10,7 @@ It was developed specifically for organizing and supporting the Memorial Futsal 
      Filter matches by status: Scheduled, Playing, or Finished
      Start matches with configurable settings like:half-time duration, pause time between halves, timeout duration
   
-    -Live Match Tracking:
+   -Live Match Tracking:
     Real-time stopwatch/timer for matches
     Live scoreboard view (for audience or projectors) on a separate screen
     Admin controls 
