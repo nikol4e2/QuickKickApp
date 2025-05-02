@@ -14,6 +14,7 @@ import MatchesList from "./matches/matchesList/matchesList";
 import AddNewMatch from "./matches/addMatch/AddNewMatch";
 import EditMatch from "./matches/editMatch/EditMatch";
 import StartSettings from "./playingMatch/StartSettings";
+import StopWatch from "./playingMatch/stopwatchPanel/StopWatch";
 
 const AdminPanel = () => {
     return (
@@ -32,6 +33,7 @@ const AdminPanel = () => {
                 <Route path={"/matches/add-match"} element={<AddNewMatch></AddNewMatch>}></Route>
                 <Route path={"/matches/:id"} element={<EditMatch></EditMatch>}></Route>
                 <Route  path={"/playing-match/start-settings/:id"} element={<StartSettings></StartSettings>}></Route>
+
             </Routes>
 
         </div>

@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import AdminPanel from "./AdminPanel/AdminPanel";
+import StopWatch from "./AdminPanel/playingMatch/stopwatchPanel/StopWatch";
+import ControlPanel from "./AdminPanel/playingMatch/stopwatchPanel/ControlPanel";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +18,9 @@ root.render(
 
               {/* Рути за Админ панелот */}
               <Route path="/admin/*" element={<AdminPanel />} />
+
+              <Route path={"/stopwatch/:id"} element={<StopWatch></StopWatch>}></Route>
+              <Route path={"/controls/:id"} element={<ControlPanel></ControlPanel>}></Route>
           </Routes>
 
       </Router>

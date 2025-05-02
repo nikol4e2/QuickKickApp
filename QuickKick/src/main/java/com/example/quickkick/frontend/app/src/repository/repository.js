@@ -92,6 +92,9 @@ const Service = {
     },
     createPlayingMatch: (matchData) =>{
         return axios.post(`/playing-match`, matchData)
+    },
+    fetchPlayingMatch: (matchId) =>{
+        return axios.get(`/playing-matches/${matchId}`);
     }
 
 
