@@ -75,10 +75,10 @@ public class PlayingMatchController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/{id}/subMinutes")
-    public ResponseEntity<PlayingMatch> subMinutes(@PathVariable Long id,@RequestBody int minutes)
+    @PostMapping("/{id}/subMinutes/{min}")
+    public ResponseEntity<PlayingMatch> subMinutes(@PathVariable Long id,@PathVariable int min)
     {
-        this.playingMatchService.subtractMinutesFromPlayingMatch(id,minutes);
+        this.playingMatchService.subtractMinutesFromPlayingMatch(id,min);
         return ResponseEntity.ok().build();
     }
 
@@ -130,6 +130,8 @@ public class PlayingMatchController {
         this.playingMatchService.startPlayingMatch(id);
         return ResponseEntity.ok().build();
     }
+
+
 
 
     @DeleteMapping("/{id}")

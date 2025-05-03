@@ -27,42 +27,85 @@ const StopWatch = () => {
 
     useEffect(() => {
         let interval;
-        if(isRunning && remainingTime > 0){
+        if (isRunning && remainingTime > 0) {
             interval = setInterval(() => {
-                setRemainingTime(prev=>{
-                    if(prev <= 1)
-                    {
+                setRemainingTime(prev => {
+                    const newTime = prev - 1;
+
+
+                    if (newTime > 0 && newTime % 60 === 0) {
+                        Service.signalMinutePassed(id)
+                            .catch(err => console.log("Error notifying backend:", err));
+                    }
+
+                    if (newTime <= 0) {
                         clearInterval(interval);
                         return 0;
                     }
-                    return prev-1;
+
+                    return newTime;
                 });
-            },1000)
+            }, 1000);
         }
-        return () => {clearInterval(interval);};
-    },[isRunning,remainingTime])
+
+        return () => clearInterval(interval);
+    }, [isRunning, remainingTime]);
 
     const startTimer = () =>{
         setIsRunning(true);
+
     }
     const stopTimer = () =>{
         setIsRunning(false);
 
     }
-    const addGoalToTeam = (teamNumber) =>{
+    const addGoalToTeam = (teamNumber) => {
+        if (teamNumber === 1)
+        {
+            setMatchData(prev=>({...prev, goalsTeam1: prev.goalsTeam1+1}));
+        }else if(teamNumber === 2)
+        {
+            setMatchData(prev=>({...prev, goalsTeam2: prev.goalsTeam2+1}));
+        }else return;
 
+        Service.addGoalToTeam(id, teamNumber).catch(error=>{console.log(error)});
     }
 
     const subGoalFromTeam = (teamNumber) =>{
+        if(teamNumber===1)
+        {
+            setMatchData(prev=>({...prev, goalsTeam1: prev.goalsTeam1-1}));
 
+        }else if(teamNumber===2)
+        {
+            setMatchData(prev =>({...prev, goalsTeam2: prev.goalsTeam2-1}));
+        }else return;
+
+        Service.subGoalFromTeam(id, teamNumber).catch(error=>{console.log(error)});
     }
 
     const addFaulToTeam = (teamNumber) =>{
+        if(teamNumber===1)
+        {
+            setMatchData(prev=>({...prev, faulsTeam1: prev.faulsTeam1+1}))
+        }else if(teamNumber===2)
+        {
+            setMatchData(prev=>({...prev, faulsTeam2: prev.faulsTeam2+1}))
+        } else return
 
+        Service.addFaulToTeam(id, teamNumber).catch(error=>{console.log(error)});
     }
 
     const subFaulFromTeam = (teamNumber) =>{
+        if(teamNumber===1)
+        {
+            setMatchData(prev=>({...prev, faulsTeam1: prev.faulsTeam1-1}))
+        }else if(teamNumber===2)
+        {
+            setMatchData(prev=>({...prev, faulsTeam2: prev.faulsTeam2-1}))
+        } else return
 
+        Service.subFaulFromTeam(id, teamNumber).catch(error=>{console.log(error)});
     }
 
     const setTimeoutToTimer= () =>{
@@ -88,7 +131,7 @@ const StopWatch = () => {
                 case "START_TIMER":
                     startTimer();
                     break;
-                case "STOP_TIMER":
+                case "PAUSE_TIMER":
                     stopTimer();
                     break
                 case "ADD_GOAL_TEAM_1":

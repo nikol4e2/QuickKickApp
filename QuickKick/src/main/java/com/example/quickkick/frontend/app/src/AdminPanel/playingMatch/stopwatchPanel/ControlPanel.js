@@ -1,7 +1,7 @@
 import React, {use, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import Service from "../../../repository/repository";
-
+import "./ControlPanel.css"
 const ControlPanel = () => {
 
     const params=useParams();
@@ -28,41 +28,54 @@ const ControlPanel = () => {
     };
 
 
+
+    if(matchData==null) {
+        return <div>Loading</div>
+    }
     return (
-        <div>
-            <div>
-                <h3>ТИМ1</h3>
-                    <div>
-                        <button onClick={() => sendCommand("ADD_GOAL_TEAM_1")}>Додади гол на Тим 1</button>
-                        <button onClick={() => sendCommand("SUB_GOAL_TEAM_1")}>Одземи гол на Тим 1</button>
-                    </div>
+        <div className="control-panel">
+            <div className="team-section-control">
+                <h3>{matchData.match.team1.name}</h3>
+                <div>
+                    <div className="goal-numbers-control">Голови: {matchData.goalsTeam1}</div>
+                    <button onClick={() => {sendCommand("ADD_GOAL_TEAM_1");   setMatchData(prev=>({...prev, goalsTeam1: prev.goalsTeam1+1})); }}>Додади гол на Тим 1</button>
+                    <button onClick={() => {sendCommand("SUB_GOAL_TEAM_1");  setMatchData(prev=>({...prev, goalsTeam1: prev.goalsTeam1-1})) }}>Одземи гол на Тим 1</button>
+                </div>
 
-                    <div>
-                        <button onClick={() => sendCommand("ADD_FAUL_TEAM_1")}>Додади Фаул на Тим 1</button>
-                        <button onClick={() => sendCommand("SUB_FAUL_TEAM_1")}>Одземи Фаул на Тим 1</button>
-                    </div>
+                <div>
+                    <div className="goal-numbers-control">Фаули {matchData.faulsTeam1}</div>
+                    <button onClick={() => {sendCommand("ADD_FAUL_TEAM_1"); setMatchData(prev=>({...prev, faulsTeam1: prev.faulsTeam1+1})) }}>Додади Фаул на Тим 1</button>
+                    <button onClick={() => {sendCommand("SUB_FAUL_TEAM_1"); setMatchData(prev=>({...prev, faulsTeam1: prev.faulsTeam1-1})) }}>Одземи Фаул на Тим 1</button>
+                </div>
 
             </div>
 
-            <div>
-                <h3>ТИМ2</h3>
-                    <button onClick={() => sendCommand("ADD_GOAL_TEAM_2")}>Додади гол на Тим 2</button>
-                    <button onClick={() => sendCommand("SUB_GOAL_TEAM_2")}>Одземи гол на Тим 2</button>
-                    <button onClick={() => sendCommand("ADD_FAUL_TEAM_2")}>Додади Фаул на Тим 2</button>
-                    <button onClick={() => sendCommand("SUB_FAUL_TEAM_2")}>Одземи Фаул на Тим 2</button>
+            <div className="team-section-control">
+                <h3>{matchData.match.team2.name}</h3>
+                <div>
+                    <div className="goal-numbers-control">Голови: {matchData.goalsTeam2}</div>
+                    <button onClick={() => {sendCommand("ADD_GOAL_TEAM_2"); setMatchData(prev=>({...prev, goalsTeam2: prev.goalsTeam2+1})) }}>Додади гол на Тим 2</button>
+                    <button onClick={() => {sendCommand("SUB_GOAL_TEAM_2"); setMatchData(prev=>({...prev, goalsTeam2: prev.goalsTeam2-1})) }}>Одземи гол на Тим 2</button>
+                </div>
+                <div>
+                    <div className="goal-numbers-control">Фаули {matchData.faulsTeam2}</div>
+                    <button onClick={() => {sendCommand("ADD_FAUL_TEAM_2"); setMatchData(prev=>({...prev, faulsTeam2: prev.faulsTeam2+1 }))}}>Додади Фаул на Тим 2</button>
+                    <button onClick={() => {sendCommand("SUB_FAUL_TEAM_2"); setMatchData(prev=>({...prev, faulsTeam2: prev.faulsTeam2-1})) }}>Одземи Фаул на Тим 2</button>
+                </div>
             </div>
 
 
-            <div>
+            <div className="timer-controls">
                 <h3>КОНТРОЛИ ТАЈМЕР</h3>
-                    <button onClick={() => sendCommand("START_TIMER")}>Старт</button>
-                    <button onClick={() => sendCommand("PAUSE_TIMER")}>Пауза</button>
-                    <button onClick={() => sendCommand("SET_TIMEOUT_TIMER", 30)}>Тајмаут (30s)</button>
-                    <button onClick={() => sendCommand("SET_BREAK_TIMER", 120)}>Пауза полувреме (2min)</button>
-                    <button onClick={() => sendCommand("SET_PERIOD", 2)}>Второ полувреме</button>
+                <button onClick={() => sendCommand("START_TIMER")}>Старт</button>
+                <button onClick={() => sendCommand("PAUSE_TIMER")}>Пауза</button>
+                <button onClick={() => sendCommand("SET_TIMEOUT_TIMER")}>Тајмаут</button>
+                <button onClick={() => sendCommand("SET_BREAK_TIMER")}>Пауза полувреме</button>
+                <button onClick={() => sendCommand("SET_PERIOD", 2)}>Второ полувреме</button>
             </div>
         </div>
     );
+
 };
 
 export default ControlPanel;

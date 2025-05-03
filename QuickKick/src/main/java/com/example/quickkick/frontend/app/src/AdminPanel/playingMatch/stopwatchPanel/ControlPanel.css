@@ -1,0 +1,89 @@
+.control-panel {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #f9f9f9;
+    border-radius: 1rem;
+}
+
+.team-section-control {
+    flex: 1;
+    min-width: 250px;
+    background-color: #fff;
+    border: 2px solid #e2e2e2;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.team-section-control h3 {
+    text-align: center;
+    color: #c00000;
+    margin-bottom: 1rem;
+}
+
+.goal-numbers-control {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.team-section-control button {
+    display: block;
+    width: 100%;
+    margin: 0.3rem 0;
+    padding: 0.6rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.team-section-control button:nth-child(even)
+{
+    background-color: #6bc302;
+}
+
+.team-section-control button:hover {
+    background-color: #d63031;
+}
+
+
+.team-section-control button:nth-child(even):hover
+{
+    background-color: #508e06;
+}
+
+
+.timer-controls {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.timer-controls h3 {
+    color: #c00000;
+    margin-bottom: 1rem;
+}
+
+.timer-controls button {
+    margin: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.timer-controls button:hover {
+    background-color: #d63031;
+}

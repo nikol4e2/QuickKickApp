@@ -95,7 +95,30 @@ const Service = {
     },
     fetchPlayingMatch: (matchId) =>{
         return axios.get(`/playing-matches/${matchId}`);
+    },
+
+
+    //CONTROLLING LIVE MATCH
+    addGoalToTeam:(id, teamNumber)=>{
+        return axios.post(`/playing-matches/${id}/addGoal/${teamNumber}`);
+
+    },
+    subGoalFromTeam: (id,teamNumber) =>{
+        return axios.post(`/playing-matches/${id}/removeGoal/${teamNumber}`);
+
+
+    },
+    addFaulToTeam: (id, teamNumber) =>{
+        return axios.post(`/playing-matches/${id}/addFaul/${teamNumber}`);
+    },
+    subFaulFromTeam: (id,teamNumber) =>{
+        return axios.post(`/playing-matches/${id}/removeFaul/${teamNumber}`);
+
+    },
+    signalMinutePassed: (id) => {
+        return axios.post(`/playing-matches/${id}/subMinutes/1`);
     }
+
 
 
 }
