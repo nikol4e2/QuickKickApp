@@ -112,3 +112,9 @@
 .controls-button{
     margin-top: 250px;
 }
+.timeout-box
+{
+    font-size: 4rem;
+    color: black;
+    padding-right: 30px;
+}

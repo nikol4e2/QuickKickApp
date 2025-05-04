@@ -11,6 +11,15 @@ const StopWatch = () => {
 
     const [remainingTime, setRemainingTime] = React.useState(0);
     const [isRunning, setIsRunning] = React.useState(false);
+    let isMatchStarted;
+
+
+    const [timeoutActive, setTimeoutActive] = React.useState(false);
+    const [timeoutRemaining, setTimeoutRemaining] = React.useState(60);
+
+
+    const [halfTimeRestActive, setHalfTimeRestActive] = React.useState(false);
+    const [halfTimeRestRemaining, setHalfTimeRestRemaining] = React.useState(0);
 
 
 
@@ -21,10 +30,18 @@ const StopWatch = () => {
             setMatchData(result.data)
 
             const totalTime=result.data.minutesForHalfTime*60;
+            if(result.data.status==="WAITING_TO_START")
+            {
+                isMatchStarted=false;
+            }
             setRemainingTime(totalTime);
+            setTimeoutRemaining(result.data.timeoutTime*60);
+            setHalfTimeRestRemaining(result.data.pauseTime*60);
         }).catch(err=>{console.log("Error loading match: ",err)})
     }, []);
 
+
+    //MAIN TIMER
     useEffect(() => {
         let interval;
         if (isRunning && remainingTime > 0) {
@@ -39,6 +56,11 @@ const StopWatch = () => {
                     }
 
                     if (newTime <= 0) {
+                        if(halfTimeCounter===1)
+                        {
+                            setHalfTimeRestActive(true);
+                            //CALL TO SERVICE TO SIGNAL SECOND HALF
+                        }
                         clearInterval(interval);
                         return 0;
                     }
@@ -51,8 +73,58 @@ const StopWatch = () => {
         return () => clearInterval(interval);
     }, [isRunning, remainingTime]);
 
+
+    //TIMEOUT REST TIMER
+    useEffect(() => {
+        let timeoutInterval=null;
+
+        if(timeoutActive && timeoutRemaining>0){
+            timeoutInterval=setInterval(()=>{
+                setTimeoutRemaining(prev=> prev-1)
+            },1000);
+        }else if (timeoutActive && timeoutRemaining===0){
+            setTimeoutActive(false);
+
+        }
+
+        return () => clearInterval(timeoutInterval)
+    },[timeoutActive,timeoutRemaining]);
+
+
+
+
+    //HALF TIME REST TIMER
+
+    useEffect(() => {
+        let restInterval=null;
+
+        if(halfTimeRestActive && halfTimeRestRemaining>0)
+        {
+            restInterval=setInterval(()=>{
+                setHalfTimeRestRemaining(prev=> prev-1)
+            },1000);
+        }else if (halfTimeRestActive && halfTimeRestRemaining===0)
+        {
+           //TODO CALL SERVICE-SIGNAL PLAYING AGAIN
+        }
+
+        return () => clearInterval(restInterval);
+    }, [halfTimeRestActive])
+
+
+
+
+    //MESSAGES
+
     const startTimer = () =>{
+        if(isMatchStarted===false)
+        {
+
+            Service.signalStartOfMatch(id).catch(err=>{console.log( err)})
+        }
         setIsRunning(true);
+
+
 
     }
     const stopTimer = () =>{
@@ -109,10 +181,14 @@ const StopWatch = () => {
     }
 
     const setTimeoutToTimer= () =>{
+        setTimeoutRemaining(matchData.timeoutTime*60);
+        stopTimer();
+        setTimeoutActive(true)
 
     }
 
     const setBreakToTimer= () =>{
+        stopTimer();
 
     }
     const setTimer = (seconds) =>{
@@ -223,7 +299,15 @@ const StopWatch = () => {
                     <span className="minutes">{minutes}</span>
                     <span className="colon">:</span>
                     <span className="seconds">{seconds}</span>
+                    {timeoutActive && (
+                        <div className="timeout-box">
+                            ⏱ Тајм-аут: {timeoutRemaining}
+
+                        </div>)}
                 </div>
+
+
+
                 <div className="team">
                     <h2>{match.team2.name}</h2>
                     <div className="score">{goalsTeam2}</div>

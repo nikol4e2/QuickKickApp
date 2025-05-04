@@ -117,6 +117,9 @@ const Service = {
     },
     signalMinutePassed: (id) => {
         return axios.post(`/playing-matches/${id}/subMinutes/1`);
+    },
+    signalStartOfMatch: (id) =>{
+        return axios.post(`/playing-matches/${id}/start`);
     }
 
 

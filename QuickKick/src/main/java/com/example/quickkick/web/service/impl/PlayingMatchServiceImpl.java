@@ -56,6 +56,7 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
         if(playingMatch.isPresent()) {
             this.matchService.changeMatchStatus(playingMatch.get().getMatch().getId(), MatchStatus.PLAYING);
             playingMatch.get().setStatus(PlayingMatchStatus.PLAYING);
+            playingMatchRepository.save(playingMatch.get());
             return playingMatch.get();
         }else throw new MatchNotFoundException();
     }
