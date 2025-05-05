@@ -45,19 +45,36 @@ const GroupsSection = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {teams.length >0 ? (teams.map(team=>(
-                        <tr key={team.id}>
-                            <td>{team.name}</td>
-                            <td>{team.wins+team.draws+team.losses}</td>
-                            <td>{team.wins}</td>
-                            <td>{team.draws}</td>
-                            <td>{team.scoredGoals}</td>
-                            <td>{team.takenGoals}</td>
-                            <td>{team.scoredGoals-team.takenGoals}</td>
-                            <td>{team.points}</td>
-
+                    {teams.length > 0 ? (
+                        teams
+                            .slice()
+                            .sort((a, b) => {
+                                //Sortirame najprvo po poeni,a dokolku se isti potoa po gol razlika
+                                if (b.points !== a.points) {
+                                    return b.points - a.points;
+                                } else {
+                                    const goalDiffA = a.scoredGoals - a.takenGoals;
+                                    const goalDiffB = b.scoredGoals - b.takenGoals;
+                                    return goalDiffB - goalDiffA;
+                                }
+                            })
+                            .map(team => (
+                                <tr key={team.id}>
+                                    <td>{team.name}</td>
+                                    <td>{team.wins + team.draws + team.losses}</td>
+                                    <td>{team.wins}</td>
+                                    <td>{team.draws}</td>
+                                    <td>{team.scoredGoals}</td>
+                                    <td>{team.takenGoals}</td>
+                                    <td>{team.scoredGoals - team.takenGoals}</td>
+                                    <td>{team.points}</td>
+                                </tr>
+                            ))
+                    ) : (
+                        <tr>
+                            <td colSpan="8">Нема внесени тимови</td>
                         </tr>
-                    ))) : <tr> <td>Нема внесени тимови</td></tr>}
+                    )}
                     </tbody>
                 </table>
             </div>
