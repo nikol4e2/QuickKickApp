@@ -70,8 +70,7 @@ const ControlPanel = () => {
                 <button onClick={() => sendCommand("START_TIMER")}>Старт</button>
                 <button onClick={() => sendCommand("PAUSE_TIMER")}>Пауза</button>
                 <button onClick={() => sendCommand("SET_TIMEOUT_TIMER")}>Тајмаут</button>
-                <button onClick={() => sendCommand("SET_BREAK_TIMER")}>Пауза полувреме</button>
-                <button onClick={() => sendCommand("SET_PERIOD", 2)}>Второ полувреме</button>
+
             </div>
         </div>
     );

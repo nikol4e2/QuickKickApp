@@ -120,6 +120,12 @@ const Service = {
     },
     signalStartOfMatch: (id) =>{
         return axios.post(`/playing-matches/${id}/start`);
+    },
+    signalHalfTime:(id) =>{
+        return axios.post(`/playing-matches/${id}/halfTime`);
+    },
+    signalPlayingAgain:(id) =>{
+        return axios.post(`/playing-matches/${id}/signalPlayingAgain`);
     }
 
 

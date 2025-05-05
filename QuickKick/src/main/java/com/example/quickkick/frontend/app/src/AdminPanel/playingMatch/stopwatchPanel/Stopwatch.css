@@ -118,3 +118,15 @@
     color: black;
     padding-right: 30px;
 }
+
+.flash-background {
+    animation: flash-bg 0.3s ease-in-out 5 !important;
+
+    background: none;
+}
+
+@keyframes flash-bg {
+    0% { background-color: yellow ; }
+    50% { background-color: red ; }
+    100% { background-color: yellow; }
+}

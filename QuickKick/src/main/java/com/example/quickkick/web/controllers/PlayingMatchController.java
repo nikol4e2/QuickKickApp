@@ -132,6 +132,14 @@ public class PlayingMatchController {
     }
 
 
+    @PostMapping("/{id}/signalPlayingAgain")
+    public ResponseEntity<PlayingMatch> signalPlayingAgain(@PathVariable Long id)
+    {
+        this.playingMatchService.signalPlayingAgain(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 
 
     @DeleteMapping("/{id}")

@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Service from "../../../repository/repository";
 import {useParams} from "react-router-dom";
-import "./Stopwatch.css"
+import "./Stopwatch.css";
+//import timerSound from "../../../../public/sounds/10-sec-timer.mp3"
 const StopWatch = () => {
 
     const params= useParams();
@@ -11,7 +12,7 @@ const StopWatch = () => {
 
     const [remainingTime, setRemainingTime] = React.useState(0);
     const [isRunning, setIsRunning] = React.useState(false);
-    let isMatchStarted;
+    const [isMatchStarted, setIsMatchStarted] = React.useState(false);
 
 
     const [timeoutActive, setTimeoutActive] = React.useState(false);
@@ -20,24 +21,46 @@ const StopWatch = () => {
 
     const [halfTimeRestActive, setHalfTimeRestActive] = React.useState(false);
     const [halfTimeRestRemaining, setHalfTimeRestRemaining] = React.useState(0);
-
+    const [halfCounter,setHalfCounter] = React.useState(1);
 
 
     const [matchData, setMatchData] = React.useState(null);
+    const [isFlashing, setIsFlashing] = React.useState(false);
+    const playSound = (sound) =>{
+        const audio = new Audio(sound);
+        audio.play().catch((err) => {console.log("Audio error:",err)});
+    }
+
+    const triggerFlash = () => {
+        setIsFlashing(true);
+        setTimeout(() => setIsFlashing(false), 1500);
+    }
 
     useEffect(() => {
         Service.fetchPlayingMatch(id).then(result=>{
             setMatchData(result.data)
-
+            setHalfCounter(result.data.halfTimeCounter)
             const totalTime=result.data.minutesForHalfTime*60;
             if(result.data.status==="WAITING_TO_START")
             {
-                isMatchStarted=false;
-            }
-            setRemainingTime(totalTime);
+                setIsMatchStarted(false);
+            }else
+
+            //setRemainingTime(totalTime);
+            //TEST
+            setRemainingTime(totalTime-(19.5*60));
             setTimeoutRemaining(result.data.timeoutTime*60);
-            setHalfTimeRestRemaining(result.data.pauseTime*60);
+           // setHalfTimeRestRemaining(result.data.pauseTime*60);
+            setHalfTimeRestRemaining(10);
         }).catch(err=>{console.log("Error loading match: ",err)})
+    }, []);
+
+
+    const buzzerSound = useRef(null);
+
+    useEffect(() => {
+
+        buzzerSound.current = new Audio(process.env.PUBLIC_URL + '/sounds/buzzer-1.mp3');
     }, []);
 
 
@@ -55,11 +78,19 @@ const StopWatch = () => {
                             .catch(err => console.log("Error notifying backend:", err));
                     }
 
+
                     if (newTime <= 0) {
-                        if(halfTimeCounter===1)
+                        if (buzzerSound.current) {
+                            buzzerSound.current.currentTime = 0;
+                            buzzerSound.current.play().catch(err => console.log("Error playing buzzer:", err));
+                        }
+
+                        if(halfCounter===1)
                         {
                             setHalfTimeRestActive(true);
-                            //CALL TO SERVICE TO SIGNAL SECOND HALF
+                            setHalfCounter(2);
+                            stopTimer();
+                            Service.signalHalfTime(id).catch(err => console.log("Error notifying backend:", err));
                         }
                         clearInterval(interval);
                         return 0;
@@ -71,7 +102,7 @@ const StopWatch = () => {
         }
 
         return () => clearInterval(interval);
-    }, [isRunning, remainingTime]);
+    }, [isRunning, remainingTime, halfCounter]);
 
 
     //TIMEOUT REST TIMER
@@ -98,18 +129,23 @@ const StopWatch = () => {
     useEffect(() => {
         let restInterval=null;
 
-        if(halfTimeRestActive && halfTimeRestRemaining>0)
-        {
-            restInterval=setInterval(()=>{
-                setHalfTimeRestRemaining(prev=> prev-1)
-            },1000);
-        }else if (halfTimeRestActive && halfTimeRestRemaining===0)
-        {
-           //TODO CALL SERVICE-SIGNAL PLAYING AGAIN
+        if (halfTimeRestActive) {
+            if (halfTimeRestRemaining > 0) {
+                restInterval = setInterval(() => {
+                    setHalfTimeRestRemaining(prev => prev - 1);
+                }, 1000);
+            } else {
+
+                setHalfTimeRestActive(false);
+                //setRemainingTime(matchData.minutesForHalfTime * 60);
+                setRemainingTime(30)
+                stopTimer();
+                Service.signalPlayingAgain(id).catch(err => console.log("Error notifying backend:", err));
+            }
         }
 
         return () => clearInterval(restInterval);
-    }, [halfTimeRestActive])
+    }, [halfTimeRestActive,halfTimeRestRemaining])
 
 
 
@@ -132,6 +168,8 @@ const StopWatch = () => {
 
     }
     const addGoalToTeam = (teamNumber) => {
+        playSound(process.env.PUBLIC_URL + '/sounds/se_goalring.mp3');
+        triggerFlash()
         if (teamNumber === 1)
         {
             setMatchData(prev=>({...prev, goalsTeam1: prev.goalsTeam1+1}));
@@ -181,7 +219,7 @@ const StopWatch = () => {
     }
 
     const setTimeoutToTimer= () =>{
-        setTimeoutRemaining(matchData.timeoutTime*60);
+
         stopTimer();
         setTimeoutActive(true)
 
@@ -282,10 +320,23 @@ const StopWatch = () => {
         }
     }
 
-    const {minutes,seconds}=formatTime()
+
+
+    const {minutes,seconds}=formatTime();
+
+    const formatTimeString=(time) =>{
+
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+
+        return `${minutes}:${seconds}`;
+
+    }
+
+
     return (
 
-        <div className="scoreboard">
+        <div className={`scoreboard ${isFlashing ? "flash-background" : ""}`}>
             <h1 className="tournament-title">Меморијален турнир- Андреј Митев</h1>
 
             <div className="center-section">
@@ -304,6 +355,11 @@ const StopWatch = () => {
                             ⏱ Тајм-аут: {timeoutRemaining}
 
                         </div>)}
+                    {halfTimeRestActive && (
+                        <div className="timeout-box">
+                            ⏱ ПАУЗА: {formatTimeString(halfTimeRestRemaining)}
+                        </div>
+                    )}
                 </div>
 
 
@@ -316,7 +372,7 @@ const StopWatch = () => {
             </div>
             <div className="bottom-info">
                 <div className="fauls">Фаули: <br/> <span>{faulsTeam1}</span></div>
-                <div className="period">ПЕРИОД: <br/> {halfTimeCounter}</div>
+                <div className="period">ПЕРИОД: <br/> {halfCounter}</div>
                 <div className="fauls">Фаули: <br/> <span>{faulsTeam2}</span></div>
             </div>
             <button className="controls-button">Контроли</button>
