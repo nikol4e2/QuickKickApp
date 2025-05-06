@@ -15,6 +15,7 @@ const StopWatch = () => {
     const [isMatchStarted, setIsMatchStarted] = React.useState(false);
 
 
+
     const [timeoutActive, setTimeoutActive] = React.useState(false);
     const [timeoutRemaining, setTimeoutRemaining] = React.useState(60);
 
@@ -91,6 +92,10 @@ const StopWatch = () => {
                             setHalfCounter(2);
                             stopTimer();
                             Service.signalHalfTime(id).catch(err => console.log("Error notifying backend:", err));
+                        }
+                        if(halfCounter===2)
+                        {
+
                         }
                         clearInterval(interval);
                         return 0;

@@ -87,3 +87,55 @@
 .timer-controls button:hover {
     background-color: #d63031;
 }
+
+.finish-match-controll {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.finish-match-controll h3 {
+    margin-bottom: 10px;
+    color: #d32f2f; /* темноцрвена нијанса */
+}
+
+.finish-match-controll h4 {
+    margin-bottom: 10px;
+    font-weight: normal;
+    color: #555;
+}
+
+.finish-match-controll label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.finish-match-controll input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+.finish-match-controll button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.finish-match-controll button:hover {
+    background-color: #b71c1c;
+}

@@ -2,6 +2,7 @@ import React, {use, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import Service from "../../../repository/repository";
 import "./ControlPanel.css"
+import AddGoalAfterMatch from "./AddGoalAfterMatch";
 const ControlPanel = () => {
 
     const params=useParams();
@@ -10,6 +11,21 @@ const ControlPanel = () => {
 
     const [matchData, setMatchData] = React.useState(null);
     const [remainingTime, setRemainingTime] = React.useState(0);
+
+    const [finishMatchToggle, setFinishMatchToggle] = React.useState(false);
+    const [isGroupStage, setIsGroupStage] = React.useState(null);
+
+    const handleClickOnFinish = () => {
+        if(isGroupStage===null){
+            alert("Избери дали натпреварот е од групна фаза.");
+            return
+        }
+        setFinishMatchToggle(true);
+        //CALL SERVICE TO FINSISH MATCH (SEND MATCH ID, NOT PLAYING MATCH ID)
+        console.log(matchData.match.id,{goalsTeam1: matchData.goalsTeam1, goalsTeam2: matchData.goalsTeam2, isGroupStage:isGroupStage})
+        //Service.finishMatch(matchData.match.id,{goalsTeam1: matchData.goalsTeam1, goalsTeam2: matchData.goalsTeam2, isGroupStage:isGroupStage});
+    }
+
 
     useEffect(() => {
         Service.fetchPlayingMatch(id).then(result=>{
@@ -29,10 +45,12 @@ const ControlPanel = () => {
 
 
 
+
     if(matchData==null) {
         return <div>Loading</div>
     }
     return (
+        <>
         <div className="control-panel">
             <div className="team-section-control">
                 <h3>{matchData.match.team1.name}</h3>
@@ -72,7 +90,38 @@ const ControlPanel = () => {
                 <button onClick={() => sendCommand("SET_TIMEOUT_TIMER")}>Тајмаут</button>
 
             </div>
+
+
+            <div className="finish-match-controll">
+                <h3>Заврши го натпреварот</h3>
+                <h4>ИЗБЕРИ:</h4>
+                <label>
+                    <input
+                        type="radio"
+                        name="phase"
+                        value="true"
+                        onChange={() => setIsGroupStage(true)}
+                    />
+                    Групна фаза
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="phase"
+                        value="false"
+                        onChange={() => setIsGroupStage(false)}
+                    />
+                    Елиминациска фаза
+                </label>
+
+                <button onClick={handleClickOnFinish}>Заврши натпревар</button>
+
+
+            </div>
+
         </div>
+            {finishMatchToggle && <AddGoalAfterMatch matchId={matchData.match.id} team1={matchData.match.team1} team2={matchData.match.team2} goalsTeam1={matchData.goalsTeam1} goalsTeam2={matchData.goalsTeam2}></AddGoalAfterMatch>}
+        </>
     );
 
 };

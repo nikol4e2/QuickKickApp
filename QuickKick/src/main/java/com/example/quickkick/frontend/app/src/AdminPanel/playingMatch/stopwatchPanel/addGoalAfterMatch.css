@@ -1,0 +1,49 @@
+.add-goal-after-match-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.team1-section-goals,
+.team2-section-goals {
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.goals-players-section {
+    margin-bottom: 20px;
+}
+
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #d40000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b30000;
+}
+
+.add-goal-after-match-container > button:last-child {
+    width: 100%;
+    margin-top: 20px;
+}

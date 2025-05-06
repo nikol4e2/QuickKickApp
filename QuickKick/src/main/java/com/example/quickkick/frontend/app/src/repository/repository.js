@@ -126,6 +126,9 @@ const Service = {
     },
     signalPlayingAgain:(id) =>{
         return axios.post(`/playing-matches/${id}/signalPlayingAgain`);
+    },
+    finishMatch: (id,request) =>{
+        return axios.post(`/matches/${id}/finish`, request);
     }
 
 
