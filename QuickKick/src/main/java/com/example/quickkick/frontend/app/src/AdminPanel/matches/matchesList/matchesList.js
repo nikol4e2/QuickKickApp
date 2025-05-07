@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Service from "../../../repository/repository";
 import {Link} from "react-router-dom";
-
+import "./matchesList.css"
 const MatchesList = () => {
 
     const [matches, setMatches] = React.useState([]);
@@ -77,7 +77,7 @@ const MatchesList = () => {
                                     <Link to={`/admin/matches/${match.id}`}><button>Измени</button></Link>
                                 </div>
 
-                                {isToday(match.date) && (
+                                {isToday(match.date) && match.status !=="FINISHED" && (
                                     <div className="start-match-button-admin">
                                         <Link to={`/admin/playing-match/start-settings/${match.id}`}>ЗАПОЧНИ ГО НАТПРЕВАРОТ</Link>
                                     </div>

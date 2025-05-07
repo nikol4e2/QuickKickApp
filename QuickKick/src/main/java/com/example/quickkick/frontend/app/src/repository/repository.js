@@ -129,6 +129,9 @@ const Service = {
     },
     finishMatch: (id,request) =>{
         return axios.post(`/matches/${id}/finish`, request);
+    },
+    submitGoals: (payload) =>{
+        return axios.post(`/players/add-goals`, payload);
     }
 
 

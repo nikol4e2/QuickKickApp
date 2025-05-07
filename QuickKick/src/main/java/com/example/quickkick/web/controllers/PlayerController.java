@@ -4,6 +4,8 @@ package com.example.quickkick.web.controllers;
 import com.example.quickkick.web.model.Player;
 import com.example.quickkick.web.model.dto.PlayerDto;
 import com.example.quickkick.web.model.dto.PlayerEditDto;
+import com.example.quickkick.web.model.dto.PlayerGoalsSubmission;
+import com.example.quickkick.web.model.dto.SubmitGoalsDto;
 import com.example.quickkick.web.service.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -76,6 +78,14 @@ public class PlayerController {
         player.setSecondName(playerEditDto.getSecondName());
         player.setGoals(playerEditDto.getGoals());
         return ResponseEntity.ok(this.playerService.updatePlayer(player));
+    }
+
+    @PostMapping("/add-goals")
+    public ResponseEntity<?> submitGoals(@RequestBody SubmitGoalsDto request)
+    {
+        request.getTeam1().forEach(p->playerService.addGoalToPlayer(p.getId(),p.getGoals()));
+        request.getTeam2().forEach(p->playerService.addGoalToPlayer(p.getId(),p.getGoals()));
+        return ResponseEntity.ok("Goals submitted sucessfully");
     }
 
 

@@ -42,3 +42,8 @@ a{
     text-decoration: none;
     color: red;
 }
+
+.add-new-player-button-admin
+{
+    color: white;
+}

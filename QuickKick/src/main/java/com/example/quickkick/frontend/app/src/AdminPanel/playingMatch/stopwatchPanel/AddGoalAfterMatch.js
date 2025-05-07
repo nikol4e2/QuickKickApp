@@ -101,14 +101,14 @@ const AddGoalAfterMatch = ({matchId,team1,team2,goalsTeam1,goalsTeam2}) => {
 
     const handleSubmit = () => {
         const payload = {
-            matchId,
+
             team1: playersTeam1.map(p => ({ id: p.id, goals: p.goals })),
             team2: playersTeam2.map(p => ({ id: p.id, goals: p.goals })),
         };
 
-        //TODO MAKE SERVICE FUNCTION AND MAKE REQUEST MAPPING ON BACKEND
+
         Service.submitGoals(payload)
-            .then(res => alert("Головите се успешно внесени!"))
+            .then(res =>{ alert("Головите се успешно внесени!"); window.close()})
             .catch(console.error);
     };
     return (

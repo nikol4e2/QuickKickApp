@@ -21,9 +21,11 @@ const ControlPanel = () => {
             return
         }
         setFinishMatchToggle(true);
-        //CALL SERVICE TO FINSISH MATCH (SEND MATCH ID, NOT PLAYING MATCH ID)
-        console.log(matchData.match.id,{goalsTeam1: matchData.goalsTeam1, goalsTeam2: matchData.goalsTeam2, isGroupStage:isGroupStage})
-        //Service.finishMatch(matchData.match.id,{goalsTeam1: matchData.goalsTeam1, goalsTeam2: matchData.goalsTeam2, isGroupStage:isGroupStage});
+
+
+
+
+        Service.finishMatch(matchData.match.id,{goalsTeam1: matchData.goalsTeam1, goalsTeam2: matchData.goalsTeam2, isGroupPhase:isGroupStage});
     }
 
 

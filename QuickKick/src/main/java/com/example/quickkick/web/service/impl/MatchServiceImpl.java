@@ -66,6 +66,8 @@ public class MatchServiceImpl implements MatchService {
         match.setStatus(MatchStatus.FINISHED);
         match.setGoalsTeam1(team1Goals);
         match.setGoalsTeam2(team2Goals);
+
+
         Team team1=match.getTeam1();
         Team team2=match.getTeam2();
 
@@ -77,19 +79,22 @@ public class MatchServiceImpl implements MatchService {
 
 
             if (team1Goals > team2Goals) {
-                teamRepository.findByName(team1.getName()).get().setWins(team1.getWins() + 1);
-                teamRepository.findByName(team2.getName()).get().setLosses(team2.getLosses() + 1);
+                team1.setWins(team1.getWins() + 1);
+                team2.setLosses(team2.getLosses() + 1);
             } else if (team2Goals > team1Goals) {
-                teamRepository.findByName(team2.getName()).get().setWins(team2.getWins() + 1);
-                teamRepository.findByName(team1.getName()).get().setLosses(team1.getLosses() + 1);
+                team2.setWins(team2.getWins() + 1);
+                team1.setLosses(team1.getLosses() + 1);
             } else {
-                teamRepository.findByName(team1.getName()).get().setDraws(team2.getLosses() + 1);
-                teamRepository.findByName(team2.getName()).get().setDraws(team2.getLosses() + 1);
+                team1.setDraws(team1.getDraws() + 1);
+                team2.setDraws(team2.getDraws() + 1);
             }
+            team1.calculatePoints();
+            team2.calculatePoints();
             this.teamRepository.save(team1);
             this.teamRepository.save(team2);
         }
         this.matchRepository.save(match);
+
     }
 
     @Override

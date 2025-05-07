@@ -60,7 +60,7 @@ const ListAllPlayers = ({teamId}) => {
                             </tbody>
                     </table>
                 </div>
-                {!teamId && <button><Link to={`/admin/players/add-player`}>Додадете нов играч!</Link></button>}
+                {!teamId && <button ><Link className="add-new-player-button-admin" to={`/admin/players/add-player`}>Додадете нов играч!</Link></button>}
 
             </div>
         </>
