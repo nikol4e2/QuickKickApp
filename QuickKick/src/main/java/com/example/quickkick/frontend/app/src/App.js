@@ -14,6 +14,7 @@ import AdminPanel from "./AdminPanel/AdminPanel";
 import Schedule from "./components/schedule/Schedule";
 import TeamsInfo from "./components/teams/teamsInfo/TeamsInfo";
 import ListLiveMatch from "./components/LIVE/ListLiveMatch/ListLiveMatch";
+import LiveMatchStatistics from "./components/LIVE/LiveMatchStatistics/LiveMatchStatistics";
 function App() {
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
           <Route path="/schedule" element={<Schedule></Schedule>}></Route>
           <Route path="/teams/:id" element={<TeamsInfo></TeamsInfo>}></Route>
           <Route path="/live" element={<ListLiveMatch></ListLiveMatch>}></Route>
+          <Route path="/live/:id" element={<LiveMatchStatistics />}></Route>
 
       </Routes>
         <Footer/>

@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import Service from "../../../repository/repository";
 import {Link} from "react-router-dom";
 import "./listLiveMatch.css"
+import matchesList from "../../../AdminPanel/matches/matchesList/matchesList";
 const ListLiveMatch = () => {
 
 
     const [liveMatch, setLiveMatch] = React.useState(null);
-
     useEffect(() => {
         loadMatch();
     },[])
@@ -32,9 +32,9 @@ const ListLiveMatch = () => {
         <div className="live-match-container">
             <div>Натпревар кој моментално се одржува:</div>
             {liveMatch ? (
-                <div className="live-match-card">
+                 <div className="live-match-card">
                     <p>{liveMatch.match.team1.name} - {liveMatch.match.team2.name}</p>
-                    <Link to={"/live/"}>
+                    <Link to={`/live/${liveMatch.id}`}>
                         <button>СЛЕДИ ГО НАТПРЕВАРОТ ВО ЖИВО</button>
                     </Link>
                 </div>

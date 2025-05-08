@@ -47,11 +47,11 @@ const StopWatch = () => {
                 setIsMatchStarted(false);
             }else
 
-            //setRemainingTime(totalTime);
-            //TEST
-            setRemainingTime(totalTime-(19.5*60));
+            setRemainingTime(totalTime);
+         
+
             setTimeoutRemaining(result.data.timeoutTime*60);
-           // setHalfTimeRestRemaining(result.data.pauseTime*60);
+            setHalfTimeRestRemaining(result.data.pauseTime*60);
             setHalfTimeRestRemaining(10);
         }).catch(err=>{console.log("Error loading match: ",err)})
     }, []);
@@ -115,6 +115,7 @@ const StopWatch = () => {
         let timeoutInterval=null;
 
         if(timeoutActive && timeoutRemaining>0){
+            Service.signalTimeout(id).catch(err=>console.log("Error notifying backend:", err));
             timeoutInterval=setInterval(()=>{
                 setTimeoutRemaining(prev=> prev-1)
             },1000);

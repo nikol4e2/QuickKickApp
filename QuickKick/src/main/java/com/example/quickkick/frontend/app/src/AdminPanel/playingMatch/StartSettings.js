@@ -17,7 +17,7 @@ const StartSettings = () => {
     const handleSubmit= (e)=>{
         e.preventDefault();
         Service.createPlayingMatch(request).then(result=>{
-            navigate(`/admin/stopwatch/${id}`);
+            navigate(`/stopwatch/`+result.data.id);
         }).catch(err=>{
             console.log("Грешка при креирање на натпреварот:",err);
         })

@@ -118,9 +118,9 @@ public class PlayingMatchController {
     }
 
     @PostMapping("/{id}/signalTimeout")
-    public ResponseEntity<PlayingMatch> signalTimeout(@PathVariable Long id, @RequestBody TimeoutType timeoutType)
+    public ResponseEntity<PlayingMatch> signalTimeout(@PathVariable Long id)
     {
-        this.playingMatchService.signalTimeout(id, timeoutType);
+        this.playingMatchService.signalTimeout(id, TimeoutType.TEAM);
         return ResponseEntity.ok().build();
     }
 

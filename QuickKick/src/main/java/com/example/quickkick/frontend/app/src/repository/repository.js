@@ -91,7 +91,7 @@ const Service = {
         return axios.get(`/playing-matches/match/${matchId}`);
     },
     createPlayingMatch: (matchData) =>{
-        return axios.post(`/playing-match`, matchData)
+        return axios.post(`/playing-matches`, matchData)
     },
     fetchPlayingMatch: (matchId) =>{
         return axios.get(`/playing-matches/${matchId}`);
@@ -126,6 +126,9 @@ const Service = {
     },
     signalPlayingAgain:(id) =>{
         return axios.post(`/playing-matches/${id}/signalPlayingAgain`);
+    },
+    signalTimeout:(id) =>{
+        return axios.post(`/playing-matches/${id}/signalTimeout`);
     },
     finishMatch: (id,request) =>{
         return axios.post(`/matches/${id}/finish`, request);
