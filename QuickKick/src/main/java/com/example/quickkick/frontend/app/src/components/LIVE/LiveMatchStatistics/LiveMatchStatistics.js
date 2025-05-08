@@ -21,6 +21,8 @@ const LiveMatchStatistics = () => {
         const interval = setInterval(()=>{
             loadPlayingMatch();
         },30000)
+
+        return () => { clearInterval(interval) };
     },[])
 
 
@@ -76,7 +78,7 @@ const LiveMatchStatistics = () => {
     }
     return (
         <div>
-            {liveMatch && <div className="live-scoreboard">
+            {liveMatch && <div className={`live-scoreboard ${highlight ? 'goal-highlight' : ''}`}>
                 <div className="teams-live">
                     <div className="team-left">
                         <h2>{match.team1.name}</h2>

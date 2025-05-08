@@ -11,7 +11,7 @@ const TeamsInfo = () => {
     const [team, setTeam] = React.useState(null);
     const [matches, setMatches] = React.useState([]);
     const [players, setPlayers] = React.useState([]);
-
+    const [areMatchesLoaded, setAreMatchesLoaded] = React.useState(false);
 
     useEffect(() => {
         loadTeam();
@@ -35,8 +35,13 @@ const TeamsInfo = () => {
         Service.fetchAllPlayersByTeam(teamId).then(response => setPlayers(response.data));
     }
 
-    const finishedMatches = matches.filter(match => match.status === "FINISHED");
-    const upcomingMatches = matches.filter(match => match.status === "SCHEDULED");
+    const finishedMatches = Array.isArray(matches)
+        ? matches.filter(match => match.status === "FINISHED")
+        : [];
+
+    const upcomingMatches = Array.isArray(matches)
+        ? matches.filter(match => match.status === "SCHEDULED")
+        : [];
 
     const printTeamGroup = () => {
         switch (team?.teamGroup) {

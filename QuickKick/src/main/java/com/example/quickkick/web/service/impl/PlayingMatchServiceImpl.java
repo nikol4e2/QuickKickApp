@@ -129,10 +129,10 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
         if(playingMatch.isPresent()) {
             if(teamNumber==1)
             {
-                playingMatch.get().setFaulsTeam1(playingMatch.get().getGoalsTeam1()+1);
+                playingMatch.get().setFaulsTeam1(playingMatch.get().getFaulsTeam1()+1);
             }else if(teamNumber==2)
             {
-                playingMatch.get().setFaulsTeam2(playingMatch.get().getGoalsTeam2()+1);
+                playingMatch.get().setFaulsTeam2(playingMatch.get().getFaulsTeam2()+1);
             }
             playingMatchRepository.save(playingMatch.get());
 
@@ -145,10 +145,10 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
         if(playingMatch.isPresent()) {
             if(teamNumber==1)
             {
-                playingMatch.get().setFaulsTeam1(playingMatch.get().getGoalsTeam1()-1);
+                playingMatch.get().setFaulsTeam1(playingMatch.get().getFaulsTeam1()-1);
             }else if(teamNumber==2)
             {
-                playingMatch.get().setFaulsTeam2(playingMatch.get().getGoalsTeam2()-1);
+                playingMatch.get().setFaulsTeam2(playingMatch.get().getFaulsTeam2()-1);
             }
             playingMatchRepository.save(playingMatch.get());
 

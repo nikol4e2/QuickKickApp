@@ -339,6 +339,10 @@ const StopWatch = () => {
 
     }
 
+    const  openControls= ()=>{
+        window.open(`/controls/${id}`,"ControlPanel");
+    }
+
 
     return (
 
@@ -381,7 +385,7 @@ const StopWatch = () => {
                 <div className="period">ПЕРИОД: <br/> {halfCounter}</div>
                 <div className="fauls">Фаули: <br/> <span>{faulsTeam2}</span></div>
             </div>
-            <button className="controls-button">Контроли</button>
+            <button className="controls-button" onClick={openControls}>Контроли</button>
         </div>
     );
 };
