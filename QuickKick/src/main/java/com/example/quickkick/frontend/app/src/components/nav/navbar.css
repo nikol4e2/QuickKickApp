@@ -3,8 +3,17 @@
     display: flex;
     position: relative;
     justify-content: center;
-    background-color: var(--dl-color-theme-neutral-light);
+    background-color: #f9f9f9;
+    margin-top: 0;
 
+}
+
+.navbar-close-menu{
+    margin-right: 20px;
+
+}
+.link-nav{
+    font-size: 0.9rem;
 }
 
 .navbar-navbar-interactive {

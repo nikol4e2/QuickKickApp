@@ -29,6 +29,10 @@
     animation-iteration-count: 1;
     animation-timing-function: ease;
 }
+.clickable-text{
+    font-size:1.15rem;
+
+}
 
 .features1-image3 {
     animation-name: fadeIn;

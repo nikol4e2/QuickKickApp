@@ -29,9 +29,9 @@ const MatchesSection = () => {
                             {activeTab === 0 && <div className="features1-container3"></div>}
                         </div>
                         <div className="features1-content1">
-                            <h2 className="thq-heading-2">Последни резултати</h2>
-                            <span className="thq-body-small">
-                Резултати за последно одиграните натпревари
+                            <h2 className="thq-heading-2 ">Последни резултати</h2>
+                            <span className="thq-body-small clickable-text">
+                Резултати за последно одиграните натпревари!
               </span>
                         </div>
                     </div>
@@ -44,8 +44,8 @@ const MatchesSection = () => {
                         </div>
                         <div className="features1-content2">
                             <h2 className="thq-heading-2">Следни натпревари</h2>
-                            <span className="thq-body-small">
-                Информации за следните натпревари
+                            <span className="thq-body-small clickable-text">
+                Кликнете овде да ги видите информациите за следните натпревари!
               </span>
                         </div>
                     </div>
@@ -58,8 +58,8 @@ const MatchesSection = () => {
                         </div>
                         <div className="features1-content2">
                             <h2 className="thq-heading-2">Топ 10 стрелци</h2>
-                            <span className="thq-body-small">
-                Моменталните ТОП10 Стрелци
+                            <span className="thq-body-small clickable-text">
+                Кликнете овде да ги видите моменталните ТОП10 Стрелци!
               </span>
                         </div>
                     </div>

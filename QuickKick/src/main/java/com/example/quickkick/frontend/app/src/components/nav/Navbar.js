@@ -13,12 +13,12 @@ const Navbar = () => {
                 {/* Desktop Menu */}
                 <div data-thq="thq-navbar-nav" className="navbar-desktop-menu">
                     <nav className="navbar-links1">
-                        <span className="thq-body-small thq-link"><Link to="/">ПОЧЕТНА</Link></span>
-                        <span className="thq-body-small thq-link"><Link to="/about-us">ЗА НАС</Link></span>
-                        <span className="thq-body-small thq-link"><Link to="/registration">ПРИЈАВУВАЊЕ</Link></span>
-                        <span className="thq-body-small thq-link"><Link to="/teams">ТИМОВИ</Link></span>
-                        <span className="thq-body-small thq-link"><Link to="/schedule">РАСПОРЕД</Link></span>
-                        <span className="thq-body-small thq-link"><Link to="/results">РЕЗУЛТАТИ</Link></span>
+                        <span className="thq-body-small thq-link link-nav"><Link to="/">ПОЧЕТНА</Link></span>
+                        <span className="thq-body-small thq-link link-nav"><Link to="/about-us">ЗА НАС</Link></span>
+                        <span className="thq-body-small thq-link link-nav"><Link to="/registration">ПРИЈАВУВАЊЕ</Link></span>
+                        <span className="thq-body-small thq-link link-nav"><Link to="/teams">ТИМОВИ</Link></span>
+                        <span className="thq-body-small thq-link link-nav"><Link to="/schedule">РАСПОРЕД</Link></span>
+                        <span className="thq-body-small thq-link link-nav"><Link to="/results">РЕЗУЛТАТИ</Link></span>
 
 
 
@@ -51,19 +51,19 @@ const Navbar = () => {
                             </div>
                         </div>
                         <nav className="navbar-links2">
-                            <span className="thq-body-small thq-link"><Link to="/">ПОЧЕТНА</Link></span>
-                            <span className="thq-body-small thq-link"><Link to="/about-us">ЗА НАС</Link></span>
-                            <span className="thq-body-small thq-link"><Link to="/registration">ПРИЈАВУВАЊЕ</Link></span>
-                            <span className="thq-body-small thq-link"><Link to="/teams">ТИМОВИ</Link></span>
-                            <span className="thq-body-small thq-link"><Link to="/schedule">РАСПОРЕД</Link></span>
-                            <span className="thq-body-small thq-link"><Link to="/results">РЕЗУЛТАТИ</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/">ПОЧЕТНА</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/about-us">ЗА НАС</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/registration">ПРИЈАВУВАЊЕ</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/teams">ТИМОВИ</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/schedule">РАСПОРЕД</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/results">РЕЗУЛТАТИ</Link></span>
 
-                            <span className="thq-body-small thq-link"><Link to="/photos">ГАЛЕРИЈА</Link></span>
-                            <span className="thq-body-small thq-link"><Link to="/КОНТАКТ">КОНТАКТ</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/photos">ГАЛЕРИЈА</Link></span>
+                            <span className="thq-body-small thq-link" onClick={() => setIsMobileMenuOpen(false)}><Link to="/КОНТАКТ">КОНТАКТ</Link></span>
                         </nav>
                     </div>
                     <div className="navbar-buttons2">
-                        <button className="thq-button-filled"><Link to="/live"> <span className="thq-body-small">РЕЗУЛТАТИ ВО ЖИВО</span></Link></button>
+                        <button className="thq-button-filled"><Link onClick={() => setIsMobileMenuOpen(false)} to="/live"> <span className="thq-body-small">РЕЗУЛТАТИ ВО ЖИВО</span></Link></button>
 
                     </div>
                 </div>
