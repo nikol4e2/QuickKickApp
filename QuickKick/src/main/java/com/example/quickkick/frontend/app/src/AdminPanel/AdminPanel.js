@@ -15,26 +15,33 @@ import AddNewMatch from "./matches/addMatch/AddNewMatch";
 import EditMatch from "./matches/editMatch/EditMatch";
 import StartSettings from "./playingMatch/StartSettings";
 import StopWatch from "./playingMatch/stopwatchPanel/StopWatch";
+import Login from "./Auth/Login";
+import {AuthProvider} from "./Auth/AuthContext";
+import ProtectedRoute from "./Auth/ProtectedRoute";
 
 const AdminPanel = () => {
     return (
         <div>
-            <AdminNav />
-            <Routes>
-                <Route path="/teams" element={<TeamsList></TeamsList>}></Route>
-                <Route path="/teams/:id" element={<EditTeam></EditTeam>}></Route>
-                <Route path="/add-team" element={<AddTeam></AddTeam>}></Route>
-                <Route path="/players" element={<ListAllPlayers></ListAllPlayers>}></Route>
-                <Route path={"/teams/:id/players"} element={<ListPlayersByTeam />}></Route>
-                <Route path={"/teams/:id/add-player"} element={<AddPlayerToTeam></AddPlayerToTeam>}></Route>
-                <Route path={"/players/add-player"} element={<AddPlayer></AddPlayer>}></Route>
-                <Route path={"/players/:id"} element={<EditPlayer></EditPlayer>}></Route>
-                <Route path={"/matches"} element={<MatchesList></MatchesList>}></Route>
-                <Route path={"/matches/add-match"} element={<AddNewMatch></AddNewMatch>}></Route>
-                <Route path={"/matches/:id"} element={<EditMatch></EditMatch>}></Route>
-                <Route  path={"/playing-match/start-settings/:id"} element={<StartSettings></StartSettings>}></Route>
 
+            <AuthProvider>
+                <ProtectedRoute><AdminNav /></ProtectedRoute>
+            <Routes>
+
+                <Route path="/teams" element={ <ProtectedRoute><TeamsList></TeamsList></ProtectedRoute>}></Route>
+                <Route path="/teams/:id" element={<ProtectedRoute><EditTeam></EditTeam></ProtectedRoute>}></Route>
+                <Route path="/add-team" element={<ProtectedRoute><AddTeam></AddTeam></ProtectedRoute>}></Route>
+                <Route path="/players" element={<ProtectedRoute><ListAllPlayers></ListAllPlayers></ProtectedRoute>}></Route>
+                <Route path={"/teams/:id/players"} element={<ProtectedRoute><ListPlayersByTeam /></ProtectedRoute>}></Route>
+                <Route path={"/teams/:id/add-player"} element={<ProtectedRoute><AddPlayerToTeam></AddPlayerToTeam></ProtectedRoute>}></Route>
+                <Route path={"/players/add-player"} element={<ProtectedRoute><AddPlayer></AddPlayer></ProtectedRoute>}></Route>
+                <Route path={"/players/:id"} element={<ProtectedRoute><EditPlayer></EditPlayer></ProtectedRoute>}></Route>
+                <Route path={"/matches"} element={<ProtectedRoute><MatchesList></MatchesList></ProtectedRoute>}></Route>
+                <Route path={"/matches/add-match"} element={<ProtectedRoute><AddNewMatch></AddNewMatch></ProtectedRoute>}></Route>
+                <Route path={"/matches/:id"} element={<ProtectedRoute><EditMatch></EditMatch></ProtectedRoute>}></Route>
+                <Route  path={"/playing-match/start-settings/:id"} element={<ProtectedRoute><StartSettings></StartSettings></ProtectedRoute>}></Route>
+                <Route path={"/login"} element={<Login></Login>}></Route>
             </Routes>
+            </AuthProvider>
 
         </div>
     );

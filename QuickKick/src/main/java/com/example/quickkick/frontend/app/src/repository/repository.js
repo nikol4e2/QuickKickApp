@@ -135,6 +135,13 @@ const Service = {
     },
     submitGoals: (payload) =>{
         return axios.post(`/players/add-goals`, payload);
+    },
+
+
+
+    //AUTH
+    login: (data) =>{
+        return axios.post(`/users/login`, data);
     }
 
 

@@ -9,24 +9,35 @@ import com.example.quickkick.web.model.exceptions.UserNameAlreadyExistsException
 import com.example.quickkick.web.repository.UserRepository;
 import com.example.quickkick.web.service.UserService;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public User login(String username, String password) {
-        if(username == null || password == null) {
+        if (username == null || password == null) {
             throw new InvalidUserCredentialsException();
         }
-        return userRepository.findByUsernameAndPassword(username,password).orElseThrow(InvalidUserCredentialsException::new);
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(InvalidUserCredentialsException::new);
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new PasswordsDoNotMatchException();
+        }
+
+        return user;
     }
 
     @Override
@@ -43,7 +54,18 @@ public class UserServiceImpl implements UserService {
         {
             throw new UserNameAlreadyExistsException(username);
         }
-        User user=new User(username,password,userRole);
+        String encodedPassword = passwordEncoder.encode(password);
+        User user=new User(username,encodedPassword,userRole);
         return this.userRepository.save(user);
+    }
+
+    @Override
+    public boolean authenticate(String username, String password) {
+        User user=this.userRepository.findByUsername(username).orElseThrow(InvalidUserCredentialsException::new);
+        if(!passwordEncoder.matches(password,user.getPassword()))
+        {
+            throw new PasswordsDoNotMatchException();
+        }
+        return true;
     }
 }

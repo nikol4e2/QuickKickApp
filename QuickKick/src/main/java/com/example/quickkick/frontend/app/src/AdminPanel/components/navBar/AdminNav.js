@@ -1,8 +1,19 @@
 import React from 'react';
-import { Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "./adminNavbar.css"
+import {useAuth} from "../../Auth/AuthContext";
 
 const AdminNav = () => {
+
+    const {logout} = useAuth();
+
+    const navigate = useNavigate();
+
+
+    const logoutUser = () => {
+        logout();
+        navigate("/login");
+    }
     return (
         <nav className="admin-navbar">
             <div className="admin-navbar-container">
@@ -17,6 +28,9 @@ const AdminNav = () => {
                     </li>
                     <li className="admin-nav-item">
                         <Link to="/admin/matches" className="admin-nav-link">НАТПРЕВАРИ</Link>
+                    </li>
+                    <li>
+                        <button onClick={logoutUser}>Одлогирај се!</button>
                     </li>
                 </ul>
             </div>
