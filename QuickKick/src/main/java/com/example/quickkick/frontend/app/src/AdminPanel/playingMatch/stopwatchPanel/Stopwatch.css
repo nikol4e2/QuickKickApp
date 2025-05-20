@@ -41,7 +41,7 @@
 }
 
 
-.score {
+.score-stopwatch {
     font-size: 8rem;
     padding: 40px;
     background-color: #ffffff;
@@ -50,6 +50,7 @@
     width: 160px;
     margin: auto;
     box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+    color: black;
 }
 
 .main-timer {

@@ -353,7 +353,7 @@ const StopWatch = () => {
                 <div className="team">
                     <h2>{match.team1.name}</h2>
 
-                    <div className="score">{goalsTeam1}</div>
+                    <div className="score-stopwatch">{goalsTeam1}</div>
                 </div>
 
                 <div className="main-timer">
@@ -376,7 +376,7 @@ const StopWatch = () => {
 
                 <div className="team">
                     <h2>{match.team2.name}</h2>
-                    <div className="score">{goalsTeam2}</div>
+                    <div className="score-stopwatch">{goalsTeam2}</div>
                 </div>
 
             </div>

@@ -77,7 +77,7 @@ const LiveMatchStatistics = () => {
        }
     }
     return (
-        <div>
+        <div className="container">
             {liveMatch && <div className={`live-scoreboard ${highlight ? 'goal-highlight' : ''}`}>
                 <div className="teams-live">
                     <div className="team-left">

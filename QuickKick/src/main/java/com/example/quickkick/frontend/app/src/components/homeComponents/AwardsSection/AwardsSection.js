@@ -1,13 +1,40 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 
 
 import "./awardssection.css"
 
 const Steps = () => {
+    useEffect(() => {
+        // Почекај anime да се вчита
+        if (window.anime) {
+            // Wrap every letter in a span
+            const textWrapper = document.querySelector('.ml2');
+            if (textWrapper) {
+                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                window.anime.timeline({ loop: true })
+                    .add({
+                        targets: '.ml2 .letter',
+                        scale: [4, 1],
+                        opacity: [0, 1],
+                        translateZ: 0,
+                        easing: "easeOutExpo",
+                        duration: 950,
+                        delay: (el, i) => 70 * i
+                    }).add({
+                    targets: '.ml2',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+            }
+        }
+    }, []);
     return (
         <div className="steps-container1 thq-section-padding">
-            <span className="heading-awards">Награден фонд</span>
+            <span className="heading-awards ml2">Награден фонд</span>
 
             <div className="steps-max-width thq-section-max-width">
                 <div className="steps-container2 thq-grid-2">

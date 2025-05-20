@@ -35,7 +35,11 @@
 
 .hero-text2 {
     text-align: center;
+    color: #000000 !important;
 }
+
+
+
 
 .hero-actions {
     gap: var(--dl-layout-space-unit);
@@ -199,6 +203,11 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.hero-descritption{
+    color: #040303 !important;
+    text-align: center;
+}
+
 @media(max-width: 767px) {
     .hero-content2 {
         width: 100%;
@@ -216,4 +225,12 @@
     .hero-button2 {
         width: 100%;
     }
+
+
+
+
 }
+
+
+
+

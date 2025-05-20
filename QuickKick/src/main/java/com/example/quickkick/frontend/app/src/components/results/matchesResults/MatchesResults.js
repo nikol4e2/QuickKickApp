@@ -32,7 +32,7 @@ const MatchesResults = () => {
         <div className="results-container">
             <h2 className="results-title">Резултати од завршени натпревари</h2>
             {matches.length === 0 ? (
-                <p className="results-empty">Нема завршени натпревари.</p>
+                <div className="spinner"></div>
             ) : (
                 matches.map(match => (
                     <div key={match.id} className="results-match-box">
