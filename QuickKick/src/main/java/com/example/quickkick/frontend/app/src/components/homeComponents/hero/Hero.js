@@ -18,9 +18,9 @@ const Hero = () => {
                 </div>
                 <div className="hero-actions">
 
-                    <Link className="navbar-action11 thq-button-animated thq-button-filled watch-live-button" to="/live">РЕЗУЛТАТИ ВО ЖИВО</Link>
+                    <Link className="navbar-action11 thq-button-animated thq-button-filled watch-live-button equal-width-button"  to="/live">РЕЗУЛТАТИ ВО ЖИВО</Link>
 
-                        <Link className="thq-button-outline hero-button2 thq-body-small get-results-button" to={"/results"}>РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</Link>
+                        <Link className="thq-button-outline hero-button2 thq-body-small get-results-button equal-width-button" to={"/results"}>РЕЗУЛАТАТИ ОД ЗАВРЕШНИ НАТПРЕВАРИ</Link>
 
                 </div>
             </div>

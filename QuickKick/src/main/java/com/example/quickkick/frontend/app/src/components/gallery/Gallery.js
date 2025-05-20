@@ -32,6 +32,7 @@ const Gallery = () => {
                             src={`/gallery/${img}`}
                             alt={`Gallery ${index + 1}`}
                             className="gallery-img"
+                            loading="lazy"
                         />
                     </div>
                 ))}
