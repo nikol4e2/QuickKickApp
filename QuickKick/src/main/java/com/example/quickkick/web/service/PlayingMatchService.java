@@ -24,6 +24,7 @@ public interface PlayingMatchService {
     void signalTimeout(Long playingMatchId, TimeoutType timeoutType);
     void signalPlayingAgain(Long playingMatchId);
     void finishPlayingMatch(Long playingMatchId,Boolean isGroupPhase);
+    void finishPlayingMatchFromMatch(Long matchId);
 
 
     void deletePlayingMatch(Long playingMatchId);

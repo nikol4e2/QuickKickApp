@@ -36,10 +36,11 @@
     text-align: center;
 }
 
-.match-date {
+.match-date-upcoming {
     color: #eaeaea;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     text-align: center;
+
 }
 
 .no-upcoming-matches {

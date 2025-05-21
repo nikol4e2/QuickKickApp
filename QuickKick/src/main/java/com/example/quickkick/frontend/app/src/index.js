@@ -6,11 +6,13 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import AdminPanel from "./AdminPanel/AdminPanel";
 import StopWatch from "./AdminPanel/playingMatch/stopwatchPanel/StopWatch";
 import ControlPanel from "./AdminPanel/playingMatch/stopwatchPanel/ControlPanel";
+import {AuthProvider} from "./AdminPanel/Auth/AuthContext";
+import ProtectedRoute from "./AdminPanel/Auth/ProtectedRoute";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
+    <AuthProvider>
       <Router>
           <Routes>
               {/* Главната апликација */}
@@ -19,11 +21,12 @@ root.render(
               {/* Рути за Админ панелот */}
               <Route path="/admin/*" element={<AdminPanel />} />
 
-              <Route path={"/stopwatch/:id"} element={<StopWatch></StopWatch>}></Route>
+              <Route path={"/stopwatch/:id"} element={<ProtectedRoute><StopWatch></StopWatch></ProtectedRoute>}></Route>
               <Route path={"/controls/:id"} element={<ControlPanel></ControlPanel>}></Route>
           </Routes>
 
       </Router>
+        </AuthProvider>
 
 );
 

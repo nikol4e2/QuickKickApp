@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import Service from "../../../repository/repository";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import "./Stopwatch.css";
 //import timerSound from "../../../../public/sounds/10-sec-timer.mp3"
 const StopWatch = () => {
@@ -8,6 +8,7 @@ const StopWatch = () => {
     const params= useParams();
     const id = params.id;
 
+    const navigate = useNavigate();
 
 
     const [remainingTime, setRemainingTime] = React.useState(0);
@@ -39,6 +40,11 @@ const StopWatch = () => {
 
     useEffect(() => {
         Service.fetchPlayingMatch(id).then(result=>{
+            if(result.data.status==="FINISHED"){
+                alert("FINISHED MATCH");
+                navigate("/admin")
+            }
+
             setMatchData(result.data)
             setHalfCounter(result.data.halfTimeCounter)
             const totalTime=result.data.minutesForHalfTime*60;
@@ -52,7 +58,7 @@ const StopWatch = () => {
 
             setTimeoutRemaining(result.data.timeoutTime*60);
             setHalfTimeRestRemaining(result.data.pauseTime*60);
-            setHalfTimeRestRemaining(10);
+            
         }).catch(err=>{console.log("Error loading match: ",err)})
     }, []);
 
@@ -143,8 +149,8 @@ const StopWatch = () => {
             } else {
 
                 setHalfTimeRestActive(false);
-                //setRemainingTime(matchData.minutesForHalfTime * 60);
-                setRemainingTime(30)
+                setRemainingTime(matchData.minutesForHalfTime * 60);
+
                 stopTimer();
                 Service.signalPlayingAgain(id).catch(err => console.log("Error notifying backend:", err));
             }

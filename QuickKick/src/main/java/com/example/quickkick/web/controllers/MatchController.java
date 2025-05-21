@@ -9,6 +9,7 @@ import com.example.quickkick.web.model.dto.FinishMatchRequest;
 import com.example.quickkick.web.model.dto.MatchDTO;
 import com.example.quickkick.web.model.enums.MatchStatus;
 import com.example.quickkick.web.service.MatchService;
+import com.example.quickkick.web.service.PlayingMatchService;
 import com.example.quickkick.web.service.TeamService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +22,12 @@ public class MatchController {
 
     private final MatchService matchService;
     private final TeamService teamService;
+    private final PlayingMatchService playingMatchService;
 
-
-    public MatchController(MatchService matchService, TeamService teamService) {
+    public MatchController(MatchService matchService, TeamService teamService, PlayingMatchService playingMatchService) {
         this.matchService = matchService;
         this.teamService = teamService;
+    this.playingMatchService = playingMatchService;
     }
 
     @GetMapping
@@ -79,6 +81,7 @@ public class MatchController {
     @PostMapping("/{id}/finish")
     public ResponseEntity<Match> finishMatch(@PathVariable Long id, @RequestBody FinishMatchRequest finishMatchRequest)
     {
+        this.playingMatchService.finishPlayingMatchFromMatch(id);
         this.matchService.finishMatch(id,finishMatchRequest.getGoalsTeam1(), finishMatchRequest.getGoalsTeam2(), finishMatchRequest.getIsGroupPhase());
         return ResponseEntity.noContent().build();
     }

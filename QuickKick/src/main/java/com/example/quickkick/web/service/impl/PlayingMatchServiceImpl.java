@@ -162,6 +162,7 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
         {
             playingMatch.get().setHalfTimeCounter(2);
             playingMatch.get().setStatus(PlayingMatchStatus.HALF_TIME_TIMEOUT);
+            playingMatch.get().setTimer(playingMatch.get().getMinutesForHalfTime());
             this.playingMatchRepository.save(playingMatch.get());
         }
     }
@@ -199,6 +200,13 @@ public class PlayingMatchServiceImpl implements PlayingMatchService {
         playingMatch.setStatus(PlayingMatchStatus.FINISHED);
 
         this.playingMatchRepository.deleteById(playingMatchId); // Proveri dali brisenjeto e potrebno?
+    }
+
+    @Override
+    public void finishPlayingMatchFromMatch(Long matchId) {
+        PlayingMatch playingMatch=this.getPlayingMatchByMatchId(matchId).orElseThrow(MatchNotFoundException::new);
+        playingMatch.setStatus(PlayingMatchStatus.FINISHED);
+        this.playingMatchRepository.save(playingMatch);
     }
 
     @Override
