@@ -29,6 +29,9 @@ const AdminNav = () => {
                     <li className="admin-nav-item">
                         <Link to="/admin/matches" className="admin-nav-link">НАТПРЕВАРИ</Link>
                     </li>
+                    <li className="admin-nav-item">
+                        <Link to="/admin/generate-img">ГЕНЕРИРАЈ СЛИКА</Link>
+                    </li>
                     <li>
                         <button onClick={logoutUser}>Одлогирај се!</button>
                     </li>

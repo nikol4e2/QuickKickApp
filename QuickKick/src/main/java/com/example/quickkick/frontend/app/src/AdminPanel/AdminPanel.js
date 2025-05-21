@@ -18,6 +18,7 @@ import StopWatch from "./playingMatch/stopwatchPanel/StopWatch";
 import Login from "./Auth/Login";
 import {AuthProvider} from "./Auth/AuthContext";
 import ProtectedRoute from "./Auth/ProtectedRoute";
+import ListingMatches from "./imgGenerator/listingMatches/ListingMatches";
 
 const AdminPanel = () => {
     return (
@@ -39,6 +40,7 @@ const AdminPanel = () => {
                 <Route path={"/matches/add-match"} element={<ProtectedRoute><AddNewMatch></AddNewMatch></ProtectedRoute>}></Route>
                 <Route path={"/matches/:id"} element={<ProtectedRoute><EditMatch></EditMatch></ProtectedRoute>}></Route>
                 <Route  path={"/playing-match/start-settings/:id"} element={<ProtectedRoute><StartSettings></StartSettings></ProtectedRoute>}></Route>
+                <Route path={"/generate-img"} element={<ProtectedRoute><ListingMatches></ListingMatches></ProtectedRoute>}></Route>
                 <Route path={"/login"} element={<Login></Login>}></Route>
             </Routes>
             </AuthProvider>

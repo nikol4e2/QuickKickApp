@@ -1,0 +1,47 @@
+
+.listing-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #222;
+}
+
+
+.listing-container h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.date-group {
+    margin-bottom: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+}
+
+.date-group h2 {
+    font-size: 20px;
+    color: #b20000;
+    margin-bottom: 10px;
+}
+
+
+.match-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: background-color 0.2s ease;
+}
+
+.match-row:hover {
+    background-color: #f1f1f1;
+}
+
+.match-row input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}

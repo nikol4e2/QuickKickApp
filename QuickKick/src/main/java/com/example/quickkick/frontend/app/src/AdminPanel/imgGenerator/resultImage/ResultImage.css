@@ -1,0 +1,94 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.image-container {
+    background-color: #990000;
+    color: white;
+    width: 600px;
+    padding: 1.5rem;
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+}
+
+.title-img {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    display: block;
+    font-size: 1.3rem;
+    margin-top: 0.3rem;
+}
+
+.match {
+    background-color: white;
+    color: #990000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.team-img {
+    width: 40%;
+    padding: 0.6rem;
+}
+
+.score-img {
+    width: 20%;
+    background-color: #ffd700;
+    color: #990000;
+    font-size: 1.5rem;
+    padding: 0.4rem 0;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.time {
+    font-size: 1rem;
+}
+
+.note {
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: transparent;
+    color: #990000;
+    margin-top: 0.3rem;
+}
+
+.download-btn {
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #ffd700;
+    border: none;
+    color: #990000;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #e6c200;
+}

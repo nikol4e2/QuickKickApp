@@ -58,7 +58,7 @@ const StopWatch = () => {
 
             setTimeoutRemaining(result.data.timeoutTime*60);
             setHalfTimeRestRemaining(result.data.pauseTime*60);
-            
+
         }).catch(err=>{console.log("Error loading match: ",err)})
     }, []);
 
