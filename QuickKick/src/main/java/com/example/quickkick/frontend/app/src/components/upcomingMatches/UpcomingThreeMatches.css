@@ -2,86 +2,74 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
-    padding: 0 10px;
+    padding: 40px 20px;
+
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.matches-heading {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #111;
+    text-align: center;
 }
 
 .upcoming-matches-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 24px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 700px;
+    padding: 0 10px;
 }
 
 .upcoming-match-card {
-    background-color: #f65a59;
-    border-radius: 12px;
-    padding: 20px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    background-color: #f3284b;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .upcoming-match-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
 .match-title {
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
     text-align: center;
 }
 
 .match-date-upcoming {
-    color: #eaeaea;
-    font-size: 1.7rem;
+    font-size: 18px;
+    color: #ffffff;
     text-align: center;
-
 }
 
 .no-upcoming-matches {
-    font-size: 1.2rem;
-    color: #b10000;
-    margin-top: 20px;
+    font-size: 20px;
+    color: #f3284b;
+    margin-top: 40px;
     text-align: center;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .match-title {
-        font-size: 1.8rem;
-    }
-
-    .match-date {
-        font-size: 1.3rem;
-    }
-
+/* Респонзивност за мобилни уреди */
+@media (max-width: 600px) {
     .upcoming-match-card {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .upcoming-matches-list {
-        flex-direction: column;
-        align-items: center;
+        padding: 20px;
     }
 
     .match-title {
-        font-size: 1.5rem;
+        font-size: 20px;
     }
 
-    .match-date {
-        font-size: 1.2rem;
-    }
-
-    .upcoming-match-card {
-        width: 100%;
-        max-width: 320px;
-        padding: 10px;
+    .match-date-upcoming {
+        font-size: 16px;
     }
 }

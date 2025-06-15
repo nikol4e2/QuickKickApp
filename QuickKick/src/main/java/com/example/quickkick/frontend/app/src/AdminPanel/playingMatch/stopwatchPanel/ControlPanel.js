@@ -15,6 +15,13 @@ const ControlPanel = () => {
     const [finishMatchToggle, setFinishMatchToggle] = React.useState(false);
     const [isGroupStage, setIsGroupStage] = React.useState(null);
 
+    const [toggleAdjustTime, setToggleAdjustTime] = React.useState(false);
+    const [adjustedTime, setAdjustedTime] = React.useState(0);
+
+
+    const [minutesAdjust, setMinutesAdjust] = React.useState(0);
+    const [secondsAdjust, setSecondsAdjust] = React.useState(0);
+
     const handleClickOnFinish = () => {
         if(isGroupStage===null){
             alert("Избери дали натпреварот е од групна фаза.");
@@ -45,12 +52,34 @@ const ControlPanel = () => {
         channel.postMessage({type, payload});
     };
 
+    const toggleTimerAdjust = ()=>{
+        setToggleAdjustTime(!toggleAdjustTime);
+    }
 
 
 
     if(matchData==null) {
         return <div>Loading</div>
     }
+
+    const changeMinutes=(e)=>{
+        setMinutesAdjust(e.target.value);
+    }
+    const changeSeconds=(e)=>{
+        setSecondsAdjust(e.target.value);
+    }
+
+    const handleChangeOfTimer=()=>
+    {
+        sendCommand("SET_PERIOD",minutesAdjust*60+secondsAdjust);
+        setRemainingTime(minutesAdjust*60+secondsAdjust);
+        setMinutesAdjust(0);
+        setSecondsAdjust(0);
+        toggleTimerAdjust();
+    }
+
+
+
     return (
         <>
         <div className="control-panel">
@@ -90,9 +119,20 @@ const ControlPanel = () => {
                 <button onClick={() => sendCommand("START_TIMER")}>Старт</button>
                 <button onClick={() => sendCommand("PAUSE_TIMER")}>Пауза</button>
                 <button onClick={() => sendCommand("SET_TIMEOUT_TIMER")}>Тајмаут</button>
-
+                <button onClick={toggleTimerAdjust}>НАМЕСТИ ТАЈМЕР</button>
             </div>
+            {toggleAdjustTime && <div>
+                <div>
+                    <label htmlFor="">МИНУТИ:</label>
+                    <input type="number" value={minutesAdjust} onChange={changeMinutes} name="min"/>
+                </div>
+                <div>
+                    <label htmlFor="">СЕКУНДИ:</label>
+                    <input type="number" value={secondsAdjust} onChange={changeSeconds}/>
+                </div>
+                <button onClick={handleChangeOfTimer}></button>
 
+            </div>}
 
             <div className="finish-match-controll">
                 <h3>Заврши го натпреварот</h3>

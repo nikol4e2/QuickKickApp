@@ -40,7 +40,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/**").permitAll()
                                 .anyRequest().authenticated()
                         )
-                .httpBasic(Customizer.withDefaults())
+                //.httpBasic(Customizer.withDefaults())
 
                 .build();
     }

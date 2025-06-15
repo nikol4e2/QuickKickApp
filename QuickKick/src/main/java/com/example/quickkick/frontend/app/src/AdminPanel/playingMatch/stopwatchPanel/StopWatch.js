@@ -51,7 +51,7 @@ const StopWatch = () => {
             if(result.data.status==="WAITING_TO_START")
             {
                 setIsMatchStarted(false);
-            }else
+            }
 
             setRemainingTime(totalTime);
          
@@ -126,6 +126,10 @@ const StopWatch = () => {
                 setTimeoutRemaining(prev=> prev-1)
             },1000);
         }else if (timeoutActive && timeoutRemaining===0){
+            if (buzzerSound.current) {
+                buzzerSound.current.currentTime = 0;
+                buzzerSound.current.play().catch(err => console.log("Error playing buzzer:", err));
+            }
             setTimeoutActive(false);
 
         }
@@ -150,7 +154,10 @@ const StopWatch = () => {
 
                 setHalfTimeRestActive(false);
                 setRemainingTime(matchData.minutesForHalfTime * 60);
-
+                if (buzzerSound.current) {
+                    buzzerSound.current.currentTime = 0;
+                    buzzerSound.current.play().catch(err => console.log("Error playing buzzer:", err));
+                }
                 stopTimer();
                 Service.signalPlayingAgain(id).catch(err => console.log("Error notifying backend:", err));
             }
@@ -242,7 +249,7 @@ const StopWatch = () => {
 
     }
     const setTimer = (seconds) =>{
-
+        setRemainingTime(seconds)
     }
 
 
@@ -335,6 +342,8 @@ const StopWatch = () => {
 
 
     const {minutes,seconds}=formatTime();
+
+
 
     const formatTimeString=(time) =>{
 
