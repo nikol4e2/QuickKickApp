@@ -2,26 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Service from "../../../repository/repository";
 import "./lastThreeFinished.css";
 
-const LastThreeFinishedMatches = () => {
-    const [lastMatches, setLastMatches] = useState([]);
+const LastThreeFinishedMatches = ({data}) => {
 
-    useEffect(() => {
-        loadLastMatches();
-    }, []);
-
-    const loadLastMatches = () => {
-        Service.loadLastMatches()
-            .then(response => setLastMatches(response.data))
-            .catch(error => console.log(error));
-    };
 
     return (
         <div className="matches-wrapper">
             <h2>Последни завршени натпревари</h2>
 
-            {lastMatches.length > 0 ? (
+            {data.length > 0 ? (
                 <div className="matches-list">
-                    {lastMatches.map(match => (
+                    {data.map(match => (
                         <div key={match.id} className="match-card">
                             <h3>{match.team1.name} - {match.team2.name}</h3>
                             <p className="result">Резултат: {match.goalsTeam1} - {match.goalsTeam2}</p>

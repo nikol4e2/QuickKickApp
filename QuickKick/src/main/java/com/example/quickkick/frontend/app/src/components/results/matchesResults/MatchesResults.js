@@ -4,6 +4,7 @@ import "./matchesResults.css"
 const MatchesResults = () => {
 
     const [matches, setMatches] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
         loadFinishedMatches();
@@ -14,8 +15,11 @@ const MatchesResults = () => {
             .then(results => {
                 const sorted = results.data.sort((a, b) => new Date(b.date) - new Date(a.date));
                 setMatches(sorted);
+
             })
-            .catch(error => console.log(error));
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false));
+
     }
 
     const formatDate = (dateString) => {
@@ -31,8 +35,11 @@ const MatchesResults = () => {
     return (
         <div className="results-container">
             <h2 className="results-title">Резултати од завршени натпревари</h2>
-            {matches.length === 0 ? (
+
+            {loading ? (
                 <div className="spinner"></div>
+            ) : matches.length === 0 ? (
+                <p className="no-results">Нема резултати за прикажување.</p>
             ) : (
                 matches.map(match => (
                     <div key={match.id} className="results-match-box">

@@ -1,22 +1,54 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./matchesSection.css"
 import TopTenPlayers from "../../topTenPlayers/TopTenPlayers";
 import LastThreeFinishedMatches from "../lastThreeFinishedMatches/LastThreeFinishedMatches";
 import UpcomingThreeMatches from "../../upcomingMatches/UpcomingThreeMatches";
+import Service from "../../../repository/repository";
 const MatchesSection = () => {
     const [activeTab, setActiveTab] = useState(0)
+
+
+    const [lastMatches, setLastMatches] = useState([])
+    const [upcomingMatches, setUpcomingMatches] = useState([])
+    const [topTenPlayers, setTopTenPlayers] = useState([])
+    const [loading, setLoading] = useState(true)
+
+
+    useEffect(() => {
+        const fetchAllData = async () => {
+            try {
+                const [lastMat, upcomming,topPlayers]= await Promise.all([
+                    Service.loadLastMatches(),
+                    Service.fetchUpcomingMatches(),
+                    Service.fetchTopTenPlayers()
+                ]);
+
+                setLastMatches(lastMat.data);
+                setUpcomingMatches(upcomming.data)
+                setTopTenPlayers(topPlayers.data);
+            }catch(error){
+                console.error("Error fetching data: ", error)
+            }finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAllData();
+
+    },[]);
+
     return (
         <div className="thq-section-padding">
             <div className="features1-container2 thq-section-max-width">
                 <div className="features1-image-container">
-                    {activeTab === 0 && (
-                        <LastThreeFinishedMatches></LastThreeFinishedMatches>
-                    )}
-                    {activeTab === 1 && (
-                        <UpcomingThreeMatches></UpcomingThreeMatches>
-                    )}
-                    {activeTab === 2 && (
-                        <TopTenPlayers></TopTenPlayers>
+                    {loading ? (
+                        <div className="spinner"></div>
+                    ) : activeTab === 0 ? (
+                        <LastThreeFinishedMatches data={lastMatches} />
+                    ) : activeTab === 1 ? (
+                        <UpcomingThreeMatches data={upcomingMatches} />
+                    ) : (
+                        <TopTenPlayers data={topTenPlayers} />
                     )}
 
                 </div>
