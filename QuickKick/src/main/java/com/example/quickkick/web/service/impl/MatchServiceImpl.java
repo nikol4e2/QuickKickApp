@@ -109,11 +109,10 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public void changeMatchStatus(Long matchId, MatchStatus status) {
-        Optional<Match> match=this.matchRepository.findById(matchId);
-        if(match.isPresent()) {
-            match.get().setStatus(status);
-            this.matchRepository.save(match.get());
-        }
+        Match match=this.matchRepository.findById(matchId).orElseThrow(MatchNotFoundException::new);
+        match.setStatus(status);
+        this.matchRepository.save(match);
+
     }
 
     @Override

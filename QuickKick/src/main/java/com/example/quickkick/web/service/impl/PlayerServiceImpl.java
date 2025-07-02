@@ -46,11 +46,10 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public void addGoalToPlayer(Long playerId, int goal) {
-       if(playerRepository.existsById(playerId)) {
-           Player player = playerRepository.findById(playerId).get();
-           player.setGoals(player.getGoals() + goal);
-           playerRepository.save(player);
-       }
+        Player player=this.playerRepository.findById(playerId).orElseThrow(PlayerNotFoundException::new);
+        player.setGoals(player.getGoals() + goal);
+        playerRepository.save(player);
+
     }
 
     @Override
