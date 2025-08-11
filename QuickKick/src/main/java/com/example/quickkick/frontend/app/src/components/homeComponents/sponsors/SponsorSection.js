@@ -7,7 +7,7 @@ const SponsorSection = (props) => {
                 <div className="testimonial-container10">
                     <h2 className="thq-heading-2">Покровители</h2>
                     <span className="testimonial-text11 thq-body-small">
-            Голема благодарност до следниве покровители за одржувањето на турнирот во 2024:
+            Голема благодарност до следниве покровители за одржувањето на турнирот во 2025:
           </span>
                 </div>
                 <div className="thq-grid-3">

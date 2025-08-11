@@ -17,8 +17,10 @@ import ListLiveMatch from "./components/LIVE/ListLiveMatch/ListLiveMatch";
 import LiveMatchStatistics from "./components/LIVE/LiveMatchStatistics/LiveMatchStatistics";
 import Login from "./AdminPanel/Auth/Login";
 import React from "react";
+
 function App() {
   return (
+
     <div className="App">
         <Navbar />
       <Routes>
@@ -38,6 +40,7 @@ function App() {
       </Routes>
         <Footer/>
     </div>
+
   );
 }
 

@@ -14,6 +14,7 @@ public interface MatchService {
     Match saveMatch(LocalDateTime date, Team team1, Team team2);
     void deleteMatchById(Long matchId);
     Match editMatch(Long matchId, LocalDateTime date, Team team1, Team team2);
+    Match editMatchAllData(Long matchId, LocalDateTime date, Team team1, Team team2, int goalsTeam1, int goalsTeam2, MatchStatus status);
     void finishMatch(Long matchId,int team1Goals,int team2Goals,Boolean isGroupPhase);
     List<Match> findAll();
     List<Match> findAllByStatus(MatchStatus status);

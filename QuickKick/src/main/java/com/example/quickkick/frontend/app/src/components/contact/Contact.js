@@ -21,7 +21,7 @@ const Contact = () => {
 
                             </div>
                             <span className="contact-email thq-body-small">
-                ovemail@gmail.com
+                turnir.andrej.mitev@gmail.com
               </span>
                         </div>
                     </div>
@@ -35,7 +35,7 @@ const Contact = () => {
 
                             </div>
                             <span className="contact-phone thq-body-small">
-                077123456
+                078343279 и 077504069
               </span>
                         </div>
                     </div>

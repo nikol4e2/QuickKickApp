@@ -61,6 +61,19 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
+    public Match editMatchAllData(Long matchId, LocalDateTime date, Team team1, Team team2, int goalsTeam1, int goalsTeam2, MatchStatus status) {
+        Match match=this.matchRepository.findById(matchId).orElseThrow(() -> new MatchNotFoundException());
+
+        match.setDate(date);
+        match.setTeam1(team1);
+        match.setTeam2(team2);
+        match.setGoalsTeam1(goalsTeam1);
+        match.setGoalsTeam2(goalsTeam2);
+        match.setStatus(status);
+        return this.matchRepository.save(match);
+    }
+
+    @Override
     public void finishMatch(Long matchId, int team1Goals, int team2Goals, Boolean isGroupPhase) {
         Match match=this.matchRepository.findById(matchId).orElseThrow(MatchNotFoundException::new);
         match.setStatus(MatchStatus.FINISHED);

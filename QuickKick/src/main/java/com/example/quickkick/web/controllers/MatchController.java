@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.quickkick.web.model.Team;
+import com.example.quickkick.web.model.dto.EditAllMatchDto;
 import com.example.quickkick.web.model.dto.FinishMatchRequest;
 import com.example.quickkick.web.model.dto.MatchDTO;
 import com.example.quickkick.web.model.enums.MatchStatus;
@@ -104,6 +105,20 @@ public class MatchController {
             return ResponseEntity.ok(match);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/{id}/edit-all")
+    public ResponseEntity<Match> editMatchAllDate(@PathVariable Long id, @RequestBody EditAllMatchDto editAllMatchDto)
+    {
+        Optional<Team> team1=this.teamService.findById(editAllMatchDto.getTeam1());
+        Optional<Team> team2=this.teamService.findById(editAllMatchDto.getTeam2());
+        if(team1.isPresent() || team2.isPresent())
+        {
+            Match match=this.matchService.editMatchAllData(id,editAllMatchDto.getDate(),team1.get(),team2.get(),editAllMatchDto.getGoalsTeam1(),editAllMatchDto.getGoalsTeam2(),editAllMatchDto.getStatus());
+            return ResponseEntity.ok(match);
+        }
+        return ResponseEntity.notFound().build();
+
     }
 
 
