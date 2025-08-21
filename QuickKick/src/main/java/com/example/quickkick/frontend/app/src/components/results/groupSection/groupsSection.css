@@ -72,3 +72,163 @@
         font-size: 1rem;
     }
 }
+
+
+
+.groups-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* за средна вертикална висина можеш да ставиш center */
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.simulate-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+.simulate-btn:hover {
+    background-color: #b71c1c;
+}
+
+.simulation-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.group-label {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* Респонзивност за мобилни телефони */
+@media (max-width: 480px) {
+    .simulate-btn {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .group-label {
+        font-size: 14px;
+    }
+
+    .checkbox-wrapper {
+        gap: 10px;
+    }
+}
+
+
+
+.groups-section-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.simulate-btn {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.simulate-btn:hover {
+    background-color: #a00;
+}
+
+.simulation-selection {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.group-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s;
+    user-select: none;
+}
+
+.group-label input[type="checkbox"] {
+    accent-color: #c00;
+    cursor: pointer;
+}
+
+.group-label:hover {
+    background-color: #f5f5f5;
+}
+
+/* Селектирана група */
+.group-label input[type="checkbox"]:checked + span {
+    font-weight: bold;
+    color: #c00;
+}
+
+.group-label span {
+    display: inline-block;
+}
+
+/* Ограничување на 4 избори - останатите се затемнети */
+.group-label input[disabled] + span {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Респонзивно */
+@media (max-width: 600px) {
+    .checkbox-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .group-label {
+        width: 80%;
+        justify-content: center;
+    }
+}

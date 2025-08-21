@@ -49,11 +49,7 @@ const EditTeam = () => {
                     <label htmlFor="">Име:</label>
                     <input type="text" name="name" value={team.name} onChange={handleChange}  required/>
                 </div>
-                <div>
-                    <label htmlFor="">Група:</label>
-                    <input type="text" name="teamGroup" value={team.teamGroup} onChange={handleChange}  required/>
-                    <span>Insert A, B, C or D</span>
-                </div>
+
                 <div>
                     <label htmlFor="">Број на победи:</label>
                     <input type="number" name="wins" value={team.wins} onChange={handleChange}  required/>

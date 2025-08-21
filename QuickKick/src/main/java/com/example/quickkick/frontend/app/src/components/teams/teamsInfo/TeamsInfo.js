@@ -47,8 +47,10 @@ const TeamsInfo = () => {
         switch (team?.teamGroup) {
             case "A": return "А";
             case "B": return "Б";
-            case "C": return "C";
-            case "D": return "D";
+            case "C": return "В";
+            case "D": return "Г";
+            case "E": return "Д";
+            case "F": return "Ѓ"
             default: return "N/A";
         }
     };

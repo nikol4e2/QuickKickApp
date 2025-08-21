@@ -49,6 +49,8 @@ public class TeamServiceImpl implements TeamService {
             case "b": teamGroup=TeamGroup.B;break;
             case "c": teamGroup=TeamGroup.C;break;
             case "d": teamGroup=TeamGroup.D;break;
+            case "e": teamGroup=TeamGroup.E;break;
+            case "f": teamGroup=TeamGroup.F;break;
 
         }
         Team team = new Team(name,teamGroup);

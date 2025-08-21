@@ -52,6 +52,8 @@ public class TeamController {
             case "b" -> this.teamService.findAllByGroup(TeamGroup.B);
             case "c" -> this.teamService.findAllByGroup(TeamGroup.C);
             case "d" -> this.teamService.findAllByGroup(TeamGroup.D);
+            case "e" -> this.teamService.findAllByGroup(TeamGroup.E);
+            case "f" -> this.teamService.findAllByGroup(TeamGroup.F);
             default -> null;
         };
     }
@@ -73,7 +75,7 @@ public class TeamController {
         return teamRepository.findById(id)
                 .map(existingTeam->{
                     existingTeam.setName(updatedTeam.getName());
-                    existingTeam.setTeamGroup(updatedTeam.getTeamGroup());
+                    existingTeam.setTeamGroup(existingTeam.getTeamGroup());
                     existingTeam.setWins(updatedTeam.getWins());
                     existingTeam.setLosses(updatedTeam.getLosses());
                     existingTeam.setDraws(updatedTeam.getDraws());

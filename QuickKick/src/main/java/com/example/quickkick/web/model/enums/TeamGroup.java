@@ -4,5 +4,7 @@ public enum TeamGroup {
     A,
     B,
     C,
-    D
+    D,
+    E,
+    F
 }
