@@ -63,7 +63,7 @@ const Steps = () => {
                             <label className="steps-text18 thq-heading-3">04</label>
                         </div>
 
-                        <div className="steps-container8 thq-card">
+                        <div className="steps-container9 thq-card">
                             <h2 className="thq-heading-2 position">Најдобар играч / стерелец / голман</h2>
                             <span className="steps-text20 thq-body-small valut">5.000МКД</span>
                             <label className="steps-text21 thq-heading-3"></label>

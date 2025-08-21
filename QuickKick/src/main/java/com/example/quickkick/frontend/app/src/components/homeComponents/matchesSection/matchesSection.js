@@ -55,7 +55,7 @@ const MatchesSection = () => {
                 <div className="features1-tabs-menu">
                     <div
                         onClick={() => setActiveTab(0)}
-                        className="features1-tab-horizontal1"
+                        className={`features1-tab-horizontal1 ${activeTab === 0 ? "active" : ""}`}
                     >
                         <div className="features1-divider-container1">
                             {activeTab === 0 && <div className="features1-container3"></div>}
@@ -63,13 +63,13 @@ const MatchesSection = () => {
                         <div className="features1-content1">
                             <h2 className="thq-heading-2 ">Последни резултати</h2>
                             <span className="thq-body-small clickable-text">
-                Резултати за последно одиграните натпревари!
+                Кликнете овде за да ги видите резултатите за последно одиграните натпревари!
               </span>
                         </div>
                     </div>
                     <div
                         onClick={() => setActiveTab(1)}
-                        className="features1-tab-horizontal2"
+                        className={`features1-tab-horizontal2 ${activeTab === 1 ? "active" : ""}`}
                     >
                         <div className="features1-divider-container2">
                             {activeTab === 1 && <div className="features1-container4"></div>}
@@ -83,7 +83,7 @@ const MatchesSection = () => {
                     </div>
                     <div
                         onClick={() => setActiveTab(2)}
-                        className="features1-tab-horizontal2"
+                        className={`features1-tab-horizontal3 ${activeTab === 2 ? "active" : ""}`}
                     >
                         <div className="features1-divider-container2">
                             {activeTab === 2 && <div className="features1-container4"></div>}

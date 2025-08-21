@@ -102,10 +102,10 @@
     font-weight: 700;
 }
 
-.steps-container8 {
+.steps-container9 {
     top: 10%;
     position: sticky;
-    transform: rotate(2deg);
+
     background: linear-gradient(135deg, #007BFF, #0056b3); /* сина боја */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     border-radius: 12px;

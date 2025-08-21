@@ -6,7 +6,7 @@ const Schedule = () => {
 
     const [matches, setMatches] = React.useState([]);
 
-    const [filter, setFilter] = React.useState("ALL");
+    const [filter, setFilter] = React.useState("SCHEDULED");
 
 
     const filteredMatches= matches.filter((match) => {
@@ -34,7 +34,11 @@ const Schedule = () => {
             month: 'long',
             year: 'numeric'
         });
-        const formattedTime = dateObj.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+        const formattedTime = dateObj.toLocaleTimeString('mk-MK', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        })
         return {formattedDate, formattedTime};
     }
 
@@ -46,7 +50,7 @@ const Schedule = () => {
             case "FINISHED":
                 return "Завршен";
             default:
-                return "Непознат";
+                return "Се игра";
         }
      }
 
@@ -57,10 +61,12 @@ const Schedule = () => {
     return (
         <div className="matches-container-schedule">
             <div style={{marginBottom: '20px'}}>
-                <button onClick={()=>setFilter("ALL")}>Сите</button>
                 <button onClick={()=>setFilter("SCHEDULED")}>Следни</button>
-
                 <button onClick={()=>setFilter("FINISHED")}>Завршени</button>
+                <button onClick={()=>setFilter("ALL")}>Сите</button>
+
+
+
             </div>
             <div>
                 {filteredMatches.length > 0 ?
