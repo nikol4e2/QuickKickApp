@@ -14,7 +14,13 @@
 }
 .link-nav{
     font-size: 0.9rem;
+
 }
+.link-nav:hover{
+    color: #800000 !important;
+}
+
+
 
 .navbar-navbar-interactive {
     width: 100%;
@@ -47,7 +53,10 @@
     flex-direction: row;
     justify-content: flex-start;
 }
-
+.navbar-links1 a:hover,
+.navbar-links2 a:hover {
+    color: #800000 !important;
+}
 .navbar-buttons1 {
     gap: var(--dl-layout-space-twounits);
     display: flex;
@@ -137,6 +146,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: linear-gradient(135deg, #b30000, #800000);
 }
 
 .watch-live-button:hover {

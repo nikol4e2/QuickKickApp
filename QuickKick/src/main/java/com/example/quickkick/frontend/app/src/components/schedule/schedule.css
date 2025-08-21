@@ -17,7 +17,7 @@
 
 .matches-container-schedule button {
     padding: 10px 20px;
-    background-color: red;
+    background: linear-gradient(135deg, #b30000, #800000);
     color: white;
     border: none;
     border-radius: 8px;

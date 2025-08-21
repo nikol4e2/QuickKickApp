@@ -136,11 +136,11 @@ const GroupsSection = () => {
 
             <h2 className="section-title">Групи</h2>
             {renderGroupTable("Група А", groupATeams)}
-            {renderGroupTable("Група Б", groupBTeams)}
-            {renderGroupTable("Група В", groupCTeams)}
-            {renderGroupTable("Група Г", groupDTeams)}
-            {renderGroupTable("Група Д", groupETeams)}
-            {renderGroupTable("Група Ѓ", groupFTeams)}
+            {renderGroupTable("Група B", groupBTeams)}
+            {renderGroupTable("Група C", groupCTeams)}
+            {renderGroupTable("Група D", groupDTeams)}
+            {renderGroupTable("Група E", groupETeams)}
+            {renderGroupTable("Група F", groupFTeams)}
         </div>
     );
 };

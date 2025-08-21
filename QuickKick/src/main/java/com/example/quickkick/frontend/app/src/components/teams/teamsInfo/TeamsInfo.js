@@ -73,7 +73,7 @@ const TeamsInfo = () => {
                 {team && (
                     <div className="team-details-box">
                         <h2>{team.name}</h2>
-                        <p><strong>Група:</strong> {printTeamGroup()}</p>
+                        <p><strong>Група:</strong> {team?.teamGroup}</p>
                         <h3>Статистика во групна фаза</h3>
                         <hr />
                         <p><strong>Победи:</strong> {team.wins}</p>

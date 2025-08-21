@@ -63,7 +63,7 @@ const Navbar = () => {
                         </nav>
                     </div>
                     <div className="navbar-buttons2">
-                        <button className="thq-button-filled"><Link onClick={() => setIsMobileMenuOpen(false)} to="/live"> <span className="thq-body-small">РЕЗУЛТАТИ ВО ЖИВО</span></Link></button>
+                        <button className="thq-button-filled watch-live-button"><Link onClick={() => setIsMobileMenuOpen(false)} to="/live"> <span className="thq-body-small ">РЕЗУЛТАТИ ВО ЖИВО</span></Link></button>
 
                     </div>
                 </div>
