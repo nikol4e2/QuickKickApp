@@ -69,15 +69,19 @@ const ControlPanel = () => {
         setSecondsAdjust(e.target.value);
     }
 
-    const handleChangeOfTimer=()=>
-    {
-        sendCommand("SET_PERIOD",minutesAdjust*60+secondsAdjust);
-        setRemainingTime(minutesAdjust*60+secondsAdjust);
+    const handleChangeOfTimer = () => {
+        const minutes = parseInt(minutesAdjust) || 0;
+        const seconds = parseInt(secondsAdjust) || 0;
+
+        const totalSeconds = minutes * 60 + seconds;
+
+        sendCommand("SET_PERIOD", totalSeconds);
+        setRemainingTime(totalSeconds);
+
         setMinutesAdjust(0);
         setSecondsAdjust(0);
         toggleTimerAdjust();
-    }
-
+    };
 
 
     return (

@@ -130,6 +130,7 @@ const StopWatch = () => {
                 buzzerSound.current.currentTime = 0;
                 buzzerSound.current.play().catch(err => console.log("Error playing buzzer:", err));
             }
+            setTimeoutRemaining(matchData.timeoutTime * 60);
             setTimeoutActive(false);
 
         }

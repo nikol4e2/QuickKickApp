@@ -2,25 +2,30 @@ import React from "react";
 import "./sponsorSection.css";
 
 const sponsors = [
-    { name: "Nale Trans", img: "/sponsors/Nale Trans.JPG" },
+    { name: "Општина Чешиново-Облешево", img: "/sponsors/opstina.JPG" },
     { name: "Amphenol", img: "/sponsors/Amphenol.JPG" },
     { name: "Adient", img: "/sponsors/Adient.JPG" },
-    { name: "Grga Trans", img: "/sponsors/Grga trans.JPG" },
+    { name: "Nale Trans", img: "/sponsors/nale.JPG" },
     { name: "Клиника Љубомировски", img: "/sponsors/klinikaLjubomirovski.JPG" },
+    { name: "Агрохемикал", img: "/sponsors/klinikaLjubomirovski.JPG" },
     { name: "Пицерија Стефан Облешево", img: "/sponsors/Pic Stefan.JPG" },
-    { name: "ME Vision Agency", img: "/sponsors/mevision2.JPG" },
-    { name: "Еко Зрно", img: "/sponsors/EkoZrno.JPG" },
     { name: "ОУ. Климент Охридски - Облешево", img: "/sponsors/klimentOhridski.JPG" },
+    { name: "ПЗУ Д-Р. Сашо Панов", img: "/sponsors/panovkrug.jpg" },
+
+
     { name: "Пицерија Аквариум", img: "/sponsors/akvarium.JPG" },
-    { name: "Општина Чешиново-Облешево", img: "/sponsors/opstina.JPG" },
+    { name: "ME Vision Agency", img: "/sponsors/mevision2.JPG" },
+    { name: "Ресторан Преслап", img: "/sponsors/preslap.jpg" },
+    { name: "Певеце Алуминиум", img: "/sponsors/pvc.jpg" },
+    { name: "ТП Филип Александров", img: "/sponsors/tpfilip.jpg" },
     { name: "AutoWelt", img: "/sponsors/autowelt.JPG" },
+    { name: "Ginger Fresh Bar", img: "/sponsors/ginger.JPG"},
+    { name: "Trend", img:"/sponsors/trend.JPG"},
     { name: "Метало комерц Емирица", img: "/sponsors/metaloKomerc.JPG" },
     { name: "Evina", img: "/sponsors/evina.JPG" },
-    { name: "Дабо АС", img: "/sponsors/daboAs.JPG" },
+
     { name: "Слога Чешиново", img: "/sponsors/sloga.JPG" },
-    { name: "Бербер Зоки Облешево", img: "/sponsors/berberZoki.JPG" },
-    { name: "Гостилница Мост", img: "/sponsors/most.JPG" },
-    { name: "Inox Dizajn Oblesevo", img: "/sponsors/inoxDizajn.JPG" },
+
     { name: "EuroPetrol", img: "/sponsors/euroPetrol.JPG" },
     { name: "Infinity", img: "/sponsors/infinityCafe.JPG" },
 

@@ -1,94 +1,161 @@
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem;
+.result-image {
+    width: 1024px;
+    position: relative;
+    overflow: hidden;
+    background-size: 1024px auto;
+    background-repeat: repeat-y;
 }
 
-.image-container {
-    background-color: #990000;
-    color: white;
-    width: 600px;
-    padding: 1.5rem;
-    font-family: Arial, sans-serif;
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1024px;
+    z-index: 2;
+}
+
+#result-image > div > h1:nth-child(1) {
     text-align: center;
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin: 170px 0 0 0;
+    color: white;
+}
+#result-image > div > h1{
+    margin: 10px 0 0 0;
+    font-size: 48px;
+    color: white;
 
 }
-
-.title-img {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.subtitle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-}
-
 .date {
-    display: block;
-    font-size: 1.3rem;
-    margin-top: 0.3rem;
+    text-align: center;
+    font-size: 26px;
+    color: #d8b35b;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.matches {
+    width: 100%;
 }
 
 .match {
-    background-color: white;
-    color: #990000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0.5rem 0;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.team-img {
-    width: 40%;
-    padding: 0.6rem;
-}
-
-.score-img {
-    width: 20%;
-    background-color: #ffd700;
-    color: #990000;
-    font-size: 1.5rem;
-    padding: 0.4rem 0;
-    font-weight: bold;
+    width: 850px;
+    margin: 0 auto 25px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-.time {
-    font-size: 1rem;
+.match-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+
+    background: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin-bottom: 0;
+}
+
+.team {
+    font-size: 34px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+}
+
+.center {
+    text-align: center;
+}
+
+.score-image {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+
+    background: none !important;
+    background-color: #d8b35b !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 90px !important;
+    z-index: -20;
+    padding-bottom: 15px;
+    border-radius: 12px
 }
 
 .note {
-    font-size: 0.8rem;
-    font-weight: bold;
-    background-color: transparent;
-    color: #990000;
-    margin-top: 0.3rem;
+    color: #d8b35b;
+    font-size: 18px;
+    margin-top: 4px;
 }
 
-.download-btn {
-    margin-top: 1.5rem;
-    padding: 0.7rem 1.2rem;
-    background-color: #ffd700;
+.time {
+    font-size: 20px;
+    color: #ccc;
+    margin-top: -42px;
+    z-index: 2;
+    color: white;
+    font-weight: bold;
+}
+.next-time{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+
+    background: none !important;
+    background-color: #d8b35b !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 90px !important;
+    z-index: -20;
+    border-radius: 12px;
+
+}
+
+.download-button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #e63946;
+    color: white;
     border: none;
-    color: #990000;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 8px;
+    border-radius: 6px;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s ease;
 }
 
-.download-btn:hover {
-    background-color: #e6c200;
+.download-button:hover {
+    background-color: #d62839;
+}
+.sponsors-image {
+
+    bottom: 35px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sponsors-image-title {
+    text-align: center;
+    color: #d8b35b;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.sponsors-image-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.sponsors-image-logos img {
+    height: 60px;
+    width: 120px;
+    object-fit: contain;
+
 }

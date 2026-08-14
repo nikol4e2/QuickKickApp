@@ -42,13 +42,13 @@ const Steps = () => {
 
                         <div className="steps-container4 thq-card">
                             <h2 className="thq-heading-2 position">Прво место</h2>
-                            <span className="steps-text11 thq-body-small valut">130.000МКД</span>
+                            <span className="steps-text11 thq-body-small valut">150.000МКД</span>
                             <label className="steps-text12 thq-heading-3">01</label>
                         </div>
 
                         <div className="steps-container5 thq-card">
                             <h2 className="thq-heading-2 position">Второ место</h2>
-                            <span className="steps-text14 thq-body-small valut">60.000МКД</span>
+                            <span className="steps-text14 thq-body-small valut">70.000МКД</span>
                             <label className="steps-text15 thq-heading-3">02</label>
                         </div>
 
