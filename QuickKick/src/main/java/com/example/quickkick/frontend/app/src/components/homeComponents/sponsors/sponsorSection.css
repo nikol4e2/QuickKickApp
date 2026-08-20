@@ -2,7 +2,6 @@
     padding: 4rem 2rem;
     display: flex;
     justify-content: center;
-
 }
 
 .sponsor-container {
@@ -15,7 +14,7 @@
 
 .sponsor-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     animation: fadeInDown 1s ease;
 }
 
@@ -33,6 +32,34 @@
     color: #070707;
 }
 
+
+
+.sponsor-category {
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.sponsor-category h3 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sponsor-category h3::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    margin: 12px auto 0;
+    background: #d4af37;
+    border-radius: 5px;
+}
+
+
+
+
 .sponsor-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -41,9 +68,10 @@
 }
 
 
+
 .sponsor-card {
-    background: linear-gradient(135deg, #b30000, #800000); /* градиент позадина */
-    backdrop-filter: blur(10px); /* glassmorphism ефект */
+    background: linear-gradient(135deg, #b30000, #800000);
+    backdrop-filter: blur(10px);
     border-radius: 18px;
     padding: 1.5rem;
     display: flex;
@@ -56,12 +84,13 @@
 }
 
 .sponsor-card:hover {
-    transform: translateY(-10px) scale(1.07);
-    background: rgba(7, 0, 0, 0.15);
-    border: 1px solid #fff;
+    transform: translateY(-10px) scale(1.04);
+    background: linear-gradient(135deg, #c40000, #8f0000);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-
 }
+
+
+
 
 .sponsor-image {
     width: 120px;
@@ -74,7 +103,7 @@
 }
 
 .sponsor-card:hover .sponsor-image {
-    transform: rotate(-6deg) scale(1.15);
+    transform: rotate(-6deg) scale(1.08);
 }
 
 .sponsor-name {
@@ -86,7 +115,155 @@
 }
 
 .sponsor-card:hover .sponsor-name {
-    color: #0c0c0c;
+    color: #fff;
+}
+
+
+
+.ultra-gold h3 {
+    font-size: 2.6rem;
+    color: #000000;
+}
+
+.ultra-gold .sponsor-grid {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 2.5rem;
+}
+
+.ultra-gold .sponsor-card {
+    min-height: 240px;
+    justify-content: center;
+    border: 3px solid #d4af37;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+}
+
+.ultra-gold .sponsor-card:hover {
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.45);
+}
+
+.ultra-gold .sponsor-image {
+    width: 180px;
+    height: 180px;
+}
+
+.ultra-gold .sponsor-name {
+    font-size: 1.4rem;
+}
+
+.gold h3 {
+    font-size: 2.2rem;
+    color: #000000;
+}
+
+.gold .sponsor-grid {
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.gold .sponsor-card {
+    min-height: 200px;
+    justify-content: center;
+    border: 2px solid #d4af37;
+}
+
+.gold .sponsor-image {
+    width: 150px;
+    height: 150px;
+}
+
+.gold .sponsor-name {
+    font-size: 1.25rem;
+}
+
+
+
+.regular h3 {
+    font-size: 2rem;
+    color: #000000;
+}
+
+.regular .sponsor-grid {
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.regular .sponsor-card {
+    min-height: 160px;
+    padding: 1.2rem;
+}
+
+.regular .sponsor-image {
+    width: 110px;
+    height: 110px;
+}
+
+.regular .sponsor-name {
+    font-size: 1rem;
+}
+
+
+
+@media (max-width: 900px) {
+
+    .ultra-gold .sponsor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gold .sponsor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .regular .sponsor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ultra-gold .sponsor-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .sponsor-section {
+        padding: 3rem 1rem;
+    }
+
+    .sponsor-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .sponsor-header p {
+        font-size: 1rem;
+    }
+
+    .sponsor-category h3 {
+        font-size: 1.6rem;
+    }
+
+    .ultra-gold .sponsor-grid,
+    .gold .sponsor-grid,
+    .regular .sponsor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ultra-gold .sponsor-image {
+        width: 160px;
+        height: 160px;
+    }
+
+    .gold .sponsor-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .regular .sponsor-image {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 
@@ -95,24 +272,10 @@
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-
-@media (max-width: 767px) {
-    .sponsor-header h2 {
-        font-size: 1.8rem;
-    }
-
-    .sponsor-image {
-        width: 90px;
-        height: 90px;
-    }
-
-    .sponsor-name {
-        font-size: 1rem;
-    }
-}
