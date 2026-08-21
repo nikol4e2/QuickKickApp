@@ -102,4 +102,11 @@ public class Match {
     public void setGoalsTeam2(int goalsTeam2) {
         this.goalsTeam2 = goalsTeam2;
     }
+
+
+    public int getGoalsForTeam(Long teamId) {
+        if (team1.getId().equals(teamId)) return goalsTeam1;
+        if (team2.getId().equals(teamId)) return goalsTeam2;
+        throw new IllegalArgumentException("Team not part of this match");
+    }
 }

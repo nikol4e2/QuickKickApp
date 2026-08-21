@@ -5,12 +5,12 @@ import "./ResultImage.css";
 import template from "../../../assets/template.png";
 
 import sponsor1 from "../../../assets/mainsponsors/opstina.JPG";
-import sponsor2 from "../../../assets/mainsponsors/Amphenol.JPG";
-import sponsor3 from "../../../assets/mainsponsors/anthuraOriginalText.jpg";
+import sponsor2 from "../../../assets/mainsponsors/amphenolPng.png";
+import sponsor3 from "../../../assets/mainsponsors/anthuraPng.png";
 import sponsor4 from "../../../assets/mainsponsors/miki.jpg";
 import sponsor5 from "../../../assets/mainsponsors/ahrohemikal.jpg";
-import sponsor6 from "../../../assets/mainsponsors/nale.JPG";
-import sponsor7 from "../../../assets/mainsponsors/Adient.JPG";
+import sponsor6 from "../../../assets/mainsponsors/nalePng.png";
+import sponsor7 from "../../../assets/mainsponsors/adientPng.png";
 
 const ResultImage = ({ date, nextDate, results, upcoming }) => {
 
@@ -45,7 +45,7 @@ const ResultImage = ({ date, nextDate, results, upcoming }) => {
     const HEADER_HEIGHT = 260;
     const SECTION_TITLE_HEIGHT = 90;
     const MATCH_HEIGHT = 135;
-    const FOOTER_HEIGHT = 180;
+    const FOOTER_HEIGHT = 200;
 
 
     let height = HEADER_HEIGHT + FOOTER_HEIGHT;

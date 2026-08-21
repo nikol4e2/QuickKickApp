@@ -12,6 +12,10 @@ import com.example.quickkick.web.model.enums.MatchStatus;
 import com.example.quickkick.web.service.MatchService;
 import com.example.quickkick.web.service.PlayingMatchService;
 import com.example.quickkick.web.service.TeamService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +39,9 @@ public class MatchController {
     public ResponseEntity<List<Match>> getAllMatches() {
         return ResponseEntity.ok(matchService.findAll());
     }
+
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Match> getMatchById(@PathVariable Long id) {
@@ -93,6 +100,31 @@ public class MatchController {
         return ResponseEntity.ok(matches);
     }
 
+    @GetMapping("/finished")
+    public Page<Match> getFinishedMatches(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    )
+    {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
+        return matchService.findAllByStatusAndPageable(MatchStatus.FINISHED, pageable);
+    }
+
+
+    //Pagination
+    @GetMapping("/paged")
+    public ResponseEntity<Page<Match>> getMatchesPaged(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by("date").descending()
+        );
+
+        return ResponseEntity.ok(matchService.findAll(pageable));
+    }
 
 
     @PutMapping("/{id}")

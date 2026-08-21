@@ -8,6 +8,8 @@ import com.example.quickkick.web.model.exceptions.TeamNullException;
 import com.example.quickkick.web.repository.MatchRepository;
 import com.example.quickkick.web.repository.TeamRepository;
 import com.example.quickkick.web.service.MatchService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -146,5 +148,17 @@ public class MatchServiceImpl implements MatchService {
     @Override
     public List<Match> getMatchesForTeam(Long teamId) {
         return this.matchRepository.findAllByTeam1_IdOrTeam2_Id(teamId,teamId);
+    }
+
+
+    @Override
+    public Page<Match> findAllByStatusAndPageable(MatchStatus matchStatus, Pageable pageable) {
+        return matchRepository.findAllByStatus(matchStatus, pageable);
+    }
+
+
+    @Override
+    public Page<Match> findAll(Pageable pageable) {
+        return matchRepository.findAll(pageable);
     }
 }

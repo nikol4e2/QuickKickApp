@@ -50,7 +50,15 @@ const Service = {
         fetchTopTenPlayers: () =>{
         return axios.get("/players/top-players");
         },
+    fetchPlayersPaged: (page, size, teamId) => {
+        let url = `/players/paged?page=${page}&size=${size}`;
 
+        if (teamId != null) {
+            url += `&teamId=${teamId}`;
+        }
+
+        return axios.get(url);
+    },
 
     //MATCHES
 

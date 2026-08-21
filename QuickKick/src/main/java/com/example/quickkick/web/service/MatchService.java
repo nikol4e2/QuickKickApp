@@ -3,6 +3,8 @@ package com.example.quickkick.web.service;
 import com.example.quickkick.web.model.Match;
 import com.example.quickkick.web.model.Team;
 import com.example.quickkick.web.model.enums.MatchStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,5 +26,8 @@ public interface MatchService {
     List<Match> getNextThreeMatches();
     List<Match> getMatchesForTeam(Long teamId);
 
+
+    Page<Match> findAllByStatusAndPageable(MatchStatus matchStatus, Pageable pageable);
+    Page<Match> findAll(Pageable pageable);
 
 }

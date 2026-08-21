@@ -7,6 +7,8 @@ import com.example.quickkick.web.model.exceptions.TeamNotFoundException;
 import com.example.quickkick.web.repository.PlayerRepository;
 import com.example.quickkick.web.service.PlayerService;
 import com.example.quickkick.web.service.TeamService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -66,5 +68,10 @@ public class PlayerServiceImpl implements PlayerService {
     public List<Player> getTop10PlayersByGoals() {
         return playerRepository.findAll().stream()
                 .sorted((p1,p2) -> Integer.compare(p2.getGoals(),p1.getGoals())).limit(10).collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<Player> getAllPlayers(Pageable pageable) {
+        return playerRepository.findAll(pageable);
     }
 }

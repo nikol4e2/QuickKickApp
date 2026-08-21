@@ -7,6 +7,10 @@ import com.example.quickkick.web.model.dto.PlayerEditDto;
 import com.example.quickkick.web.model.dto.PlayerGoalsSubmission;
 import com.example.quickkick.web.model.dto.SubmitGoalsDto;
 import com.example.quickkick.web.service.PlayerService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -86,6 +90,20 @@ public class PlayerController {
         request.getTeam1().forEach(p->playerService.addGoalToPlayer(p.getId(),p.getGoals()));
         request.getTeam2().forEach(p->playerService.addGoalToPlayer(p.getId(),p.getGoals()));
         return ResponseEntity.ok("Goals submitted sucessfully");
+    }
+
+    @GetMapping("/paged")
+    public ResponseEntity<Page<Player>> getPlayersPaged(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by("firstName").ascending()
+        );
+
+        return ResponseEntity.ok(playerService.getAllPlayers(pageable));
     }
 
 

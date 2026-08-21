@@ -13,5 +13,5 @@ public interface TeamRepository extends JpaRepository<Team,Long> {
 
     Optional<Team> findByName(String name);
     List<Team> findAllByTeamGroupOrderByPoints(TeamGroup teamGroup);
-
+    List<Team> findAllByTeamGroup(TeamGroup teamGroup);
 }
