@@ -10,6 +10,9 @@ const AddGoalAfterMatch = ({matchId,team1,team2,goalsTeam1,goalsTeam2}) => {
     const [newPlayerName1, setNewPlayerName1] = React.useState("");
     const [newPlayerName2, setNewPlayerName2] = React.useState("");
 
+
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+
     useEffect(() => {
         Service.fetchAllPlayersByTeam(team1.id)
             .then(response => {
@@ -100,17 +103,34 @@ const AddGoalAfterMatch = ({matchId,team1,team2,goalsTeam1,goalsTeam2}) => {
 
 
     const handleSubmit = () => {
-        const payload = {
 
-            team1: playersTeam1.map(p => ({ id: p.id, goals: p.goals })),
-            team2: playersTeam2.map(p => ({ id: p.id, goals: p.goals })),
+        if (isSubmitting) return;
+
+        setIsSubmitting(true);
+
+        const payload = {
+            team1: playersTeam1.map(p => ({
+                id: p.id,
+                goals: p.goals
+            })),
+            team2: playersTeam2.map(p => ({
+                id: p.id,
+                goals: p.goals
+            })),
         };
 
-
         Service.submitGoals(payload)
-            .then(res =>{ alert("Головите се успешно внесени!"); window.close()})
-            .catch(console.error);
+            .then(res => {
+                alert("Головите се успешно внесени!");
+                window.close();
+            })
+            .catch(error => {
+                console.error(error);
+                setIsSubmitting(false);
+                alert("Настана грешка при внесувањето на головите.");
+            });
     };
+
     return (
         <div className="add-goal-after-match-container">
             <div className="team1-section-goals">
@@ -174,7 +194,12 @@ const AddGoalAfterMatch = ({matchId,team1,team2,goalsTeam1,goalsTeam2}) => {
             <button onClick={(e) => handleAddPlayer(e, "team2")}>Додади играч</button>
         </div>
 
-            <button onClick={handleSubmit}>Заврши натпревар</button>
+            <button
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+            >
+                {isSubmitting ? "Се зачувува..." : "Заврши натпревар"}
+            </button>
         </div>
     );
 };
