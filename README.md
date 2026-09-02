@@ -3,7 +3,7 @@
 LINK TO WEBSTIE: https://turnirandrej.vercel.app/
 
 **QuickKick** is a web application designed to manage and follow futsal matches in real-time. It allows users to create and manage teams and matches, track live scores, configure match settings, and separate control and display functionality for better real-time monitoring.  
-It was developed specifically for organizing and supporting the **Memorial Futsal Tournament "Andrej Mitev"**, providing an efficient digital platform to streamline match logistics and enhance the spectator experience.
+**It was developed specifically for organizing and supporting the **Memorial Futsal Tournament "Andrej Mitev"**, providing an efficient digital platform to streamline match logistics and enhance the spectator experience.**
 
 ---
 
@@ -39,7 +39,6 @@ It was developed specifically for organizing and supporting the **Memorial Futsa
 - Mobile-friendly layout (planned)  
 
 ### 🛠️ Planned & Advanced
-- Authentication and user roles (admin, viewer)  
 - Graphical dashboards for quick performance insights  
 - CI/CD integration with GitHub Actions  
 - Future UI improvements  
