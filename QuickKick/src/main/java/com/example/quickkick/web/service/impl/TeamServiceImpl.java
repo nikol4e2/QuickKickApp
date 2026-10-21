@@ -43,6 +43,7 @@ public class TeamServiceImpl implements TeamService {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
         TeamGroup teamGroup=null;
+
         switch (group)
         {
             case "a": teamGroup=TeamGroup.A;break;
