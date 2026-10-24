@@ -11,15 +11,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.core.parameters.P;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -68,9 +69,85 @@ class TeamServiceImplTest {
             assertEquals(name, team.getName());
             assertEquals(TeamGroup.A, team.getTeamGroup());
 
-            verify(teamRepository).save(any(Team.class));
+            verify(teamRepository).save(argThat(t->t.getName().equals(name) && t.getTeamGroup()== TeamGroup.A));
 
         }
+
+        @DisplayName("Should throw exception when name is invalid")
+        @Test
+        void saveTeamInvalidNameTest() {
+
+            assertThrows(IllegalArgumentException.class, () -> teamService.save("", "A"));
+            verify(teamRepository,never()).save(any(Team.class));
+        }
+
+        @DisplayName("Should throw exception when name is null")
+        @Test
+        void saveTeamNullNameTest() {
+
+            assertThrows(IllegalArgumentException.class, () -> teamService.save(null, "A"));
+
+            verify(teamRepository,never()).save(any(Team.class));
+        }
+
+
+        @DisplayName("Should not save when group is invalid")
+        @Test
+        void saveTeamInvalidGroupTest() {
+
+            String name = "Test Team";
+            String group="Z";
+
+
+            assertThrows(IllegalArgumentException.class, () -> teamService.save(name, group));
+
+
+            verify(teamRepository,never()).save(any(Team.class));
+
+        }
+
+
+
+
+
+    }
+
+    @Nested
+    @DisplayName("Delete Team Tests")
+    class deleteTeamTests
+    {
+
+        @DisplayName("Should Delete Team When Team Exists")
+        @Test
+        void testShouldDeleteTeam()
+        {
+
+            Long id=1L;
+            Team team = new Team("Test Team", TeamGroup.A);
+
+            when(teamRepository.findById(id)).thenReturn(Optional.of(team));
+
+            teamService.delete(id);
+
+            verify(teamRepository).deleteById(id);
+        }
+
+        @DisplayName("Should do nothing when team doesn't exist")
+        @Test
+        void testWhenTeamDoesNotExist()
+        {
+            Long id=1L;
+            Team team = new Team("Test Team", TeamGroup.A);
+
+            when(teamRepository.findById(id)).thenReturn(Optional.empty());
+
+            teamService.delete(id);
+
+            verify(teamRepository,never()).delete(any(Team.class));
+
+
+        }
+
     }
 
     @Nested
@@ -135,7 +212,7 @@ class TeamServiceImplTest {
     class findAllTests {
 
         @Test
-        @DisplayName("Should return all teamws")
+        @DisplayName("Should return all teams")
         void findAllTeams() {
 
             Team expectedTeam1 = new Team("Test Team1", TeamGroup.A);
@@ -150,6 +227,51 @@ class TeamServiceImplTest {
             verify(teamRepository).findAll();
         }
 
+        @Test
+        @DisplayName("Should return empty list when teams don't exist")
+        void findAllShouldReturnEmptyListWhenTeamsDoesNotExist() {
+
+            when(teamRepository.findAll()).thenReturn(new ArrayList<>());
+
+            List<Team> result=teamService.findAll();
+
+            assertTrue(result.isEmpty());
+            verify(teamRepository).findAll();
+        }
+
+    }
+
+    @Nested
+    class findByNameTests{
+
+        @Test
+        @DisplayName("Should return team when team exists")
+        void findByNameShouldReturnTeam() {
+
+            Team team=new Team("Test Team", TeamGroup.A);
+            when(teamRepository.findByName("Test Team")).thenReturn(Optional.of(team));
+
+
+            Optional<Team> result=teamService.findByName("Test Team");
+
+            assertTrue(result.isPresent());
+            assertEquals(team,result.get());
+
+            verify(teamRepository).findByName(argThat(v-> v.equals("Test Team")));
+        }
+
+        @Test
+        @DisplayName("Should return empty when team does not exist")
+        void findByNameShouldReturnEmptyWhenTeamDoesNotExist() {
+
+            when(teamRepository.findByName("Test Team")).thenReturn(Optional.empty());
+
+
+            Optional<Team>  result = teamService.findByName("Test Team");
+
+            assertTrue(result.isEmpty());
+            verify(teamRepository).findByName("Test Team");
+        }
     }
 
 
