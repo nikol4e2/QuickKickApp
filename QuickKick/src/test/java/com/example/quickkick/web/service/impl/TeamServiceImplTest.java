@@ -1,5 +1,6 @@
 package com.example.quickkick.web.service.impl;
 
+import com.example.quickkick.web.model.Player;
 import com.example.quickkick.web.model.Team;
 import com.example.quickkick.web.model.enums.TeamGroup;
 import com.example.quickkick.web.repository.TeamRepository;
@@ -273,6 +274,153 @@ class TeamServiceImplTest {
             verify(teamRepository).findByName("Test Team");
         }
     }
+
+    @Nested
+    @DisplayName("Add Player To Team Tests")
+    class addPlayerToTeamTests {
+
+
+        @Test
+        @DisplayName("Should add player to team when team exists")
+        void addPlayerToTeamShouldAddPlayerWhenTeamExists() {
+
+            Long id = 1L;
+            Team team = new Team("Test Team", TeamGroup.A);
+            Player player= new Player("Name","Surname",null);
+
+            when(teamRepository.findById(id)).thenReturn(Optional.of(team));
+
+
+            teamService.addPlayerToTeam(id, player);
+
+            assertTrue(team.getPlayers().contains(player));
+            assertEquals(team, player.getTeam());
+        }
+
+
+        @Test
+        @DisplayName("Should Throw Exception When Team Does Not Exist")
+        void addPlayerToTeamShouldThrowExceptionWhenTeamDoesNotExist() {
+
+            Long teamId=2L;
+            Player player=new Player("Name","Surname",null);
+
+            when(teamRepository.findById(teamId)).thenReturn(Optional.empty());
+
+            assertThrows(IllegalArgumentException.class,() -> teamService.addPlayerToTeam(teamId, player));
+
+        }
+
+        @Test
+        @DisplayName("Should Throw Exception When Player Is Null")
+        void addPlayerToTeamShouldThrowExceptionWhenPlayerIsNull() {
+
+            Long teamId=2L;
+            Team team = new Team("Test Team", TeamGroup.A);
+            when(teamRepository.findById(teamId)).thenReturn(Optional.of(team));
+
+
+
+            assertThrows(IllegalArgumentException.class,() -> teamService.addPlayerToTeam(teamId, null));
+
+        }
+    }
+
+
+    @Nested
+    @DisplayName("Remove Player From Team Tests")
+    class removePlayerFromTeamTests {
+
+        @Test
+        @DisplayName("Should remove player from team successfully")
+        void removePlayerFromTeamShouldRemovePlayerFromTeam() {
+
+            Long teamId=1L;
+
+            Team team = new Team("Test Team", TeamGroup.A);
+            Player player=new Player("Name","Surname",null);
+            player.setId(10L);
+
+            team.getPlayers().add(player);
+
+            when(teamRepository.findById(teamId)).thenReturn(Optional.of(team));
+
+
+            teamService.removePlayerFromTeam(teamId, player);
+
+            assertFalse(team.getPlayers().contains(player));
+            verify(teamRepository).save(team);
+
+
+
+        }
+
+        @Test
+        @DisplayName("Should not save team when team does not exist")
+        void removePlayerFromTeamShouldSaveWhenTeamDoesNotExist() {
+
+            Long teamId=2L;
+            Player player=new Player("Name","Surname",null);
+            when(teamRepository.findById(teamId)).thenReturn(Optional.empty());
+
+
+            teamService.removePlayerFromTeam(teamId, player);
+
+            verify(teamRepository,never()).save(any(Team.class));
+        }
+
+
+
+    }
+
+    @Nested
+    @DisplayName("Get All Players From Team Tests")
+    class getAllPlayersTests {
+
+
+        @Test
+        @DisplayName("Should return all players from team")
+        void getAllPlayersShouldReturnAllPlayersFromTeam() {
+
+            Long teamId=1L;
+
+            Team team = new Team("Test Team", TeamGroup.A);
+            Player player=new Player("Name","Surname",null);
+            Player player2=new Player("Name2","Surname2",null);
+
+            team.getPlayers().add(player);
+            team.getPlayers().add(player2);
+
+            when(teamRepository.findById(teamId)).thenReturn(Optional.of(team));
+
+            List<Player> result=teamService.getAllPlayersInTeam(teamId);
+
+            assertEquals(2, result.size());
+            assertTrue(result.contains(player));
+            assertTrue(result.contains(player2));
+
+            verify(teamRepository).findById(teamId);
+        }
+
+        @Test
+        @DisplayName("Should return empty list when team does not exist")
+        void getAllPlayersShouldReturnEmptyListWhenTeamDoesNotExist() {
+            Long teamId=2L;
+
+            when(teamRepository.findById(teamId)).thenReturn(Optional.empty());
+
+            List<Player> result=teamService.getAllPlayersInTeam(teamId);
+
+            assertNotNull(result);
+            assertEquals(0, result.size());
+
+            verify(teamRepository).findById(teamId);
+        }
+
+    }
+
+
+
 
 
 }

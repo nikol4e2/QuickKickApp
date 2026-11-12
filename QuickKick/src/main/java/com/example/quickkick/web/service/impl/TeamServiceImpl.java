@@ -38,14 +38,12 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team save(String name,String group) {
-        if(group!=null && group.isEmpty()) {
-            group = group.toLowerCase();
-
-        }
+        group=group.toLowerCase();
         if(name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
         TeamGroup teamGroup=null;
+
         switch (group)
         {
             case "a": teamGroup=TeamGroup.A;break;
@@ -54,7 +52,6 @@ public class TeamServiceImpl implements TeamService {
             case "d": teamGroup=TeamGroup.D;break;
             case "e": teamGroup=TeamGroup.E;break;
             case "f": teamGroup=TeamGroup.F;break;
-            default: throw new IllegalArgumentException("Invalid group");
 
         }
         Team team = new Team(name,teamGroup);
