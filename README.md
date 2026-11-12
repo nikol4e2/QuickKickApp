@@ -4,7 +4,7 @@
 It was developed specifically for organizing and supporting the **Memorial Futsal Tournament "Andrej Mitev"**, providing an efficient digital platform to streamline match logistics and enhance the spectator experience.
 
 ---
-
+![Project Screenshot](images/visitors.png)
 ## Features
 
 ### ✅ Team Management
